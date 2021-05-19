@@ -40,8 +40,10 @@ function Awake()
 	contextSet = true;
 	setupGlContext();
 
-	testPrint("CONTEXT SET");
+	//testPrint("CONTEXT SET");
 	glCanvas.style.opacity = "100%";
+	glCanvas.style.MozOpacity = "100%";
+	glCanvas.style.webkitOpacity = "100%";
 
 	//gl.clearColor(1.0, 0.0, 0.0, 0.5);
 	//gl.clear(gl.COLOR_BUFFER_BIT);
@@ -125,7 +127,7 @@ window.onload = Awake;
 
 function setupGlContext()
 {
-	testPrint("Setting up Context");
+	//testPrint("Setting up Context");
 	//Define the vertex points
 	var verticies = [
 		-1.0,-1.0,0.0,
@@ -168,8 +170,8 @@ function setupGlContext()
 
 	var message = gl.getShaderInfoLog(fragShader);
 	if (message.length > 0) {
-		testPrint("Fragment Shader Compilation Error");
-		testPrint(message);
+		console.log("Fragment Shader Compilation Error");
+		console.log(message);
 	}
 
 	//Create and use Shader Program
@@ -226,12 +228,12 @@ function ErrorCheck()
 {
 	var error = gl.getError();
 	if (error !== gl.NO_ERROR) {
-		testPrint(error);
+		console.log(error);
 	}
 }
 
-function testPrint(message)
+/*function testPrint(message)
 {
 	var debugTest = document.getElementById('debugTest');
 	debugTest.innerText += message + "-:-";
-}
+}*/
