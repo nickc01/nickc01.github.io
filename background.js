@@ -40,14 +40,7 @@ function Awake()
 	contextSet = true;
 	setupGlContext();
 
-	//testPrint("CONTEXT SET");
-	glCanvas.style.opacity = "100%";
-	glCanvas.style.MozOpacity = "100%";
-	glCanvas.style.webkitOpacity = "100%";
-
-	//gl.clearColor(1.0, 0.0, 0.0, 0.5);
-	//gl.clear(gl.COLOR_BUFFER_BIT);
-
+	glCanvas.style.opacity = "1";
 	window.requestAnimationFrame(loop);
 }
 
@@ -69,18 +62,7 @@ function drawBackground()
 	glCanvas.width = window.innerWidth;
 	glCanvas.height = window.innerHeight;
 	//Set Uniforms
-	//gl.uniform2f(uniforms.windowSize,glCanvas.width,glCanvas.height);
 	 uniforms.setNoiseScale(backgrondScale);
-	 //documentStyle.getPropertyValue('--top-bg-color').convertToRGB()
-	 //documentStyle.getPropertyValue('--bottom-bg-color').convertToRGB()
-	 //46,56,58,255
-	 //uniforms.setTopColor(hexToRgb(documentStyle.getPropertyValue('--top-bg-color')));
-	 //uniforms.setBottomColor(hexToRgb(documentStyle.getPropertyValue('--bottom-bg-color')));
-	 //uniforms.setBottomColor([30,50,20,255]);
-	 //uniforms.setBottomColor([50,90,30,255]);
-	 //uniforms.setTopColor([100,20,100,255]);
-
-
 	 uniforms.setTopColor([107 / 2,157 / 2,62 / 2,255]);
 	 uniforms.setBottomColor([50 / 2,90 / 2,30 / 2,255]);
 
@@ -95,8 +77,6 @@ function drawBackground()
      // Set the view port
 	 //console.log("Width = " + window.innerWidth + " Height = " + window.innerHeight);
      gl.viewport(0,0,window.innerWidth,window.innerHeight);
-
-	 console.log("Viewport = " + gl.getParameter(gl.VIEWPORT));
 
      // Draw the triangle
      //gl.drawArrays(gl.POINTS, 0, 6);
