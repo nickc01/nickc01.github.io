@@ -3,9 +3,9 @@
 <head>
 	<title>Nickc01 Portfolio</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="Game Programming portfolio for Nicholas Cullen">
-	<meta name="keywords" content="Portfolio, C#, C++, CPP, Nickc01, Nicholas Cullen, Programming, Unity, Unity3D, Hollow Knight, Mods">
-	<meta name="author" content="Nicholas Cullen">
+	<meta name="description" content="Game Programming portfolio for Nicholas C">
+	<meta name="keywords" content="Portfolio, C#, C++, CPP, Nickc01, Nicholas C, Programming, Unity, Unity3D, Hollow Knight, Mods">
+	<meta name="author" content="Nicholas C">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="follow"/>
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -14,7 +14,7 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://nickc01.github.io/" />
 	<meta property="og:image" content="https://nickc01.github.io/images/logo-large.png" />
-	<meta property="og:description" content="Game Programming portfolio for Nicholas Cullen" />
+	<meta property="og:description" content="Game Programming portfolio for Nicholas C" />
 	<meta name="theme-color" content="#6B9D3E">
 </head>
 
@@ -28,20 +28,45 @@
 			<a href="https://twitter.com/nickc01_"><img src="images/icons/twitter.png"/>Twitter</a>
 			<a href="https://www.youtube.com/channel/UChB2hZz-KnB4hXrCU3fLfYQ"><img src="images/icons/youtube.png"/>Youtube</a>
 			<a href="https://github.com/nickc01"><img src="images/icons/github.png"/>Github</a>
+			<a href="https://www.linkedin.com/in/nickc01/"><img src="images/icons/linked-in.png"/>LinkedIn</a>
 		</div>
 	</div>
 	<div id="menu-bar" class="unhighlightable">
 		<a onclick="SwitchToAbout();" id="about-button">About</a>
 		<a onclick="SwitchToHome();" id="home-button" class="selected-menu-item">Home</a>
-		<a id="project-button">Projects</a>
+		<a onclick="SwitchToProjects();" id="project-button">Projects</a>
 	</div>
-	<script src="main.js"></script>
+	<noscript>
+		<h3 id="no-script-text">Javascript is required to navigate this site</h3>
+	</noscript>
+	<div id="selected-project-area" tabindex="2">
+		<div id="selected-project-background" onclick="CloseProjectWindow();"></div>
+		<div id="selected-project-contents">
+			<div id="selected-project-top-bar"></div>
+			<div id="close-button" onclick="CloseProjectWindow();">
+				<svg id="close-button-svg" width="80" height="80">
+					<rect width="40" height="4"/>
+					<rect width="40" height="4"/>
+				</svg>
+			</div>
+			<div id="contents-background"></div>
+			<div id="contents">
+				<div id="video-area">
+					<h1 id="contents-title"></h1>
+					<video autoplay loop muted>
+						<source type="video/mp4">
+					</video>
+				</div>
+				<div id="description"></div>
+			</div>
+		</div>
+	</div>
+	<script id="main-script" src="main.js"></script>
+	<script src="routine.js"></script>
+	<script src="projects-menu.js"></script>
 	<script src="inline-console.min.js"></script>
 	<script src="vertexShader.js"></script>
 	<script src="fragmentShader.js"></script>
 	<script defer src="background.js"></script>
-	<noscript>
-		<h3>Javascript is required to navigate this site</h3>
-	</noscript>
 </body>
 </html>

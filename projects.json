@@ -1,0 +1,52 @@
+{
+	"projects" : {
+		"inferno-king-grimm" : {
+			"name" : "Inferno King Grimm",
+			"date" : "6/29/2020",
+			"description" : "Inferno King Grimm is the first mod I made for Hollow Knight. It takes the existing Nightmare King Grimm bossfight changes it up significantly</br></br>It does so by spliting the fight into 3 distinct phases, each harder than the last. Not only are the existing moves modified to be harder, but two other new moves were introduced, a ground slam attack, and a move where grimm shows up in the middle of the arena and spawns tons of fireballs.</br></br>The boss has two difficulty modes, a normal mode that anyone is able to play, and a hard mode geared towards experts. The setting can be changed on the main menu of the game. Other customization options include custom health values, disabling camera color effects, and enabling a permanent blue camera filter",
+			"fontSize" : "3vw",
+			"image" : "screenshots/inferno-king-grimm.jpg",
+			"video" : "videos/inferno-king-grimm.m4v",
+			"color" : "#f32d49",
+			"textColor" : "#f32d49",
+			"backgroundColor" : "#2e383aBB",
+			"links" : [
+				{
+					"name" : "Github",
+					"link" : "https://github.com/nickc01/Inferno-King-Grimm"
+				},
+				{
+					"name" : "Hard Mode Video",
+					"link" : "https://youtu.be/OhKrdlC6nNk"
+				},
+				{
+					"name" : "Video",
+					"link" : "https://youtu.be/R20mWJJOJ0w"
+				}
+			]
+		},
+
+
+		"corrupted-kin" : {
+			"name" : "Corrupted Kin",
+			"date" : "5/7/2021",
+			"description" : "Corrupted Kin is the second mod I made for Hollow Knight. It takes the existing Lost Kin bossfight and changes it up significantly and adds a bunch of new moves</br></br>The fight is split up into two very distinct phases, with the first phases being very similar to the original Lost Kin fight, but with a new bomb lob move and adjustments to the existing move. The second phases, however, is when an entire wave system is brought into the mix as an obstacle the player must avoid. The boss can control the waves at will by slamming into the ground or by other means. There are also 2 times during the 2nd phase where the boss will jump into the ceiling and will unlease 3 of 5 random attacks on the player.</br></br>Overall, I find this to be my favorite modded boss that I designed, since it uses a wave system I built entirely from scratch",
+			"fontSize" : "3.5vw",
+			"image" : "screenshots/corrupted-kin.jpg",
+			"video" : "videos/corrupted-kin.m4v",
+			"color" : "#e68a24",
+			"textColor" : "#ec964f",
+			"backgroundColor" : "#2e383aBB",
+			"links" : [
+				{
+					"name" : "Github",
+					"link" : "https://github.com/nickc01/Corrupted-Kin"
+				},
+				{
+					"name" : "Video",
+					"link" : "https://youtu.be/8vQiSoLYrao"
+				}
+			]
+		}
+	}
+}

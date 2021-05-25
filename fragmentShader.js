@@ -123,13 +123,25 @@ float pNoise(vec2 p, int res){
 	return nf*nf*nf*nf;
 }*/
 
+/*vec4 lerp(vec4 colorone, vec4 colortwo, float value)
+{
+	return (colorone + value*(colortwo-colorone));
+}*/
+
 void main(void) {
     //gl_FragColor = vec4(0, 0.0, 1.0, 1);
 	//float noiseValue = pNoise(gl_FragCoord.xy,1);
 	//vec2 pixelPosition = vec2();
 	//gl_FragColor = vec4(noiseValue, noiseValue, noiseValue, 1.0);
 	float noiseVal = snoise(vec3(gl_FragCoord.x / noiseScale, ((gl_FragCoord.y + verticalOffset) / noiseScale), noiseZ));
-	gl_FragColor = mix(bottomColor,topColor,floor(noiseVal * 12.0) / 12.0);
-	//gl_FragColor = mix(bottomColor,topColor,noiseVal);
+	gl_FragColor = mix(bottomColor,topColor,floor(((noiseVal + 1.0) / 2.0) * 12.0) / 12.0);
+
+
+
+	//gl_FragColor = lerp(bottomColor,topColor,);
+
+	//gl_FragColor = vec4(mix(bottomColor.r,topColor.r,noiseVal),mix(bottomColor.g,topColor.g,noiseVal),mix(bottomColor.b,topColor.b,noiseVal),mix(bottomColor.a,topColor.a,noiseVal));
+
+	//gl_FragColor = topColor;
 }
 `;

@@ -5,29 +5,19 @@ var speedMultiplier = 0.15;
 var parallaxAmount = 3.0;
 var resolutionMultipler = 0.5;
 
-/*function componentToHex(c) {
-  var hex = c.toString(16);
-  return hex.length == 1 ? "0" + hex : hex;
-}
+var currentTopColor = null;
+var currentBottomColor = null;
 
-function rgbToHex(r, g, b) {
-  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-}*/
+var defaultTopColor = [107 / 2,157 / 2,62 / 2,255];
+var defaultBottomColor = [50 / 4,90 / 4,30 / 4,255];
 
-function hexToRgb(hex) {
-	hex = hex.replace(" ","");
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
- /* return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16),
-	a: 255
-} : null;*/
-//console.log("1st = " + result[1]);
-//console.log("2nd = " + result[2]);
-//console.log("3rd = " + result[3]);
-  return result ? [parseInt(result[1], 16),parseInt(result[2], 16),parseInt(result[3], 16),255 ] : null;
-}
+var interpolateTimeMax = null;
+var interpolateTime = null;
+var interpolateTopColor = null;
+var interpolateBottomColor = null;
+
+var interpolatePreviousTopColor = null;
+var interpolatePreviousBottomColor = null;
 
 function Awake()
 {
@@ -37,6 +27,8 @@ function Awake()
 	{
 		return;
 	}
+	currentTopColor = defaultTopColor.slice();
+	currentBottomColor = defaultBottomColor.slice();
 	contextSet = true;
 	setupGlContext();
 
@@ -50,7 +42,49 @@ function Update(dt)
 	{
 		return;
 	}
+
+	if (interpolateTime !== null)
+	{
+		currentTopColor = lerpColor(interpolatePreviousTopColor,interpolateTopColor,1.0 - (interpolateTime / interpolateTimeMax));
+		currentBottomColor = lerpColor(interpolatePreviousBottomColor,interpolateBottomColor,1.0 - (interpolateTime / interpolateTimeMax));
+		interpolateTime -= dt;
+		//console.log("Interpolate Time = " + interpolateTime);
+		if (interpolateTime <= 0) {
+			currentTopColor = lerpColor(interpolatePreviousTopColor,interpolateTopColor,1.0);
+			currentBottomColor = lerpColor(interpolatePreviousBottomColor,interpolateBottomColor,1.0);
+			interpolateTime = null;
+		}
+	}
+
 	drawBackground();
+}
+
+function InterpolateToNewColor(newTopColor,newBottomColor,time)
+{
+	interpolateTime = time;
+	interpolateTimeMax = time;
+	interpolatePreviousTopColor = currentTopColor;
+	interpolatePreviousBottomColor = currentBottomColor;
+
+	interpolateTopColor = newTopColor;
+	interpolateBottomColor = newBottomColor;
+}
+
+function lerp (a, b, t)
+{
+	return (1-t)*a+t*b;
+}
+
+function lerpColor(colorA,colorB,t)
+{
+	if (colorA.length >= 4 || colorB.length >= 4)
+	{
+		var alpha = lerp(colorA.length >= 4 ? colorA[3] : 255, colorB.length >= 4 ? colorB[3] : 255,t);
+		return [lerp(colorA[0],colorB[0],t),lerp(colorA[1],colorB[1],t),lerp(colorA[2],colorB[2],t),alpha];
+	}
+	else {
+		return [lerp(colorA[0],colorB[0],t),lerp(colorA[1],colorB[1],t),lerp(colorA[2],colorB[2],t)];
+	}
 }
 
 function drawBackground()
@@ -59,12 +93,28 @@ function drawBackground()
 
 
 
+	/*glCanvas.width = window.innerWidth;
+	glCanvas.height = window.innerHeight;
+
+	glCanvas.width = Math.max(window.innerWidth,document.body.scrollWidth);
+	glCanvas.height = Math.max(window.innerHeight,document.body.scrollHeight);*/
+
+
+
+
+
 	glCanvas.width = window.innerWidth;
 	glCanvas.height = window.innerHeight;
+
+	glCanvas.width = window.innerWidth;//Math.max(window.innerWidth,document.body.scrollWidth);
+	glCanvas.height = window.innerHeight;//Math.max(window.innerHeight,document.body.scrollHeight);
+
+	//glCanvas.width = Math.max(window.innerWidth,window.scrollWidth);
+	//glCanvas.height = Math.max(window.innerHeight,window.scrollHeight);
 	//Set Uniforms
 	 uniforms.setNoiseScale(backgrondScale);
-	 uniforms.setTopColor([107 / 2,157 / 2,62 / 2,255]);
-	 uniforms.setBottomColor([50 / 2,90 / 2,30 / 2,255]);
+	 uniforms.setTopColor(currentTopColor);
+	 uniforms.setBottomColor(currentBottomColor);
 
 	 uniforms.setNoiseZ((previousTime / 1000.0) * speedMultiplier);
 	 uniforms.setVerticalOffset((window.scrollY / parallaxAmount) - window.scrollY);
@@ -76,7 +126,7 @@ function drawBackground()
 
      // Set the view port
 	 //console.log("Width = " + window.innerWidth + " Height = " + window.innerHeight);
-     gl.viewport(0,0,window.innerWidth,window.innerHeight);
+     gl.viewport(0,0,glCanvas.width,glCanvas.height);
 
      // Draw the triangle
      //gl.drawArrays(gl.POINTS, 0, 6);
@@ -95,7 +145,7 @@ function GetTrueHeight()
 
 function loop(time)
 {
-	Update(time - previousTime);
+	Update((time - previousTime) / 1000.0);
 
 	previousTime = time;
 	window.requestAnimationFrame(loop);
