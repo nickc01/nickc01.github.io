@@ -63,6 +63,10 @@ function InterpolateToNewColor(newTopColor,newBottomColor,time)
 {
 	interpolateTime = time;
 	interpolateTimeMax = time;
+	if (currentTopColor === undefined || currentTopColor === null) {
+		currentTopColor = defaultTopColor;
+		currentBottomColor = defaultBottomColor;
+	}
 	interpolatePreviousTopColor = currentTopColor.slice();
 	interpolatePreviousBottomColor = currentBottomColor.slice();
 
