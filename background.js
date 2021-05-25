@@ -63,11 +63,11 @@ function InterpolateToNewColor(newTopColor,newBottomColor,time)
 {
 	interpolateTime = time;
 	interpolateTimeMax = time;
-	interpolatePreviousTopColor = currentTopColor;
-	interpolatePreviousBottomColor = currentBottomColor;
+	interpolatePreviousTopColor = currentTopColor.slice();
+	interpolatePreviousBottomColor = currentBottomColor.slice();
 
-	interpolateTopColor = newTopColor;
-	interpolateBottomColor = newBottomColor;
+	interpolateTopColor = newTopColor.slice();
+	interpolateBottomColor = newBottomColor.slice();
 }
 
 function lerp (a, b, t)
