@@ -131,6 +131,7 @@ body {
 	z-index: -20;
 	transition: opacity 2s linear;
 	opacity: 0;
+	/*transform: scale(200%);*/
 }
 
 .unhighlightable {

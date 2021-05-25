@@ -19,6 +19,21 @@ var interpolateBottomColor = null;
 var interpolatePreviousTopColor = null;
 var interpolatePreviousBottomColor = null;
 
+var onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+if (onMobile) {
+	RemoveAutoPlay();
+}
+
+function RemoveAutoPlay()
+{
+	var videoAreaElement = document.getElementById("video-area");
+	var vs = videoAreaElement.getElementsByTagName("video");
+	if (vs.length > 0) {
+		var videoElement = vs[0];
+		videoElement.setAttribute("controls",'');
+		videoElement.removeAttribute("autoplay");
+	}
+}
 function Awake()
 {
 	glCanvas = document.getElementById('backgroundCanvas');
@@ -55,8 +70,9 @@ function Update(dt)
 			interpolateTime = null;
 		}
 	}
-
-	drawBackground();
+	if (!(onMobile && projectOpen && window.innerWidth < 950)) {
+		drawBackground();
+	}
 }
 
 function InterpolateToNewColor(newTopColor,newBottomColor,time)
@@ -109,9 +125,10 @@ function drawBackground()
 
 	glCanvas.width = window.innerWidth;
 	glCanvas.height = window.innerHeight;
+	//glCanvas.width = "100%";
 
-	glCanvas.width = window.innerWidth;//Math.max(window.innerWidth,document.body.scrollWidth);
-	glCanvas.height = window.innerHeight;//Math.max(window.innerHeight,document.body.scrollHeight);
+	//glCanvas.width = window.innerWidth;//Math.max(window.innerWidth,document.body.scrollWidth);
+	//glCanvas.height = window.innerHeight;//Math.max(window.innerHeight,document.body.scrollHeight);
 
 	//glCanvas.width = Math.max(window.innerWidth,window.scrollWidth);
 	//glCanvas.height = Math.max(window.innerHeight,window.scrollHeight);
@@ -129,8 +146,8 @@ function drawBackground()
      gl.clear(gl.COLOR_BUFFER_BIT);
 
      // Set the view port
-	 //console.log("Width = " + window.innerWidth + " Height = " + window.innerHeight);
-     gl.viewport(0,0,glCanvas.width,glCanvas.height);
+	 console.log("Width = " + window.innerWidth + " Height = " + window.innerHeight);
+     gl.viewport(0,0,window.innerWidth,window.innerHeight);
 
      // Draw the triangle
      //gl.drawArrays(gl.POINTS, 0, 6);

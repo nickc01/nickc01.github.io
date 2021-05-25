@@ -43,6 +43,9 @@ function hexToRgb(hex) {
 
 function OpenProjectWindow(sourceElement)
 {
+	if (projectOpen) {
+		return;
+	}
 	projectOpen = true;
 	DisableWindowScrolling();
 	if (colorSetter === null) {
@@ -61,13 +64,26 @@ function OpenProjectWindow(sourceElement)
 	onResize();
 
 	var videoAreaElement = document.getElementById("video-area");
-	var videoElement = videoAreaElement.getElementsByTagName("video")[0];
-	videoElement.load();
+	var vs = videoAreaElement.getElementsByTagName("video");
+	if (vs.length > 0) {
+		var videoElement = vs[0];
+		videoElement.load();
+	}
 	//videoElement.play();
+}
+
+function CloseButtonHover()
+{
+	if (window.innerWidth < 950 && is_touch_enabled()) {
+		CloseProjectWindow();
+	}
 }
 
 function CloseProjectWindow()
 {
+	if (!projectOpen) {
+		return;
+	}
 	EnableWindowScrolling();
 	var selectedProjectArea = document.getElementById("selected-project-area")
 	selectedProjectArea.classList.remove("fade-in-proj-window");
@@ -99,7 +115,9 @@ function EnableWindowScrolling()
 
 function _noScrollCallback()
 {
-	window.scrollTo(oldScrollPos[0],oldScrollPos[1]);
+	if (window.innerWidth >= 950) {
+		window.scrollTo(oldScrollPos[0],oldScrollPos[1]);
+	}
 }
 
 function onResize()
@@ -146,21 +164,23 @@ function ChangeColors(sourceElement)
 
 	//TODO - DO VIDEO
 	var videoAreaElement = document.getElementById("video-area");
-
-	var videoElement = videoAreaElement.getElementsByTagName("video")[0];
-	var sources = videoAreaElement.getElementsByTagName("source");
-	var sourceElement = null;
-	if (sources.length == 0) {
-		sourceElement = document.createElement('source');
-		videoElement.appendChild(sourceElement);
+	var vs = videoAreaElement.getElementsByTagName("video");
+	if (vs.length > 0) {
+		var videoElement = vs[0];
+		var sources = videoAreaElement.getElementsByTagName("source");
+		var sourceElement = null;
+		if (sources.length == 0) {
+			sourceElement = document.createElement('source');
+			videoElement.appendChild(sourceElement);
+		}
+		else {
+			sourceElement = sources[0];
+		}
+		sourceElement.setAttribute('src',project.video);
+		//videoElement.pause();
+		//videoElement.load();
+		//videoElement.play();
 	}
-	else {
-		sourceElement = sources[0];
-	}
-	//videoElement.pause();
-	sourceElement.setAttribute('src',project.video);
-	//videoElement.load();
-	//videoElement.play();
 
 	/*videoElement.pause();
 	videoElement.innerHTML = "<source src=\"" + project.video + "\" type=\"video/mp4\">";
@@ -313,6 +333,12 @@ function CreateLinksElement(links)
 
 FetchProjectDetails();
 
+function is_touch_enabled() {
+    return ( 'ontouchstart' in window ) ||
+           ( navigator.maxTouchPoints > 0 ) ||
+           ( navigator.msMaxTouchPoints > 0 );
+	   }
+
 onStateChange.push(state =>
 {
 	if (state !== StateEnum.Projects) {
@@ -323,8 +349,17 @@ onStateChange.push(state =>
 	var divs = projectsArea.getElementsByTagName("div");
 
 	for (var i = 0; i < divs.length; i++) {
-		registerProjectEvent(divs[i],'click',source => OpenProject(source));
-		registerProjectEvent(divs[i],'mouseover',source => ChangeColors(source));
+		registerProjectEvent(divs[i],'click',source =>
+		{
+			OpenProject(source);
+		});
+		registerProjectEvent(divs[i],'mouseover',source =>
+		{
+			ChangeColors(source);
+			if (is_touch_enabled() && window.innerWidth < 950) {
+				OpenProject(source);
+			}
+		});
 		registerProjectEvent(divs[i],'mouseout',source => ResetColors());
 	}
 
