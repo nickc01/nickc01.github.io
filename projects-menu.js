@@ -264,12 +264,16 @@ function ResetColors()
 		clearTimeout(colorSetter);
 		colorSetter = null;
 	}
-	colorSetter = setTimeout(() => {
-		document.documentElement.style.setProperty('--project-window-top-color', originalTopColor);
-		document.documentElement.style.setProperty('--project-window-bottom-color', originalBottomColor);
-		colorSetter = null;
-	},colorInterpTime * 500);
-	InterpolateToNewColor(defaultTopColor,defaultBottomColor,colorInterpTime);
+	if (originalTopColor !== undefined && originalTopColor !== null) {
+		colorSetter = setTimeout(() => {
+			document.documentElement.style.setProperty('--project-window-top-color', originalTopColor);
+			document.documentElement.style.setProperty('--project-window-bottom-color', originalBottomColor);
+			colorSetter = null;
+		},colorInterpTime * 500);
+	}
+	if (defaultTopColor !== undefined && defaultTopColor !== null) {
+		InterpolateToNewColor(defaultTopColor,defaultBottomColor,colorInterpTime);
+	}
 }
 
 function OpenProject(sourceElement)
