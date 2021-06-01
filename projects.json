@@ -47,6 +47,58 @@
 					"link" : "https://youtu.be/8vQiSoLYrao"
 				}
 			]
+		},
+
+
+		"badland-battles" : {
+			"name" : "Badland Battles",
+			"date" : "3/27/2021",
+			"description" : "Badland battles is a top-down shooting game made for a college course. It's a simple game where you play as a soldier in the middle of a desert arena, and your goal is to defeat the onslaught of enemy troops. There are different types of guns you can equip, and there are kits for refilling your ammo and health. This demo game is designed to test out some of the more advanced features of Unity, features that include:</br>- Playing Mixamo Animations using the Mechanim system</br>- Using root motion for the imported animations</br>- Using baked lights, probes, and reflections so the lighting does not need to be calculated in realtime</br>- Use of particle effects</br>- Using both spatial and non-spatial audio sources</br>- Freezing time when the game is paused</br>- Using the Nav-Mesh system to allow the enemies to walk towards the player and avoid obstacles",
+			"fontSize" : "3.5vw",
+			"image" : "screenshots/badland-battles.jpg",
+			"video" : "videos/badland-battles.m4v",
+			"color" : "#ec964f",
+			"textColor" : "#ffffff",
+			"backgroundColor" : "#2e383aBB",
+			"perlinColor" : "#dd8833",
+			"perlinBackgroundColor" : "#6a4623",
+			"links" : [
+				{
+					"name" : "Github",
+					"link" : "https://github.com/nickc01/Badland-Battles"
+				},
+				{
+					"name" : "Download",
+					"link" : "https://github.com/nickc01/Badland-Battles/releases/latest/download/Badland.Battle.zip"
+				}
+			]
+		},
+
+
+		"nitro" : {
+			"name" : "Nitro",
+			"date" : "5/15/2021",
+			"description" : "Nitro is a library that makes it easier to create custom powerups for your game. Whether it be a racing game, an RPG game, or any game you want. It also has support for having combinable powerups, where two or more different powerups can have their abilities combined for a more powerful effect. The download link below contains a demo of how combinable powerups can be utilized. View the Wiki page for a tutorial on how to get started",
+			"fontSize" : "3vw",
+			"image" : "screenshots/nitro.jpg",
+			"video" : "videos/nitro.m4v",
+			"color" : "#3881ff",
+			"textColor" : "#ffffff",
+			"backgroundColor" : "#2e383aBB",
+			"links" : [
+				{
+					"name" : "Github",
+					"link" : "https://github.com/nickc01/Nitro"
+				},
+				{
+					"name" : "Wiki",
+					"link" : "https://github.com/nickc01/Nitro/wiki"
+				},
+				{
+					"name" : "Download",
+					"link" : "https://github.com/nickc01/Nitro/releases/latest/download/Windows.Build.zip"
+				}
+			]
 		}
 	}
 }

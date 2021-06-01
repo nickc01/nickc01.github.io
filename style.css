@@ -3,7 +3,7 @@
 	--lower-bg-color: #2E383A;
 
 	--project-window-top-color: #6B9D3E;
-	--project-window-bottom-color: #2E383ABB;
+	--project-window-bottom-color: #14280a;
 	--project-title-font-size: 4vw;
 	--project-background-image: url("screenshots/corrupted-kin.jpg");
 	--project-text-color: #ABDD7E;
@@ -121,7 +121,8 @@ html, body {
 	overflow-x:hidden;
 }
 body {
-	background-color: rgb(20, 40, 10);
+	/*background-color: rgb(20, 40, 10);*/
+	background-color: var(--project-window-bottom-color);
 }
 
 #backgroundCanvas {

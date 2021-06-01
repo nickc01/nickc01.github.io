@@ -186,11 +186,41 @@ function ChangeColors(sourceElement)
 	videoElement.innerHTML = "<source src=\"" + project.video + "\" type=\"video/mp4\">";
 	videoElement.play();*/
 
-	bottomColor[0] /= 3.0;
-	bottomColor[1] /= 3.0;
-	bottomColor[2] /= 3.0;
+	var perlinColor = null;
+	var perlinBackgroundColor = null;
 
-	InterpolateToNewColor(hexToRgb(project.color),bottomColor,colorInterpTime);
+	if (project.hasOwnProperty("perlinColor")) {
+		perlinColor = hexToRgb(project.perlinColor);
+	}
+	else {
+		perlinColor = hexToRgb(project.color);
+	}
+
+	if (project.hasOwnProperty("perlinBackgroundColor")) {
+		perlinBackgroundColor = hexToRgb(project.perlinBackgroundColor);
+	}
+	else {
+		perlinBackgroundColor = hexToRgb(project.backgroundColor);
+		perlinBackgroundColor[0] /= 4.0;
+		perlinBackgroundColor[1] /= 4.0;
+		perlinBackgroundColor[2] /= 4.0;
+
+		perlinBackgroundColor = lerpColor(perlinColor,perlinBackgroundColor,0.8);
+	}
+
+	InterpolateToNewColor(perlinColor,perlinBackgroundColor,colorInterpTime);
+
+	/*if (project.hasOwnProperty("perlinColor")) {
+		var perlinColor = hexToRgb(project.perlinColor);
+			InterpolateToNewColor(hexToRgb(project.color),perlinColor,colorInterpTime);
+	}
+	else {
+		//bottomColor[0] /= 3.0;
+		//bottomColor[1] /= 3.0;
+		//bottomColor[2] /= 3.0;
+		InterpolateToNewColor(hexToRgb(project.color),bottomColor,colorInterpTime);
+	}*/
+
 
 	colorSetter = setTimeout(() => {
 		root.style.setProperty('--project-window-top-color', project.color);
