@@ -153,7 +153,7 @@ function drawBackground()
      //gl.drawArrays(gl.POINTS, 0, 6);
 	gl.drawElements(gl.TRIANGLES,6,gl.UNSIGNED_SHORT,0);
 
-	ErrorCheck();
+	//ErrorCheck();
 }
 
 function GetTrueHeight()
@@ -272,16 +272,16 @@ function setupGlContext()
 	gl.enableVertexAttribArray(coord);
 	// Disable the depth test
 	gl.disable(gl.DEPTH_TEST);
-	ErrorCheck();
+	//ErrorCheck();
 }
 
-function ErrorCheck()
+/*function ErrorCheck()
 {
 	var error = gl.getError();
 	if (error !== gl.NO_ERROR) {
 		console.log(error);
 	}
-}
+}*/
 
 /*function testPrint(message)
 {

@@ -96,7 +96,30 @@
 				},
 				{
 					"name" : "Download",
-					"link" : "https://github.com/nickc01/Nitro/releases/latest/download/Windows.Build.zip"
+					"link" : "https://github.com/nickc01/Nitro/releases/latest/download/Nitro.Windows.Build.zip"
+				}
+			]
+		},
+
+
+		"mega-muncher" : {
+			"name" : "Mega Muncher",
+			"date" : "4/24/2019",
+			"description" : "Mega Muncher is a game similar to pac-man, made as a final project for a college class. It was made over the course of a few days using the Unity Engine. One of the key things about this project is that it was made using Unity's tilemap system, which allowed me to very easily build the levels. It's essentially a painting tool used for placing tiles along a grid.</br>Credits:</br>Music : <a href=\"https://makeagame.bandcamp.com/album/sixty-minutes-free-music\">Make a Game - Sixty Minutes FREE Music</a></br>Font : <a href=\"https://www.1001fonts.com/pc-senior-font.html\">PC Senior Font</a></br>Sound Effects : <a href=\"https://opengameart.org/content/512-sound-effects-8-bit-style\">Sound Effects 8-Bit Style</a></br>Explosion : <a href=\"https://opengameart.org/content/explosion-3\">Explosion</a></br>All other graphics were made by me",
+			"fontSize" : "3vw",
+			"image" : "screenshots/mega-muncher.png",
+			"video" : "videos/mega-muncher.m4v",
+			"color" : "#777777",
+			"textColor" : "#ffffff",
+			"backgroundColor" : "#2e383aBB",
+			"links" : [
+				{
+					"name" : "Github",
+					"link" : "https://github.com/nickc01/Mega-Muncher"
+				},
+				{
+					"name" : "Download",
+					"link" : "https://github.com/nickc01/Mega-Muncher/releases/latest/download/Mega.Muncher.Windows.Build.zip"
 				}
 			]
 		}

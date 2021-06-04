@@ -544,6 +544,14 @@ body {
 	z-index: 5;
 }
 
+#description > a {
+	color: var(--project-window-top-color);
+}
+
+#description > a:hover {
+	color: var(--project-text-color);
+}
+
 #description-links {
 	margin-top: 20px;
 	margin-bottom: 20px;
