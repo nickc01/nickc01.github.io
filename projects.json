@@ -30,7 +30,7 @@
 		"corrupted-kin" : {
 			"name" : "Corrupted Kin",
 			"date" : "5/7/2021",
-			"description" : "Corrupted Kin is the second mod I made for Hollow Knight. It takes the existing Lost Kin bossfight and changes it up significantly and adds a bunch of new moves</br></br>The fight is split up into two very distinct phases, with the first phases being very similar to the original Lost Kin fight, but with a new bomb lob move and adjustments to the existing move. The second phases, however, is when an entire wave system is brought into the mix as an obstacle the player must avoid. The boss can control the waves at will by slamming into the ground or by other means. There are also 2 times during the 2nd phase where the boss will jump into the ceiling and will unlease 3 of 5 random attacks on the player.</br></br>Overall, I find this to be my favorite modded boss that I designed, since it uses a wave system I built entirely from scratch",
+			"description" : "Corrupted Kin is the second mod I made for Hollow Knight. It takes the existing Lost Kin bossfight and changes it up significantly and adds a bunch of new moves</br></br>The fight is split up into two very distinct phases, with the first phases being very similar to the original Lost Kin fight, but with a new bomb lob move and adjustments to the existing move. The second phases, however, is when an entire wave system is brought into the mix as an obstacle the player must avoid. The boss can control the waves at will by slamming into the ground or by other means. There are also 2 times during the 2nd phase where the boss will jump into the ceiling and will unlease 3 of 5 random attacks on the player.</br></br>Overall, I find this to be my favorite modded boss, mostly because it uses a wave system I built entirely from scratch. I learned how to create my own custom GPU shaders in the process",
 			"fontSize" : "3.5vw",
 			"image" : "screenshots/corrupted-kin.jpg",
 			"video" : "videos/corrupted-kin.m4v",
@@ -58,7 +58,7 @@
 			"image" : "screenshots/badland-battles.jpg",
 			"video" : "videos/badland-battles.m4v",
 			"color" : "#ec964f",
-			"textColor" : "#ffffff",
+			"textColor" : "#ffbc78",
 			"backgroundColor" : "#2e383aBB",
 			"perlinColor" : "#dd8833",
 			"perlinBackgroundColor" : "#6a4623",
@@ -133,7 +133,7 @@
 			"image" : "screenshots/ultimate-asteroid-tactical-control.jpg",
 			"video" : "videos/ultimate-asteroid-tactical-control.m4v",
 			"color" : "#4e42f5",
-			"textColor" : "#ffffff",
+			"textColor" : "#c7a1ff",
 			"backgroundColor" : "#2e383aBB",
 			"links" : [
 				{
@@ -155,7 +155,7 @@
 			"description" : "UATanks is a top-down tank shooting game, where your goal is to control a tank in an arena and destroy all the other tanks to win. It is one of the larger projects I have made during college, and is used to demonstrate features such as:</br>- Having each tank have a different \"personality\", by giving each type of a tank a different AI</br>- An options menu for changing key settings for the game</br>- Having a multitude of different powerups and effects</br>- A mini-map for knowing where everything is located</br>- A map that is procedurally generated</br>- Splitscreen multiplayer</br>- A highscore system</br>- Saving option settings to disk via PlayerPrefs</br></br>Credits:</br>- Font: <a href=\"https://www.kenney.nl/assets/kenney-fonts\">Kenney Fonts</a></br>- Blur Shader: <a href=\"https://forum.unity.com/threads/solved-dynamic-blurred-background-on-ui.345083/#post-2853442\">Background Blur Shader</a></br>- Icons: <a href=\"https://www.kenney.nl/assets/game-icons\">Game Icons</a></br>- Interface Sounds: <a href=\"https://opengameart.org/content/51-ui-sound-effects-buttons-switches-and-clicks\">UI Sound Effects)</a></br>- Explosion Image: <a href=\"https://opengameart.org/content/explosion-3\">Explosion 3</a></br>- Menu Music: <a href=\"https://jotech.bandcamp.com/album/awaken\">JoTech - Awaken</a></br>&nbsp;&nbsp;&nbsp;&nbsp;*Songs*:</br>&nbsp;&nbsp;&nbsp;&nbsp;- JoTech - Another Dimension</br>- Game Music: <a href=\"https://jotech.bandcamp.com/album/understand\">JoTech - Understand</a></br>&nbsp;&nbsp;&nbsp;&nbsp;*Songs*:</br>&nbsp;&nbsp;&nbsp;&nbsp;- JoTech – Reverse Time</br>&nbsp;&nbsp;&nbsp;&nbsp;- JoTech – Understand</br>&nbsp;&nbsp;&nbsp;&nbsp;- JoTech – Time Machine</br>- UI Assets: <a href=\"https://www.kenney.nl/assets/ui-pack\">UI Pack</a></br>- ReadOnlyAttribute Code: <a href=\"https://gist.github.com/LotteMakesStuff/c0a3b404524be57574ffa5f8270268ea\">ReadOnlyAttribute.cs</a></br>- Tank Model: <a href=\"https://opengameart.org/content/low-poly-tank-assets\">Low Poly Tank Assets</a></br>- Sound Effects: <a href=\"https://opengameart.org/content/512-sound-effects-8-bit-style\">512 Sound Effects 8 Bit Style</a></br>- Powerups: <a href=\"https://opengameart.org/content/3d-collectable-pack\">3D Collectable Pack</a></br>- Bomb Powerup: <a href=\"https://opengameart.org/content/weapon-pack\">Weapon Pack</a>",
 			"fontSize" : "4vw",
 			"image" : "screenshots/uatanks.jpg",
-			"video" : "videos/uatanks.m4v",
+			"video" : "videos/uatanks.mp4",
 			"color" : "#ff4040",
 			"textColor" : "#ffffff",
 			"backgroundColor" : "#2e383aBB",
@@ -167,6 +167,31 @@
 				{
 					"name" : "Download",
 					"link" : "https://github.com/nickc01/UATanks/releases/latest/download/UATanks.Windows.Build.zip"
+				}
+			]
+		},
+
+
+
+
+		"hacktrons" : {
+			"name" : "Hacktrons",
+			"date" : "2/4/2019",
+			"description" : "Hacktrons is a turn-based strategy game made for college class. It is based on an old Lego game called Spybotics: The Nightball Incident, and I decided to build a recreation of it within the span of two weeks. The first week was mostly focused on making a trailer for the game (since the class required that too), and the second week was focused on finishing a workable verison of the game. In the game, you play as a CIA agent, defeating viruses in network nodes by uploading programs to destroy them. When it's your turn, you can move each of your programs around a map, and if they are near an enemy, you can attack them. Once all of your programs have done their moves, then it will switch to the enemy's turn, and they have the ability to attack you. This goes back and forth until you or the enemy looses all of their programs.</br></br>Credits</br>8-Bit Sounds: <a href=\"https://opengameart.org/content/512-sound-effects-8-bit-style\">512 Sound Effects 8-Bit Style</a></br>8-Bit Font: <a href=\"https://www.1001freefonts.com/8-bit-operator.font\">8-Bit Operator Plus</a></br>Music: <a href=\"https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100401\">Incompetech Interloper</a></br>Tutorial Text Sounds: <a href=\"https://www.amazon.com/dp/B008OBLI2G/?coliid=I1LOPLWQYEV6U&colid=2LABLE1NWXHIC&psc=0&ref_=lv_ov_lig_dp_it\">Robots and Computers Sound Effects</a></br>",
+			"fontSize" : "3vw",
+			"image" : "screenshots/hacktrons.png",
+			"video" : "videos/hacktrons.mp4",
+			"color" : "#0048ff",
+			"textColor" : "#5c8aff",
+			"backgroundColor" : "#2e383aBB",
+			"links" : [
+				{
+					"name" : "Github",
+					"link" : "https://github.com/nickc01/Hacktrons"
+				},
+				{
+					"name" : "Download",
+					"link" : "https://github.com/nickc01/Hacktrons/releases/latest/download/Hacktrons.Windows.Build.zip"
 				}
 			]
 		}

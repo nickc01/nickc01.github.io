@@ -4,6 +4,7 @@
 
 	--project-window-top-color: #6B9D3E;
 	--project-window-bottom-color: #14280a;
+	--perlin-starting-color: #14280a;
 	--project-title-font-size: 4vw;
 	--project-background-image: url("screenshots/corrupted-kin.jpg");
 	--project-text-color: #ABDD7E;
@@ -122,7 +123,7 @@ html, body {
 }
 body {
 	/*background-color: rgb(20, 40, 10);*/
-	background-color: var(--project-window-bottom-color);
+	background-color: var(--perlin-starting-color);
 }
 
 #backgroundCanvas {
