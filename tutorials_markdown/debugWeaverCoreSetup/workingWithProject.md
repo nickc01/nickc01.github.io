@@ -62,7 +62,7 @@ You can also add HK Sprite Object with collision by again right clicking in the 
 
 ![Create Ground HK Sprite](https://user-images.githubusercontent.com/12601671/141836596-98d15042-3fd5-49d6-8175-08451fa8a766.PNG)
 
-This will also create a new HK Sprite Object, but the different here is that if you were to click on the object in the "Hierarchy", you will notice a new component in the "Inspector" view called "Box Collider 2D"
+This will also create a new HK Sprite Object, but the difference here is that if you were to click on the object in the "Hierarchy", you will notice a new component in the "Inspector" view called "Box Collider 2D"
 
 ![Ground HK Sprite Inspector](https://user-images.githubusercontent.com/12601671/141836991-3aac4c09-eaba-4cdf-959e-37bef7894900.PNG)
 
