@@ -90,7 +90,3 @@ Download the Unity Hub Here (https://unity3d.com/get-unity/download)
 
 ![Hub Editor Added to Hub](https://user-images.githubusercontent.com/12601671/141720656-2fe0f06f-b960-494b-a098-1dc67648e8fe.PNG)
 
-
-
-### Continue to the next tutorial: https://nickc01.github.io/tutorials/debugWeaverCoreSetup/setupProject
-
