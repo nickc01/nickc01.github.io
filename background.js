@@ -146,7 +146,7 @@ function drawBackground()
      gl.clear(gl.COLOR_BUFFER_BIT);
 
      // Set the view port
-	 console.log("Width = " + window.innerWidth + " Height = " + window.innerHeight);
+	 //console.log("Width = " + window.innerWidth + " Height = " + window.innerHeight);
      gl.viewport(0,0,window.innerWidth,window.innerHeight);
 
      // Draw the triangle
