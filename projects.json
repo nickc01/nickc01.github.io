@@ -181,7 +181,7 @@
 			"fontSize" : "3vw",
 			"image" : "screenshots/hacktrons.png",
 			"video" : "videos/hacktrons.mp4",
-			"color" : "#0048ff",
+			"color" : "#3464de",
 			"textColor" : "#5c8aff",
 			"backgroundColor" : "#2e383aBB",
 			"links" : [
@@ -192,6 +192,61 @@
 				{
 					"name" : "Download",
 					"link" : "https://github.com/nickc01/Hacktrons/releases/latest/download/Hacktrons.Windows.Build.zip"
+				}
+			]
+		},
+
+
+
+		"dungeon-escape" : {
+			"name" : "Dungeon Escape",
+			"date" : "3/22/2020",
+			"description" : "Dungeon Escape is a small top-down adventure game I made within the span of two weeks. It was made using the C++ programming language, and uses the SFML library for the graphics and player input. In the game, you use the arrow keys to move a wizard arround, and you can left click to fire a magic orb that stuns any enemies it touches.</br></br>Credits</br>Mage Sprites: <a href=\"https://opengameart.org/content/8x8-black-mage\">8x8 Black Mage</a></br>Other Sprites and UI Elements: <a href=\"https://opengameart.org/content/8x8-rogue-like-charenemiestiles\">Rogue like Char/Enemies/Tiles</a></br>Room Tiles: <a href=\"https://www.kenney.nl/assets/bit-pack\">Bit Pack</a></br>Heart Image: <a href=\"https://opengameart.org/content/heart2-1616\">Heart 2</a></br>Font: <a href=\"https://www.1001fonts.com/squares-bold-font.html\">Squares Bold Font</a></br>",
+			"fontSize" : "3vw",
+			"image" : "screenshots/dungeon-escape.png",
+			"video" : "videos/dungeon-escape.m4v",
+			"color" : "#785669",
+			"textColor" : "#cfc6b8",
+			"backgroundColor" : "#2e383aBB",
+			"links" : [
+				{
+					"name" : "Github",
+					"link" : "https://github.com/nickc01/Dungeon-Escape"
+				},
+				{
+					"name" : "Download",
+					"link" : "https://github.com/nickc01/Dungeon-Escape/releases/latest/download/Dungeon.Escape.Executable.zip"
+				}
+			]
+		},
+
+
+		"smarttubes" : {
+			"name" : "Smart Tubes",
+			"date" : "9/11/2016",
+			"description" : "Smart Tubes is an item transportation mod I made for the 2D survival game Starbound. It adds the ability to transport items from one place to another via a network of interconnected pipes called conduits. You can extract items from a storage crate using an extraction conduit, and you can insert items into a crate using the insertion conduit.</br></br>Near the end of development, you would also be able to transport liquids around, and you would be able to see the entire network at once using the Conduit Terminal. I stopped working on this mod in mid-2018, mostly because I was hitting some huge brick walls during development, such as performance problems, burnout, and the fact that I hit a code instruction limit that prevented me from adding more code to the project",
+			"fontSize" : "3vw",
+			"image" : "screenshots/smarttubes.png",
+			"video" : "videos/smarttubes.m4v",
+			"color" : "#ff4040",
+			"textColor" : "#ffffff",
+			"backgroundColor" : "#2e383aBB",
+			"links" : [
+				{
+					"name" : "Github",
+					"link" : "https://github.com/nickc01/SmartTubes"
+				},
+				{
+					"name" : "Download",
+					"link" : "https://github.com/nickc01/SmartTubes/releases/tag/1.2.5"
+				},
+				{
+					"name" : "Forums Page",
+					"link" : "https://community.playstarbound.com/resources/smart-tubes.4152/"
+				},
+				{
+					"name" : "Youtube Video by FireSpark81",
+					"link" : "https://youtu.be/af2LSlEBHQ4"
 				}
 			]
 		}

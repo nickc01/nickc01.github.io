@@ -2,11 +2,13 @@ var aboutButton = document.getElementById("about-button");
 var homeButton = document.getElementById("home-button");
 var projectButton = document.getElementById("project-button");
 var mainScript = document.getElementById("main-script");
+var backgroundLoaded = false;
 
 var urlParams = new URLSearchParams(window.location.search);
 var switching = false;
 
 var onStateChange = [];
+var onBackgroundLoaded = [];
 
 const StateEnum = {
 	Home : 0,
@@ -227,7 +229,7 @@ function Reset()
 	else if (currentState === StateEnum.Projects) {
 		//projectButton.classList.remove("selected-menu-item");
 		projectButton.classList.remove("selected-menu-item");
-		var projectsSection = document.getElementById("projects-area");
+		var projectsSection = document.getElementById("projects-container");
 		if (projectsSection !== null && projectsSection !== undefined)
 		{
 			projectsSection.classList.remove("doFadeIn");

@@ -305,9 +305,20 @@ function* interpolateCSSVars(project, time)
 
 }
 
+var resetColorsAdded = false;
+
 function ResetColors()
 {
-	if (projectOpen) {
+	/*if (!backgroundLoaded && !resetColorsAdded)
+	{
+		resetColorsAdded = true;
+		onBackgroundLoaded.push(() =>
+		{
+			ResetColors();
+		});
+	}*/
+	if (projectOpen || !backgroundLoaded) 
+	{
 		return;
 	}
 	if (colorSetter === null) {
@@ -321,7 +332,7 @@ function ResetColors()
 			colorSetter = null;
 		},colorInterpTime * 500);
 	}
-	if (defaultTopColor !== undefined && defaultTopColor !== null) {
+	if (defaultTopColor != undefined && defaultTopColor !== null) {
 		InterpolateToNewColor(defaultTopColor,defaultBottomColor,colorInterpTime);
 	}
 }
@@ -375,23 +386,31 @@ onStateChange.push(state =>
 		ResetColors();
 		return;
 	}
-	var projectsArea = document.getElementById("projects-area");
-	var divs = projectsArea.getElementsByTagName("div");
 
-	for (var i = 0; i < divs.length; i++) {
-		registerProjectEvent(divs[i],'click',source =>
-		{
-			OpenProject(source);
-		});
-		registerProjectEvent(divs[i],'mouseover',source =>
-		{
-			ChangeColors(source);
-			if (is_touch_enabled() && window.innerWidth < 950) {
+	var projectAreas = document.getElementsByClassName("projects-area");
+	for (var i = 0; i < projectAreas.length; i++) {
+		//Distribute(projectAreas.item(i));
+		var projectsArea = projectAreas.item(i);
+
+		var divs = projectsArea.getElementsByTagName("div");
+
+		for (var i = 0; i < divs.length; i++) {
+			registerProjectEvent(divs[i],'click',source =>
+			{
 				OpenProject(source);
-			}
-		});
-		registerProjectEvent(divs[i],'mouseout',source => ResetColors());
+			});
+			registerProjectEvent(divs[i],'mouseover',source =>
+			{
+				ChangeColors(source);
+				if (is_touch_enabled() && window.innerWidth < 950) {
+					OpenProject(source);
+				}
+			});
+			registerProjectEvent(divs[i],'mouseout',source => ResetColors());
+		}
 	}
+
+	//var projectsArea = document.getElementById("projects-area");
 
 	var rootStyle = window.getComputedStyle(document.documentElement);
 	originalTopColor = rootStyle.getPropertyValue("--project-window-top-color");
@@ -402,7 +421,7 @@ function registerProjectEvent(element,evtName,func)
 {
 	element.addEventListener(evtName,source => {
 		var currentElement = source.target;
-		while (currentElement != null && currentElement.parentNode != null && currentElement.parentNode.id != "projects-area") {
+		while (currentElement != null && currentElement.parentNode != null && !currentElement.parentNode.classList.contains("projects-area")) {
 			currentElement = currentElement.parentNode;
 		}
 		func(currentElement);

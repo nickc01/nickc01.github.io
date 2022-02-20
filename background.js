@@ -4,12 +4,14 @@ var backgrondScale = 750.0;
 var speedMultiplier = 0.15;
 var parallaxAmount = 3.0;
 var resolutionMultipler = 0.5;
+var darkenAmount = 0.75;
 
 var currentTopColor = null;
 var currentBottomColor = null;
 
 var defaultTopColor = [107 / 2,157 / 2,62 / 2,255];
 var defaultBottomColor = [50 / 4,90 / 4,30 / 4,255];
+//var defaultBottomColor = [34,40,42,255];
 
 var interpolateTimeMax = null;
 var interpolateTime = null;
@@ -34,6 +36,12 @@ function RemoveAutoPlay()
 		videoElement.removeAttribute("autoplay");
 	}
 }
+
+function DarkenColor(color,amount)
+{
+	return lerpColor(color,[0,0,0,255],amount);
+}
+
 function Awake()
 {
 	glCanvas = document.getElementById('backgroundCanvas');
@@ -42,7 +50,7 @@ function Awake()
 	{
 		return;
 	}
-	currentTopColor = defaultTopColor.slice();
+	currentTopColor = DarkenColor(defaultTopColor.slice());
 	currentBottomColor = defaultBottomColor.slice();
 	contextSet = true;
 	setupGlContext();
@@ -255,13 +263,13 @@ function setupGlContext()
 	uniforms.topColor = gl.getUniformLocation(shaderProgram, "topColor");
 	uniforms.setTopColor = function(value)
 	{
-		gl.uniform4f(uniforms.topColor,value[0] / 255.0,value[1] / 255.0,value[2] / 255.0,value[3] / 255.0);
+		gl.uniform4f(uniforms.topColor,(value[0] / 255.0) * darkenAmount,(value[1] / 255.0) * darkenAmount,(value[2] / 255.0) * darkenAmount,value[3] / 255.0);
 	};
 
 	uniforms.bottomColor = gl.getUniformLocation(shaderProgram, "bottomColor");
 	uniforms.setBottomColor = function(value)
 	{
-		gl.uniform4f(uniforms.bottomColor,value[0] / 255.0,value[1] / 255.0,value[2] / 255.0,value[3] / 255.0);
+		gl.uniform4f(uniforms.bottomColor,(value[0] / 255.0) * darkenAmount,(value[1] / 255.0) * darkenAmount,(value[2] / 255.0) * darkenAmount,value[3] / 255.0);
 	};
 
 	//Bind Buffers to Shader Program
@@ -274,6 +282,9 @@ function setupGlContext()
 	gl.disable(gl.DEPTH_TEST);
 	//ErrorCheck();
 }
+
+backgroundLoaded = true;
+ResetColors();
 
 /*function ErrorCheck()
 {
