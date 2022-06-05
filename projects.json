@@ -1,254 +1,604 @@
 {
-	"projects" : {
-		"inferno-king-grimm" : {
-			"name" : "Inferno King Grimm",
-			"date" : "6/29/2020",
-			"description" : "Inferno King Grimm is the first mod I made for Hollow Knight. It takes the existing Nightmare King Grimm bossfight changes it up significantly</br></br>It does so by spliting the fight into 3 distinct phases, each harder than the last. Not only are the existing moves modified to be harder, but two other new moves were introduced, a ground slam attack, and a move where grimm shows up in the middle of the arena and spawns tons of fireballs.</br></br>The boss has two difficulty modes, a normal mode that anyone is able to play, and a hard mode geared towards experts. The setting can be changed on the main menu of the game. Other customization options include custom health values, disabling camera color effects, and enabling a permanent blue camera filter",
-			"fontSize" : "3vw",
-			"image" : "screenshots/inferno-king-grimm.jpg",
-			"video" : "videos/inferno-king-grimm.m4v",
-			"color" : "#f32d49",
-			"textColor" : "#f32d49",
-			"backgroundColor" : "#2e383aBB",
-			"links" : [
-				{
-					"name" : "Github",
-					"link" : "https://github.com/nickc01/Inferno-King-Grimm"
-				},
-				{
-					"name" : "Hard Mode Video",
-					"link" : "https://youtu.be/OhKrdlC6nNk"
-				},
-				{
-					"name" : "Video",
-					"link" : "https://youtu.be/R20mWJJOJ0w"
-				}
-			]
-		},
+    "projects": {
+        "inferno-king-grimm": {
+            "name": "Inferno King Grimm",
+            "date": "6/29/2020",
+            "description": [
+                "Inferno King Grimm is a mod for Hollow Knight that takes the existing Nightmare King Grimm bossfight and changes it up in significant ways",
+                "The boss now has 3 distinct phases, each with varying difficulty",
+                "There is even a harder mode geared towards experts of the game"
+            ],
+            "skills": [
+                "Using a pixel shader over the camera to tint everything blue",
+                "Using object pooling to spawn and destroy many projectiles rapidly"
+            ],
+            "image": "screenshots/inferno-king-grimm.jpg",
+            "video": "videos/inferno-king-grimm.m4v",
+            "color": "#f32d49",
+            "textColor": "#f32d49",
+            "backgroundColor": "#2e383aBB",
+            "titleColor": "#ed8796",
+            "titleWidth": 150,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Inferno-King-Grimm"
+                },
+                {
+                    "name": "Hard Mode Video",
+                    "link": "https://youtu.be/OhKrdlC6nNk"
+                },
+                {
+                    "name": "Video",
+                    "link": "https://youtu.be/R20mWJJOJ0w"
+                }
+            ]
+        },
 
 
-		"corrupted-kin" : {
-			"name" : "Corrupted Kin",
-			"date" : "5/7/2021",
-			"description" : "Corrupted Kin is the second mod I made for Hollow Knight. It takes the existing Lost Kin bossfight and changes it up significantly and adds a bunch of new moves</br></br>The fight is split up into two very distinct phases, with the first phases being very similar to the original Lost Kin fight, but with a new bomb lob move and adjustments to the existing move. The second phases, however, is when an entire wave system is brought into the mix as an obstacle the player must avoid. The boss can control the waves at will by slamming into the ground or by other means. There are also 2 times during the 2nd phase where the boss will jump into the ceiling and will unlease 3 of 5 random attacks on the player.</br></br>Overall, I find this to be my favorite modded boss, mostly because it uses a wave system I built entirely from scratch. I learned how to create my own custom GPU shaders in the process",
-			"fontSize" : "3.5vw",
-			"image" : "screenshots/corrupted-kin.jpg",
-			"video" : "videos/corrupted-kin.m4v",
-			"color" : "#e68a24",
-			"textColor" : "#ec964f",
-			"backgroundColor" : "#2e383aBB",
-			"links" : [
-				{
-					"name" : "Github",
-					"link" : "https://github.com/nickc01/Corrupted-Kin"
-				},
-				{
-					"name" : "Video",
-					"link" : "https://youtu.be/8vQiSoLYrao"
-				}
-			]
-		},
+        "corrupted-kin": {
+            "name": "Corrupted Kin",
+            "date": "5/7/2021",
+            "description": [
+                "Corrupted Kin is the second mod I made for Hollow Knight that takes the existing 'Lost Kin' bossfight changes it up in significant ways",
+                "The boss is now split up into 4 distinct phases, each harder than the last",
+                "During the second phase, a water wave system is brought into the mix",
+                "The boss can create waves that the player needs to dodge"
+            ],
+            "skills": [
+                "Created a Math function to determine the velocity needed for a projectile to land in a specific spot",
+                "Created a custom GPU shader for displaying the wave system",
+                "Using sine and cosine functions to generate waves",
+                "Created a custom script to generate mesh verticies at runtime"
+            ],
+            "image": "screenshots/corrupted-kin.jpg",
+            "video": "videos/corrupted-kin.m4v",
+            "color": "#e68a24",
+            "textColor": "#d28e3d",
+            "titleColor": "#4b3014",
+            "titleWidth": 110,
+            "backgroundColor": "#2e383aBB",
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Corrupted-Kin"
+                },
+                {
+                    "name": "Video",
+                    "link": "https://youtu.be/8vQiSoLYrao"
+                },
+                {
+                    "name": "Wave System",
+                    "link": "https://github.com/nickc01/Corrupted-Kin/wiki/Wave-System"
+                }
+            ]
+        },
 
 
-		"badland-battles" : {
-			"name" : "Badland Battles",
-			"date" : "3/27/2021",
-			"description" : "Badland battles is a top-down shooting game made for a college course. It's a simple game where you play as a soldier in the middle of a desert arena, and your goal is to defeat the onslaught of enemy troops. There are different types of guns you can equip, and there are kits for refilling your ammo and health. This demo game is designed to test out some of the more advanced features of Unity, features that include:</br>- Playing Mixamo Animations using the Mechanim system</br>- Using root motion for the imported animations</br>- Using baked lights, probes, and reflections so the lighting does not need to be calculated in realtime</br>- Use of particle effects</br>- Using both spatial and non-spatial audio sources</br>- Freezing time when the game is paused</br>- Using the Nav-Mesh system to allow the enemies to walk towards the player and avoid obstacles",
-			"fontSize" : "3.5vw",
-			"image" : "screenshots/badland-battles.jpg",
-			"video" : "videos/badland-battles.m4v",
-			"color" : "#ec964f",
-			"textColor" : "#ffbc78",
-			"backgroundColor" : "#2e383aBB",
-			"perlinColor" : "#dd8833",
-			"perlinBackgroundColor" : "#6a4623",
-			"links" : [
-				{
-					"name" : "Github",
-					"link" : "https://github.com/nickc01/Badland-Battles"
-				},
-				{
-					"name" : "Download",
-					"link" : "https://github.com/nickc01/Badland-Battles/releases/latest/download/Badland.Battle.zip"
-				}
-			]
-		},
+        "badland-battles": {
+            "name": "Badland Battles",
+            "date": "3/27/2021",
+            "description": [
+                "Badland battles is a top-down shooting game made for a college course",
+                "It's a simple game where you play as a soldier in the middle of a desert arena, and your goal is to defeat the onslaught of enemy troops",
+                "There are different types of guns you can equip, and there are kits for refilling your ammo and health",
+                "This demo game is designed to test out some of the more advanced features of Unity"
+            ],
+            "skills": [
+                "Playing Mixamo Animations using the Mechanim system",
+                "Using root motion for the animations to make them move around",
+                "Baking lights, probes and reflections so pre-calculate the lighting",
+                "Playing particle effects",
+                "Using spatial and non-spatial audio sources",
+                "Freezing time when the game is paused",
+                "Using the nav-mesh system to make the enemies walk towards the player and avoid obstacles"
+            ],
+            "image": "screenshots/badland-battles.jpg",
+            "video": "videos/badland-battles.m4v",
+            "color": "#ec964f",
+            "textColor": "#ffbc78",
+            "backgroundColor": "#2e383aBB",
+            "perlinColor": "#dd8833",
+            "titleColor": "#ffe6cc",
+            "titleWidth": 130,
+            "perlinBackgroundColor": "#6a4623",
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Badland-Battles"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/Badland-Battles/releases/latest/download/Badland.Battle.zip"
+                }
+            ]
+        },
 
 
-		"nitro" : {
-			"name" : "Nitro",
-			"date" : "5/15/2021",
-			"description" : "Nitro is a library that makes it easier to create custom powerups for your game. Whether it be a racing game, an RPG game, or any game you want. It also has support for having combinable powerups, where two or more different powerups can have their abilities combined for a more powerful effect. The download link below contains a demo of how combinable powerups can be utilized. View the Wiki page for a tutorial on how to get started",
-			"fontSize" : "3vw",
-			"image" : "screenshots/nitro.jpg",
-			"video" : "videos/nitro.m4v",
-			"color" : "#3881ff",
-			"textColor" : "#ffffff",
-			"backgroundColor" : "#2e383aBB",
-			"links" : [
-				{
-					"name" : "Github",
-					"link" : "https://github.com/nickc01/Nitro"
-				},
-				{
-					"name" : "Wiki",
-					"link" : "https://github.com/nickc01/Nitro/wiki"
-				},
-				{
-					"name" : "Download",
-					"link" : "https://github.com/nickc01/Nitro/releases/latest/download/Nitro.Windows.Build.zip"
-				}
-			]
-		},
+        "nitro": {
+            "name": "Nitro",
+            "date": "5/15/2021",
+            "description": [
+                "Nitro is a library that makes it easier to create custom powerups for your game",
+                "Whether it be a racing game, an RPG game, or any game you want",
+                "It also has support for having combinable powerups, where two or more different powerups can have their abilities combined for a more powerful effect",
+                "The download link below contains a demo of how combinable powerups can be utilized"
+            ],
+            "skills": [
+                "Using Github Wiki to create guides on how to use the library",
+                "Using object oriented programming to create different types of powerups"
+            ],
+            "image": "screenshots/nitro.jpg",
+            "video": "videos/nitro.m4v",
+            "color": "#3881ff",
+            "textColor": "#ffffff",
+            "backgroundColor": "#2e383aBB",
+            "titleWidth": 40,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Nitro"
+                },
+                {
+                    "name": "Wiki",
+                    "link": "https://github.com/nickc01/Nitro/wiki"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/Nitro/releases/latest/download/Nitro.Windows.Build.zip"
+                }
+            ]
+        },
 
 
-		"mega-muncher" : {
-			"name" : "Mega Muncher",
-			"date" : "4/24/2019",
-			"description" : "Mega Muncher is a game similar to pac-man, made as a final project for a college class. It was made over the course of a few days using the Unity Engine. One of the key things about this project is that it was made using Unity's tilemap system, which allowed me to very easily build the levels. It's essentially a painting tool used for placing tiles along a grid.</br></br>Credits:</br>Music : <a href=\"https://makeagame.bandcamp.com/album/sixty-minutes-free-music\">Make a Game - Sixty Minutes FREE Music</a></br>Font : <a href=\"https://www.1001fonts.com/pc-senior-font.html\">PC Senior Font</a></br>Sound Effects : <a href=\"https://opengameart.org/content/512-sound-effects-8-bit-style\">Sound Effects 8-Bit Style</a></br>Explosion : <a href=\"https://opengameart.org/content/explosion-3\">Explosion</a></br>All other graphics were made by me",
-			"fontSize" : "3vw",
-			"image" : "screenshots/mega-muncher.png",
-			"video" : "videos/mega-muncher.m4v",
-			"color" : "#777777",
-			"textColor" : "#ffffff",
-			"backgroundColor" : "#2e383aBB",
-			"links" : [
-				{
-					"name" : "Github",
-					"link" : "https://github.com/nickc01/Mega-Muncher"
-				},
-				{
-					"name" : "Download",
-					"link" : "https://github.com/nickc01/Mega-Muncher/releases/latest/download/Mega.Muncher.Windows.Build.zip"
-				}
-			]
-		},
+        "mega-muncher": {
+            "name": "Mega Muncher",
+            "date": "4/24/2019",
+            "description": [
+                "Mega Muncher is a game similar to pac-man, made as a final project for a college class",
+                "It was made over the course of a few days using the Unity Engine"
+            ],
+            "skills": [
+                "Using Unity's tilemap system to build 2D maps quickly"
+            ],
+            "credits": [
+                {
+                    "name": "Music",
+                    "label": "Make a Game - Sixty Minutes FREE Music",
+                    "link": "https://makeagame.bandcamp.com/album/sixty-minutes-free-music"
+                },
+                {
+                    "name": "Font",
+                    "label": "PC Senior Font",
+                    "link": "https://www.1001fonts.com/pc-senior-font.html"
+                },
+                {
+                    "name": "Sound Effects",
+                    "label": "Sound Effects 8-Bit Style",
+                    "link": "https://opengameart.org/content/512-sound-effects-8-bit-style"
+                },
+                {
+                    "name": "Explosion",
+                    "label": "Explosion",
+                    "link": "https://opengameart.org/content/explosion-3"
+                }
+            ],
+            "image": "screenshots/mega-muncher.png",
+            "video": "videos/mega-muncher.m4v",
+            "color": "#777777",
+            "textColor": "#ffffff",
+            "titleWidth": 120,
+            "backgroundColor": "#2e383aBB",
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Mega-Muncher"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/Mega-Muncher/releases/latest/download/Mega.Muncher.Windows.Build.zip"
+                }
+            ]
+        },
 
 
-		"ultimate-asteroid-tactical-control" : {
-			"name" : "Ultimate Asteroid Tactical Control",
-			"date" : "4/7/2019",
-			"description" : "Ultimate Asteroid Tactical Control (UAT), is a simple asteroid game where you pilot a space ship and shoot down asteroids. It was one of the first projects I have done for a game programming class at college, and was mean't to show the basics of using Unity, such as Sprites, Rigidbodies and Instantiation. It also shows off a parallax effect on the background, where multiple different background elements move at different rates to give the illusion of depth</br></br>Credits:</br>Spaceship: <a href=\"https://opengameart.org/content/spaceship-1\">Spaceship 1</a></br>Background: <a href=\"https://opengameart.org/content/parallax-space-scene-seamlessly-scrolls-too\">Parallax Space Scene</a></br>Asteroids: <a href=\"https://opengameart.org/content/low-poly-rocks\">Low Poly Rocks</a></br>Laser Sound Effect and Explosion Sound Effects: <a href=\"https://opengameart.org/content/512-sound-effects-8-bit-style\">512 8 bit Sound Effects</a></br>Laser Beam Image: <a href=\"https://opengameart.org/content/lasers-and-beams\">Lasers and Beams</a></br>Explosion Image: <a href=\"https://opengameart.org/content/explosion-3\">Explosion</a></br>Font: <a href=\"https://www.1001fonts.com/origami-mommy-font.html\">Origami Mommy Font</a>",
-			"fontSize" : "3vw",
-			"image" : "screenshots/ultimate-asteroid-tactical-control.jpg",
-			"video" : "videos/ultimate-asteroid-tactical-control.m4v",
-			"color" : "#4e42f5",
-			"textColor" : "#c7a1ff",
-			"backgroundColor" : "#2e383aBB",
-			"links" : [
-				{
-					"name" : "Github",
-					"link" : "https://github.com/nickc01/Ultimate-Asteroid-Tactical-Control"
-				},
-				{
-					"name" : "Download",
-					"link" : "https://github.com/nickc01/Ultimate-Asteroid-Tactical-Control/releases/latest/download/UAT.Windows.Build.zip"
-				}
-			]
-		},
+        "ultimate-asteroid-tactical-control": {
+            "name": "Ultimate Asteroid Tactical Control",
+            "date": "4/7/2019",
+            "description": [
+                "Ultimate Asteroid Tactical Control (UAT), is a simple asteroid game where you pilot a space ship and shoot down asteroids",
+                "It was one of the first projects I have done for a game programming class at college, and was made to show the basics of using Unity"
+            ],
+            "skills": [
+                "Moving different background elements at different rates for a parallax effect",
+                "Using rigidbody components to move objects",
+                "Instantiating objects at runtime",
+                "Displaying sprites on objects"
+            ],
+            "credits": [
+                {
+                    "name": "Spaceship",
+                    "label": "Spaceship 1",
+                    "link": "https://opengameart.org/content/spaceship-1"
+                },
+                {
+                    "name": "Background",
+                    "label": "Parallax Space Scene",
+                    "link": "https://opengameart.org/content/parallax-space-scene-seamlessly-scrolls-too"
+                },
+                {
+                    "name": "Asteroids",
+                    "label": "Low Poly Rocks",
+                    "link": "https://opengameart.org/content/low-poly-rocks"
+                },
+                {
+                    "name": "Laser and Explosion Sound Effects",
+                    "label": "512 8 bit Sound Effects",
+                    "link": "https://opengameart.org/content/512-sound-effects-8-bit-style"
+                },
+                {
+                    "name": "Laser Beam Image",
+                    "label": "Lasers and Beams",
+                    "link": "https://opengameart.org/content/lasers-and-beams"
+                },
+                {
+                    "name": "Explosion Image",
+                    "label": "Explosion",
+                    "link": "https://opengameart.org/content/explosion-3"
+                },
+                {
+                    "name": "Font",
+                    "label": "Origami Mommy Font",
+                    "link": "https://www.1001fonts.com/origami-mommy-font.html"
+                }
+            ],
+            "image": "screenshots/ultimate-asteroid-tactical-control.jpg",
+            "video": "videos/ultimate-asteroid-tactical-control.m4v",
+            "color": "#4e42f5",
+            "textColor": "#c7a1ff",
+            "backgroundColor": "#2e383aBB",
+            "titleWidth": 265,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Ultimate-Asteroid-Tactical-Control"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/Ultimate-Asteroid-Tactical-Control/releases/latest/download/UAT.Windows.Build.zip"
+                }
+            ]
+        },
 
 
 
-		"uatanks" : {
-			"name" : "UATanks",
-			"date" : "6/7/2019",
-			"description" : "UATanks is a top-down tank shooting game, where your goal is to control a tank in an arena and destroy all the other tanks to win. It is one of the larger projects I have made during college, and is used to demonstrate features such as:</br>- Having each tank have a different \"personality\", by giving each type of a tank a different AI</br>- An options menu for changing key settings for the game</br>- Having a multitude of different powerups and effects</br>- A mini-map for knowing where everything is located</br>- A map that is procedurally generated</br>- Splitscreen multiplayer</br>- A highscore system</br>- Saving option settings to disk via PlayerPrefs</br></br>Credits:</br>- Font: <a href=\"https://www.kenney.nl/assets/kenney-fonts\">Kenney Fonts</a></br>- Blur Shader: <a href=\"https://forum.unity.com/threads/solved-dynamic-blurred-background-on-ui.345083/#post-2853442\">Background Blur Shader</a></br>- Icons: <a href=\"https://www.kenney.nl/assets/game-icons\">Game Icons</a></br>- Interface Sounds: <a href=\"https://opengameart.org/content/51-ui-sound-effects-buttons-switches-and-clicks\">UI Sound Effects)</a></br>- Explosion Image: <a href=\"https://opengameart.org/content/explosion-3\">Explosion 3</a></br>- Menu Music: <a href=\"https://jotech.bandcamp.com/album/awaken\">JoTech - Awaken</a></br>&nbsp;&nbsp;&nbsp;&nbsp;*Songs*:</br>&nbsp;&nbsp;&nbsp;&nbsp;- JoTech - Another Dimension</br>- Game Music: <a href=\"https://jotech.bandcamp.com/album/understand\">JoTech - Understand</a></br>&nbsp;&nbsp;&nbsp;&nbsp;*Songs*:</br>&nbsp;&nbsp;&nbsp;&nbsp;- JoTech – Reverse Time</br>&nbsp;&nbsp;&nbsp;&nbsp;- JoTech – Understand</br>&nbsp;&nbsp;&nbsp;&nbsp;- JoTech – Time Machine</br>- UI Assets: <a href=\"https://www.kenney.nl/assets/ui-pack\">UI Pack</a></br>- ReadOnlyAttribute Code: <a href=\"https://gist.github.com/LotteMakesStuff/c0a3b404524be57574ffa5f8270268ea\">ReadOnlyAttribute.cs</a></br>- Tank Model: <a href=\"https://opengameart.org/content/low-poly-tank-assets\">Low Poly Tank Assets</a></br>- Sound Effects: <a href=\"https://opengameart.org/content/512-sound-effects-8-bit-style\">512 Sound Effects 8 Bit Style</a></br>- Powerups: <a href=\"https://opengameart.org/content/3d-collectable-pack\">3D Collectable Pack</a></br>- Bomb Powerup: <a href=\"https://opengameart.org/content/weapon-pack\">Weapon Pack</a>",
-			"fontSize" : "4vw",
-			"image" : "screenshots/uatanks.jpg",
-			"video" : "videos/uatanks.mp4",
-			"color" : "#ff4040",
-			"textColor" : "#ffffff",
-			"backgroundColor" : "#2e383aBB",
-			"links" : [
-				{
-					"name" : "Github",
-					"link" : "https://github.com/nickc01/UATanks"
-				},
-				{
-					"name" : "Download",
-					"link" : "https://github.com/nickc01/UATanks/releases/latest/download/UATanks.Windows.Build.zip"
-				}
-			]
-		},
+        "uatanks": {
+            "name": "UATanks",
+            "date": "6/7/2019",
+            "description": [
+                "UATanks is a top-down tank shooting game, where your goal is to control a tank in an arena and destroy all the other tanks to win",
+                "It is one of the larger projects I have made during college, and is used to demonstrate a variety of different unity features and skills"
+            ],
+            "skills": [
+                "Using object oriented programming to develop tanks with different behaviours",
+                "Demonstrating an options menu used for customizing options",
+                "Having a multitude of different powerups and effects",
+                "Having a seperate camera for displaying a mini-map in the bottom-right corner",
+                "Using two cameras to render to the same screen. Used for splitscreen multiplayer",
+                "Procedurally generating different maps",
+                "A highscore system that retains the scores even when the game closes",
+                "Storing options to the hard disk using PlayerPrefs"
+            ],
+            "credits": [
+                {
+                    "name": "Font",
+                    "label": "Kenney Fonts",
+                    "link": "https://www.kenney.nl/assets/kenney-fonts"
+                },
+                {
+                    "name": "Blur Shader",
+                    "label": "Background Blur Shader",
+                    "link": "https://forum.unity.com/threads/solved-dynamic-blurred-background-on-ui.345083/#post-2853442"
+                },
+                {
+                    "name": "Icons",
+                    "label": "Game Icons",
+                    "link": "https://www.kenney.nl/assets/game-icons"
+                },
+                {
+                    "name": "Interface Sounds",
+                    "label": "UI Sound Effects",
+                    "link": "https://opengameart.org/content/51-ui-sound-effects-buttons-switches-and-clicks"
+                },
+                {
+                    "name": "Explosion Image",
+                    "label": "Explosion 3",
+                    "link": "https://opengameart.org/content/explosion-3"
+                },
+                {
+                    "name": "Menu Music",
+                    "label": "JoTech - Awaken",
+                    "link": "https://jotech.bandcamp.com/album/awaken"
+                },
+                {
+                    "name": "Game Music",
+                    "label": "JoTech - Understand",
+                    "link": "https://jotech.bandcamp.com/album/understand"
+                },
+                {
+                    "name": "UI Assets",
+                    "label": "UI Pack",
+                    "link": "https://www.kenney.nl/assets/ui-pack"
+                },
+                {
+                    "name": "ReadOnlyAttribute Code",
+                    "label": "ReadOnlyAttribute.cs",
+                    "link": "https://gist.github.com/LotteMakesStuff/c0a3b404524be57574ffa5f8270268ea"
+                },
+                {
+                    "name": "Tank Model",
+                    "label": "Low Poly Tank Assets",
+                    "link": "https://opengameart.org/content/low-poly-tank-assets"
+                },
+                {
+                    "name": "Sound Effects",
+                    "label": "512 Sound Effects 8 Bit Style",
+                    "link": "https://opengameart.org/content/512-sound-effects-8-bit-style"
+                },
+                {
+                    "name": "Powerups",
+                    "label": "3D Collectable Pack",
+                    "link": "https://opengameart.org/content/3d-collectable-pack"
+                },
+                {
+                    "name": "Bomb Powerup",
+                    "label": "Weapon Pack",
+                    "link": "https://opengameart.org/content/weapon-pack"
+                }
+            ],
+            "image": "screenshots/uatanks.jpg",
+            "video": "videos/uatanks.mp4",
+            "color": "#ff4040",
+            "textColor": "#ffffff",
+            "backgroundColor": "#2e383aBB",
+            "titleColor": "#ffd1d1",
+            "titleWidth": 70,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/UATanks"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/UATanks/releases/latest/download/UATanks.Windows.Build.zip"
+                }
+            ]
+        },
 
 
 
 
-		"hacktrons" : {
-			"name" : "Hacktrons",
-			"date" : "2/4/2019",
-			"description" : "Hacktrons is a turn-based strategy game made for college class. It is based on an old Lego game called Spybotics: The Nightball Incident, and I decided to build a recreation of it within the span of two weeks. The first week was mostly focused on making a trailer for the game (since the class required that too), and the second week was focused on finishing a workable verison of the game. In the game, you play as a CIA agent, defeating viruses in network nodes by uploading programs to destroy them. When it's your turn, you can move each of your programs around a map, and if they are near an enemy, you can attack them. Once all of your programs have done their moves, then it will switch to the enemy's turn, and they have the ability to attack you. This goes back and forth until you or the enemy looses all of their programs.</br></br>Credits</br>8-Bit Sounds: <a href=\"https://opengameart.org/content/512-sound-effects-8-bit-style\">512 Sound Effects 8-Bit Style</a></br>8-Bit Font: <a href=\"https://www.1001freefonts.com/8-bit-operator.font\">8-Bit Operator Plus</a></br>Music: <a href=\"https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100401\">Incompetech Interloper</a></br>Tutorial Text Sounds: <a href=\"https://www.amazon.com/dp/B008OBLI2G/?coliid=I1LOPLWQYEV6U&colid=2LABLE1NWXHIC&psc=0&ref_=lv_ov_lig_dp_it\">Robots and Computers Sound Effects</a></br>",
-			"fontSize" : "3vw",
-			"image" : "screenshots/hacktrons.png",
-			"video" : "videos/hacktrons.mp4",
-			"color" : "#3464de",
-			"textColor" : "#5c8aff",
-			"backgroundColor" : "#2e383aBB",
-			"links" : [
-				{
-					"name" : "Github",
-					"link" : "https://github.com/nickc01/Hacktrons"
-				},
-				{
-					"name" : "Download",
-					"link" : "https://github.com/nickc01/Hacktrons/releases/latest/download/Hacktrons.Windows.Build.zip"
-				}
-			]
-		},
+        "hacktrons": {
+            "name": "Hacktrons",
+            "date": "2/4/2019",
+            "description": [
+                "Hacktrons is a turn-based strategy game made for college class",
+                "It is based on an old Lego game called \"Spybotics\" : The Nightball Incident, and I decided to build a recreation of it within the span of two weeks",
+                "The first week was mostly focused on making a trailer for the game (since the class required that too), and the second week was focused on finishing a workable verison of the game",
+                "In the game, you play as a CIA agent, defeating viruses in network nodes by uploading programs to destroy them",
+                "When it's your turn, you can move each of your programs around a map, and if they are near an enemy, you can attack them",
+                "Once all of your programs have done their moves, then it will switch to the enemy's turn, and they have the ability to attack you",
+                "This goes back and forth until you or the enemy looses all of their programs"
+            ],
+            "skills": [
+                "Using the program <a href=\"https://www.mapeditor.org\">Tiled</a> to create each of the maps"
+            ],
+            "credits": [
+                {
+                    "name": "8-Bit Sounds",
+                    "label": "512 Sound Effects 8-Bit Style",
+                    "link": "https://opengameart.org/content/512-sound-effects-8-bit-style"
+                },
+                {
+                    "name": "8-Bit Font",
+                    "label": "8-Bit Operator Plus",
+                    "link": "https://www.1001freefonts.com/8-bit-operator.font"
+                },
+                {
+                    "name": "Music",
+                    "label": "Incompetech Interloper",
+                    "link": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100401"
+                },
+                {
+                    "name": "Tutorial Text Sounds",
+                    "label": "Robots and Computers Sound Effects",
+                    "link": "https://www.amazon.com/dp/B008OBLI2G/?coliid=I1LOPLWQYEV6U&colid=2LABLE1NWXHIC&psc=0&ref_=lv_ov_lig_dp_it"
+                }
+            ],
+            "image": "screenshots/hacktrons.png",
+            "video": "videos/hacktrons.mp4",
+            "color": "#3464de",
+            "textColor": "#5c8aff",
+            "backgroundColor": "#2e383aBB",
+            "titleColor": "#09132e",
+            "titleWidth": 85,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Hacktrons"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/Hacktrons/releases/latest/download/Hacktrons.Windows.Build.zip"
+                }
+            ]
+        },
 
 
 
-		"dungeon-escape" : {
-			"name" : "Dungeon Escape",
-			"date" : "3/22/2020",
-			"description" : "Dungeon Escape is a small top-down adventure game I made within the span of two weeks. It was made using the C++ programming language, and uses the SFML library for the graphics and player input. In the game, you use the arrow keys to move a wizard arround, and you can left click to fire a magic orb that stuns any enemies it touches.</br></br>Credits</br>Mage Sprites: <a href=\"https://opengameart.org/content/8x8-black-mage\">8x8 Black Mage</a></br>Other Sprites and UI Elements: <a href=\"https://opengameart.org/content/8x8-rogue-like-charenemiestiles\">Rogue like Char/Enemies/Tiles</a></br>Room Tiles: <a href=\"https://www.kenney.nl/assets/bit-pack\">Bit Pack</a></br>Heart Image: <a href=\"https://opengameart.org/content/heart2-1616\">Heart 2</a></br>Font: <a href=\"https://www.1001fonts.com/squares-bold-font.html\">Squares Bold Font</a></br>",
-			"fontSize" : "3vw",
-			"image" : "screenshots/dungeon-escape.png",
-			"video" : "videos/dungeon-escape.m4v",
-			"color" : "#785669",
-			"textColor" : "#cfc6b8",
-			"backgroundColor" : "#2e383aBB",
-			"links" : [
-				{
-					"name" : "Github",
-					"link" : "https://github.com/nickc01/Dungeon-Escape"
-				},
-				{
-					"name" : "Download",
-					"link" : "https://github.com/nickc01/Dungeon-Escape/releases/latest/download/Dungeon-Escape-Windows.zip"
-				}
-			]
-		},
+        "dungeon-escape": {
+            "name": "Dungeon Escape",
+            "date": "3/22/2020",
+            "description": [
+                "Dungeon Escape is a small top-down adventure game I made within the span of two weeks",
+                "It was made using the C++ programming language, and uses the SFML library for the graphics and player input",
+                "In the game, you use the arrow keys to move a wizard arround, and you can left click to fire a magic orb that stuns any enemies it touches",
+                "This project also uses CMake, which is a build system used for building C++ projects across multiple platforms"
+            ],
+            "skills": [
+                "Using C++14 to create a game",
+                "Procedurally generating a new map each time the game is launched",
+                "Using the SFML library for displaying graphics and accepting user input",
+                "Using CMake to build the game for multiple different platforms",
+                "Using multiple threads to speed up the pathfinding algorithm for the enemies",
+                "Playing different animations depending on the direction of the player"
+            ],
+            "credits": [
+                {
+                    "name": "Sprites",
+                    "label": "8x8 Black Mage",
+                    "link": "https://opengameart.org/content/8x8-black-mage"
+                },
+                {
+                    "name": "Other Sprites and UI Elements",
+                    "label": "Rogue like Char/Enemies/Tiles",
+                    "link": "https://opengameart.org/content/8x8-rogue-like-charenemiestiles"
+                },
+                {
+                    "name": "Room Tiles",
+                    "label": "Bit Pack",
+                    "link": "https://www.kenney.nl/assets/bit-pack"
+                },
+                {
+                    "name": "Heart Image",
+                    "label": "Heart 2",
+                    "link": "https://opengameart.org/content/heart2-1616"
+                },
+                {
+                    "name": "Font",
+                    "label": "Squares Bold Font",
+                    "link": "https://www.1001fonts.com/squares-bold-font.html"
+                }
+            ],
+            "image": "screenshots/dungeon-escape.png",
+            "video": "videos/dungeon-escape.m4v",
+            "color": "#785669",
+            "textColor": "#cfc6b8",
+            "backgroundColor": "#2e383aBB",
+            "titleWidth": 135,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Dungeon-Escape"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/Dungeon-Escape/releases/latest/download/Dungeon-Escape-Windows.zip"
+                }
+            ]
+        },
 
 
-		"smarttubes" : {
-			"name" : "Smart Tubes",
-			"date" : "9/11/2016",
-			"description" : "Smart Tubes is an item transportation mod I made for the 2D survival game Starbound. It adds the ability to transport items from one place to another via a network of interconnected pipes called conduits. You can extract items from a storage crate using an extraction conduit, and you can insert items into a crate using the insertion conduit.</br></br>Near the end of development, you would also be able to transport liquids around, and you would be able to see the entire network at once using the Conduit Terminal. I stopped working on this mod in mid-2018, mostly because I was hitting some huge brick walls during development, such as performance problems, burnout, and the fact that I hit a code instruction limit that prevented me from adding more code to the project",
-			"fontSize" : "3vw",
-			"image" : "screenshots/smarttubes.png",
-			"video" : "videos/smarttubes.m4v",
-			"color" : "#ff4040",
-			"textColor" : "#ffffff",
-			"backgroundColor" : "#2e383aBB",
-			"links" : [
-				{
-					"name" : "Github",
-					"link" : "https://github.com/nickc01/SmartTubes"
-				},
-				{
-					"name" : "Download",
-					"link" : "https://github.com/nickc01/SmartTubes/releases/tag/1.2.5"
-				},
-				{
-					"name" : "Forums Page",
-					"link" : "https://community.playstarbound.com/resources/smart-tubes.4152/"
-				},
-				{
-					"name" : "Youtube Video by FireSpark81",
-					"link" : "https://youtu.be/af2LSlEBHQ4"
-				}
-			]
-		}
-	}
+        "smarttubes": {
+            "name": "Smart Tubes",
+            "date": "9/11/2016",
+            "description": [
+                "Smart Tubes is an item transportation mod I made for the 2D survival game Starbound",
+                "It adds the ability to transport items from one place to another via a network of interconnected pipes called conduits",
+                "You can extract items from a storage crate using an extraction conduit, and you can insert items into a crate using the insertion conduit",
+                "You would also be able to transport liquids around, and could see the entire network at once using the Conduit Terminal"
+            ],
+            "skills": [
+                "Rendering a different sprite depending on an object's surroundings",
+                "Using Dijkstra's pathfinding algorithm to transport items from one place to another",
+                "Using a render texture to display the entire network via the Conduit Terminal"
+            ],
+            "image": "screenshots/smarttubes.png",
+            "video": "videos/smarttubes.m4v",
+            "color": "#ff4040",
+            "textColor": "#ffffff",
+            "backgroundColor": "#2e383aBB",
+            "titleWidth": 100,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/SmartTubes"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/SmartTubes/releases/tag/1.2.5"
+                },
+                {
+                    "name": "Forums Page",
+                    "link": "https://community.playstarbound.com/resources/smart-tubes.4152/"
+                },
+                {
+                    "name": "Video by FireSpark81",
+                    "link": "https://youtu.be/af2LSlEBHQ4"
+                }
+            ]
+        },
+
+
+
+        "ceo-project": {
+            "name": "Startup CEO Project",
+            "date": "4/25/2020",
+            "description": [
+                "Startup CEO Project is a Windows Application that allows you to keep track of a list of employees at a company and perform calculations on each employee",
+                "You can input an employee's salary, years worked, age, name, etc, and all this information will be stored in a list",
+                "Once added, you can calculate an employee's raise, bonuses, vacation days and several others",
+                "This list can then be saved to a file on your computer and loaded back up at any time",
+                "It also uses the <a href=\"https://thielj.github.io/MetroFramework/\">Metro UI Framework</a> to make it look fancy, and it even allows for custom themes"
+            ],
+            "skills": [
+                "Using WinForms and .Net Framework to design a custom Windows Application",
+                "Storing information to an external file and loading them back up again"
+            ],
+            "image": "screenshots/ceo-project.png",
+            "video": "videos/ceo-project.m4v",
+            "color": "#d11141",
+            "textColor": "#ffffff",
+            "backgroundColor": "#2e383aBB",
+            "titleWidth": 160,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Startup-CEO-Project"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/Startup-CEO-Project/releases/latest/download/StartupCEOProject.zip"
+                }
+            ]
+        },
+
+        "weavercore": {
+            "name": "WeaverCore",
+            "date": "1/09/2022",
+            "description": [
+                "TODO TODO TODO"
+            ],
+            "skills": [
+                "TODO TODO TODO"
+            ],
+            "image": "screenshots/weavercore.png",
+            "video": "videos/weavercore.m4v",
+            "color": "#6c6c6c",
+            "textColor": "#ffffff",
+            "backgroundColor": "#2e383aBB",
+            "titleColor": "#c4c4c4",
+            "titleWidth": 160,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/WeaverCore"
+                },
+                {
+                    "name": "Documentation",
+                    "link": "https://nickc01.github.io/WeaverCore/"
+                }
+            ]
+        }
+    }
 }

@@ -1,75 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Nicholas "Nickc01" Cullen's Portfolio</title>
-	<meta charset="UTF-8">
-	<meta name="description" content="Game Programming portfolio for Nicholas Cullen, aka Nickc01">
-	<meta name="keywords" content="Portfolio, C#, C++, CPP, Nickc01, Nicholas Cullen, Programming, Unity, Unity3D, Hollow Knight, Mods">
-	<meta name="author" content="Nicholas Cullen">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="robots" content="follow"/>
-	<link rel="stylesheet" type="text/css" href="style.css">
+    <title>Nicholas "Nickc01" Cullen's Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Game Programming portfolio for Nicholas Cullen, aka Nickc01">
+    <meta name="keywords" content="Portfolio, C#, C++, CPP, Nickc01, Nicholas Cullen, Programming, Unity, Unity3D, Hollow Knight, Mods">
+    <meta name="author" content="Nicholas Cullen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="follow" />
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-	<meta property="og:title" content="Nicholas Cullen's Portfolio" />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://nickc01.github.io/" />
-	<meta property="og:image" content="https://nickc01.github.io/images/logo-large.png" />
-	<meta property="og:description" content="Game Programming portfolio for Nicholas Cullen" />
-	<meta name="theme-color" content="#6B9D3E">
+    <meta property="og:title" content="Nicholas Cullen's Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nickc01.github.io/" />
+    <meta property="og:image" content="https://nickc01.github.io/images/logo-large.png" />
+    <meta property="og:description" content="Game Programming portfolio for Nicholas Cullen" />
+    <meta name="theme-color" content="#6B9D3E">
 
-	<meta name="google-site-verification" content="JuO4O4Zr1CKmc8NaYozvHaU94DYaHT39F87bpWVOev0" />
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#6b9d3e">
+    <meta name="msapplication-TileColor" content="#da532c">
+
+
+
+    <meta name="google-site-verification" content="JuO4O4Zr1CKmc8NaYozvHaU94DYaHT39F87bpWVOev0" />
 </head>
 
 <body>
-	<canvas id='backgroundCanvas'></canvas>
-	<div id="hamburger-menu">
-		<div class="hamburger-line"></div>
-		<div class="hamburger-line"></div>
-		<div class="hamburger-line"></div>
-		<div id="sideBar">
-			<a href="https://twitter.com/nickc01_"><img src="images/icons/twitter.png"/>Twitter</a>
-			<a href="https://www.youtube.com/channel/UChB2hZz-KnB4hXrCU3fLfYQ"><img src="images/icons/youtube.png"/>Youtube</a>
-			<a href="https://github.com/nickc01"><img src="images/icons/github.png"/>Github</a>
-			<a href="https://www.linkedin.com/in/nickc01/"><img src="images/icons/linked-in.png"/>LinkedIn</a>
-		</div>
-	</div>
-	<div id="menu-bar" class="unhighlightable">
-		<a onclick="SwitchToAbout();" id="about-button">About</a>
-		<a onclick="SwitchToHome();" id="home-button" class="selected-menu-item">Home</a>
-		<a onclick="SwitchToProjects();" id="project-button">Projects</a>
-	</div>
-	<noscript>
-		<h3 id="no-script-text">Javascript is required to navigate this site</h3>
-	</noscript>
-	<div id="selected-project-area" tabindex="2">
-		<div id="selected-project-background" onclick="CloseProjectWindow();"></div>
-		<div id="selected-project-contents">
-			<div id="selected-project-top-bar"></div>
-			<div id="close-button" onclick="CloseProjectWindow();" onmouseover="CloseButtonHover();">
-				<svg id="close-button-svg" width="80" height="80">
-					<rect width="40" height="4"/>
-					<rect width="40" height="4"/>
-				</svg>
-			</div>
-			<div id="contents-background"></div>
-			<div id="contents">
-				<div id="video-area">
-					<h1 id="contents-title"></h1>
-					<video autoplay loop muted controls>
-						<source type="video/mp4">
-					</video>
-				</div>
-				<div id="description"></div>
-			</div>
-		</div>
-	</div>
-	<script id="main-script" src="main.js"></script>
-	<script src="routine.js"></script>
-	<script src="projects-menu.js"></script>
-	<!--<script src="inline-console.min.js"></script>-->
-	<script src="vertexShader.js"></script>
-	<script src="fragmentShader.js"></script>
-	<script defer src="background.js"></script>
-	<script defer src="preloader.js"></script>
+    <canvas id='backgroundCanvas'></canvas>
+    <div id="hamburger-menu">
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div class="hamburger-line"></div>
+        <div id="sideBar">
+            <a href="https://twitter.com/nickc01_" target="_blank" rel="noopener noreferrer"><img src="images/icons/twitter.png" />Twitter</a>
+            <a href="https://www.youtube.com/channel/UChB2hZz-KnB4hXrCU3fLfYQ" target="_blank" rel="noopener noreferrer"><img src="images/icons/youtube.png" />Youtube</a>
+            <a href="https://github.com/nickc01" target="_blank" rel="noopener noreferrer"><img src="images/icons/github.png" />Github</a>
+            <a href="https://www.linkedin.com/in/nickc01/" target="_blank" rel="noopener noreferrer"><img src="images/icons/linked-in.png" />LinkedIn</a>
+        </div>
+    </div>
+    <div id="header-container">
+        <div id="header-bar" class="unhighlightable">
+            <a id="aboutme-button">About</a>
+            <a id="home-button">Home</a>
+            <a id="projects-button">Projects</a>
+        </div>
+    </div>
+    <noscript>
+        <h3 id="no-script-text">Javascript is required to navigate this site</h3>
+    </noscript>
+    <div id="selected-project-area" tabindex="2">
+        <div id="selected-project-background" onclick="projectPanel.closeProject();"></div>
+        <div id="selected-project-contents">
+            <div id="selected-project-top-bar">
+                <!--<h1 id="selected-project-title">Corrupted Kin</h1>-->
+                <svg height="16" width="16" viewBox="0 0 200 25" preserveAspectRatio="xMinYMid meet">
+                    <text id="selected-project-title" x="0" y="18">Corrupted Kin</text>
+                </svg>
+            </div>
+            <div id="close-button" onclick="projectPanel.closeProject();" onmouseover="projectPanel.closeButtonHover();">
+                <svg id="close-button-svg" width="80" height="80">
+                    <rect width="3.75" height="0.25" />
+                    <rect width="3.75" height="0.25" />
+                </svg>
+            </div>
+            <div id="contents-background"></div>
+            <div id="contents">
+                <div id="video-area">
+                    <!--<h1 id="contents-title"></h1>-->
+                    <video autoplay loop muted controls>
+                        <source type="video/mp4">
+                    </video>
+                </div>
+                <div id="description"></div>
+            </div>
+        </div>
+    </div>
+    <div id="console"></div>
+    <script src="js/core.js"></script>
+    <script src="js/projects-panel.js"></script>
+    <!--<script src="webgl-debug.js"></script>-->
+    <script defer src="js/preloader.js"></script>
+    <script defer src="js/shaders/vertexShader.js"></script>
+    <script defer src="js/shaders/fragmentShader.js"></script>
+    <script defer src="js/backgroundNEW.js"></script>
+    <!--<script id="main-script" src="js/main.js"></script>
+    <script src="js/routine.js"></script>
+    <script src="js/projects-menu.js"></script>
+    <script src="js/shaders/vertexShader.js"></script>
+    <script src="js/shaders/fragmentShader.js"></script>
+    <script defer src="js/background.js"></script>
+    <script defer src="js/preloader.js"></script>-->
 </body>
 </html>
