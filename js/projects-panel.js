@@ -157,8 +157,8 @@ projectPanel.prepareProject = function (projectName) {
 
     for (var i = 0; i < closeButton.childElementCount; i++) {
         var child = closeButton.children[i];
-        child.setAttribute("width", 3.75 * core.fontSize);
-        child.setAttribute("height", 0.25 * core.fontSize);
+        child.setAttribute("width", 3.5 * core.fontSize);
+        child.setAttribute("height", 0.5 * core.fontSize);
     }
 
     var projectTitle = document.getElementById("selected-project-title");
@@ -181,9 +181,10 @@ projectPanel.prepareProject = function (projectName) {
     root.style.setProperty('--project-text-color', project.textColor);
 
     var bottomColor = core.cssToColor(project.backgroundColor);
-    bottomColor[3] = 255;
+    var topColor = core.cssToColor(project.color);
 
-    root.style.setProperty('--project-window-bottom-color-solid', core.colorToCSS(bottomColor));
+    root.style.setProperty('--project-window-bottom-color-solid', "rgb(" + bottomColor[0] + ", " + bottomColor[1] + ", " + bottomColor[2] + ")");
+    root.style.setProperty('--project-window-top-color-solid', "rgb(" + topColor[0] + ", " + topColor[1] + ", " + topColor[2] + ")");
 
 
     var descriptionElement = document.getElementById("description");
@@ -566,7 +567,7 @@ projectPanel.calculate_colors = function() {
     //console.log("FROM = " + core.colorToCSS(lerpArray(startTopColor, endTopColor, colorInterpolationValue)));
     //console.log("TO = " + core.colorToCSS(lerpArray(startBottomColor, endBottomColor, colorInterpolationValue)));
     rootStyle.style.setProperty("--project-window-top-color", core.colorToCSS(core.lerpArray(startTopColor, endTopColor, colorInterpolationValue)));
-    rootStyle.style.setProperty("--project-window-bottom-color-solid", core.colorToCSS(core.lerpArray(startBottomColor, endBottomColor, colorInterpolationValue)));
+    rootStyle.style.setProperty("--project-window-bottom-color", core.colorToCSS(core.lerpArray(startBottomColor, endBottomColor, colorInterpolationValue)));
 }
 
 projectPanel.revert_color_update = function(dt) {

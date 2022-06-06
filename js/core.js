@@ -554,6 +554,21 @@ core.setupHamburgerMenu = function () {
     };
 }
 
+core.setupHeaderBar = function() {
+    var headerBar = document.getElementById("header-bar");
+
+    /** @type {any} */
+    var root = document.querySelector(':root');
+
+    var updateHeaderBar = () => {
+        root.style.setProperty('--header-height', headerBar.offsetHeight.toString() + "px");
+    };
+
+    window.addEventListener('resize', updateHeaderBar);
+
+    updateHeaderBar();
+}
+
 /*console.log("CSS Test = " + core.cssToColor("rgb(171, 221, 126)"));
 console.log("CSS Test 2 = " + core.cssToColor("rgba(46, 56, 58, 1.00)"));
 
@@ -568,6 +583,8 @@ console.log("Color Test 2 = " + core.colorToCSS([128, 125, 0, 255]));*/
 core.loadPanels();
 
 core.loadDefaultPanel();
+
+core.setupHeaderBar();
 
 if (core.onMobile) {
     core.setupHamburgerMenu();

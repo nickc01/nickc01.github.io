@@ -8,7 +8,8 @@
     --project-background-image: url("screenshots/corrupted-kin.jpg");
     --project-text-color: rgb(171, 221, 126);
     --title-text-color: rgb(171, 221, 126);
-    --project-window-bottom-color-solid: rgba(46, 56, 58, 1.00);
+    --project-window-bottom-color-solid: rgb(46, 56, 58);
+    --project-window-top-color-solid: rgb(107, 157, 62);
     --fade-speed: 400ms;
     --main-fade-in-speed: 0.5s;
     --sub-fade-in-speed: 0.625s;
@@ -472,6 +473,7 @@ body {
     margin-left: 10%;
     margin-right: 10%;
     padding: 0.625rem;
+    margin-bottom: 10%;
     background-color: rgba(0, 0, 0, 0.35);
     border-radius: 0.9375rem;
 }
@@ -586,7 +588,7 @@ body {
     top: 0;
     right: 0;
     transition: background-color 75ms linear;
-    background-color: var(--project-window-top-color);
+    background-color: var(--project-window-top-color-solid);
     border-radius: 0.46875rem;
 }
 
@@ -596,8 +598,18 @@ body {
 
 #close-button-svg > rect {
     position: absolute;
-    y: calc(50% - 0.125rem);
-    x: calc(50% - 1.875rem);
+    /*y: calc(50% - 0.125rem);
+    x: calc(50% - 4.6875rem);*/
+    /*x: calc(50% - 3rem);
+    y: calc(50% - 0.625rem);*/
+    /*y: calc(50% - 0.625rem);*/
+    /*x: calc(50% - 4.6875rem);*/
+    /*top: 50%;
+    left:50%;*/
+    /*: 50%;
+    y: 50%;*/
+    x: calc(50% - 1.75rem);
+    y: calc(50% - 0.25rem);
     transition: fill 75ms linear;
     fill: var(--project-window-bottom-color-solid);
     /*fill: rgba(var(--project-window-top-color), 2);*/
@@ -605,12 +617,12 @@ body {
 
     #close-button-svg > rect:first-child {
         transform-origin: center;
-        transform: rotate(-45deg);
+        transform: rotate(-45deg)
     }
 
     #close-button-svg > rect:last-child {
         transform-origin: center;
-        transform: rotate(45deg);
+        transform: rotate(45deg)
     }
 
 #close-button:hover > #close-button-svg > rect {
