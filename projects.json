@@ -17,6 +17,7 @@
             "color": "#f32d49",
             "textColor": "#f32d49",
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "titleColor": "#ed8796",
             "titleWidth": 150,
             "links": [
@@ -58,6 +59,7 @@
             "titleColor": "#4b3014",
             "titleWidth": 110,
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "links": [
                 {
                     "name": "Github",
@@ -133,6 +135,7 @@
             "color": "#3881ff",
             "textColor": "#ffffff",
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "titleWidth": 40,
             "links": [
                 {
@@ -189,6 +192,7 @@
             "textColor": "#ffffff",
             "titleWidth": 120,
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "links": [
                 {
                     "name": "Github",
@@ -257,6 +261,7 @@
             "color": "#4e42f5",
             "textColor": "#c7a1ff",
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "titleWidth": 265,
             "links": [
                 {
@@ -361,6 +366,7 @@
             "color": "#ff4040",
             "textColor": "#ffffff",
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "titleColor": "#ffd1d1",
             "titleWidth": 70,
             "links": [
@@ -420,6 +426,7 @@
             "color": "#3464de",
             "textColor": "#5c8aff",
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "titleColor": "#09132e",
             "titleWidth": 85,
             "links": [
@@ -485,6 +492,7 @@
             "color": "#785669",
             "textColor": "#cfc6b8",
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "titleWidth": 135,
             "links": [
                 {
@@ -518,6 +526,7 @@
             "color": "#ff4040",
             "textColor": "#ffffff",
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "titleWidth": 100,
             "links": [
                 {
@@ -560,6 +569,7 @@
             "color": "#d11141",
             "textColor": "#ffffff",
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "titleWidth": 160,
             "links": [
                 {
@@ -587,6 +597,7 @@
             "color": "#6c6c6c",
             "textColor": "#ffffff",
             "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
             "titleColor": "#c4c4c4",
             "titleWidth": 160,
             "links": [

@@ -532,6 +532,28 @@ function RemoveAutoPlay() {
     }
 }
 
+core.setupHamburgerMenu = function () {
+    var menu = document.getElementById("hamburger-menu");
+    /*menu.addEventListener("mouseover", src => {
+        menu.classList.add("hamburger-hovered");
+    });
+    menu.addEventListener("mouseout", src => {
+        menu.classList.remove("hamburger-hovered");
+    });*/
+    menu.addEventListener("click", src => {
+        if (menu.classList.contains("hamburger-hovered")) {
+            menu.classList.remove("hamburger-hovered");
+        }
+        else {
+            menu.classList.add("hamburger-hovered");
+        }
+    });
+
+    document.onclick = event => {
+        menu.classList.remove("hamburger-hovered");
+    };
+}
+
 /*console.log("CSS Test = " + core.cssToColor("rgb(171, 221, 126)"));
 console.log("CSS Test 2 = " + core.cssToColor("rgba(46, 56, 58, 1.00)"));
 
@@ -548,6 +570,7 @@ core.loadPanels();
 core.loadDefaultPanel();
 
 if (core.onMobile) {
+    core.setupHamburgerMenu();
     RemoveAutoPlay();
 }
 

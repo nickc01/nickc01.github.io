@@ -266,8 +266,11 @@ body {
     align-items: center;
 }
 
-#hamburger-menu:hover > .hamburger-line {
+#hamburger-menu:hover > .hamburger-line, #hamburger-menu.hamburger-hovered > .hamburger-line {
     background-color: white;
+}
+
+.hamburger-line {
     z-index: 94;
 }
 
@@ -325,7 +328,7 @@ body {
         margin-top: -0.1875rem;
     }
 
-#hamburger-menu:hover > #sideBar {
+#hamburger-menu:hover > #sideBar, #hamburger-menu.hamburger-hovered > #sideBar {
     opacity: 1;
     animation: 200ms fadeIn;
     animation-fill-mode: forwards;
