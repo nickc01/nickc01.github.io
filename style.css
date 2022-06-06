@@ -204,10 +204,20 @@ body {
     margin-right: 5rem;
 }
 
+/*#header-container > svg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.5);
+    display: inline;
+}*/
+
 #header-bar {
     max-width: fit-content;
 
-    margin: 1rem auto auto;
+    margin: 0.5rem auto auto auto;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -215,7 +225,9 @@ body {
     animation: fadeIn;
     animation-duration: 1000ms;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.87);
+    transition: background-color 200ms linear, backdrop-filter 200ms linear, -webkit-backdrop-filter 200ms linear;
+    /*transition: backdrop-filter 200ms linear;
+    transition: -webkit-backdrop-filter 200ms linear;*/
     border-radius: 1.1rem;
 }
 
@@ -256,8 +268,9 @@ body {
 
 #hamburger-menu {
     position: fixed;
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem;
     top: 0;
     right: 0;
     display: flex;
@@ -265,6 +278,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: background-color 200ms linear, backdrop-filter 200ms linear, -webkit-backdrop-filter 200ms linear;
+    /*transition: backdrop-filter 200ms linear;
+    transition: -webkit-backdrop-filter 200ms linear;*/
+    border-radius: 0.75rem;
+}
+
+.black-background {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(0.5rem);
+    -webkit-backdrop-filter: blur(0.5rem);
 }
 
 #hamburger-menu:hover > .hamburger-line, #hamburger-menu.hamburger-hovered > .hamburger-line {
@@ -282,6 +305,19 @@ body {
     transition: background-color 100ms linear;
     margin-top: 7%;
     margin-bottom: 7%;
+}
+
+#hoverBackground {
+    position: absolute;
+    height: 400%;
+    width: 300%;
+    top: 3rem;
+    right: 0;
+    visibility: hidden;
+}
+
+#hamburger-menu:hover > #hoverBackground  {
+    visibility: visible;
 }
 
 #sideBar {

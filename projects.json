@@ -35,8 +35,6 @@
                 }
             ]
         },
-
-
         "corrupted-kin": {
             "name": "Corrupted Kin",
             "date": "5/7/2021",
@@ -75,8 +73,6 @@
                 }
             ]
         },
-
-
         "badland-battles": {
             "name": "Badland Battles",
             "date": "3/27/2021",
@@ -115,8 +111,6 @@
                 }
             ]
         },
-
-
         "nitro": {
             "name": "Nitro",
             "date": "5/15/2021",
@@ -152,8 +146,6 @@
                 }
             ]
         },
-
-
         "mega-muncher": {
             "name": "Mega Muncher",
             "date": "4/24/2019",
@@ -204,8 +196,6 @@
                 }
             ]
         },
-
-
         "ultimate-asteroid-tactical-control": {
             "name": "Ultimate Asteroid Tactical Control",
             "date": "4/7/2019",
@@ -274,9 +264,6 @@
                 }
             ]
         },
-
-
-
         "uatanks": {
             "name": "UATanks",
             "date": "6/7/2019",
@@ -380,10 +367,6 @@
                 }
             ]
         },
-
-
-
-
         "hacktrons": {
             "name": "Hacktrons",
             "date": "2/4/2019",
@@ -440,9 +423,6 @@
                 }
             ]
         },
-
-
-
         "dungeon-escape": {
             "name": "Dungeon Escape",
             "date": "3/22/2020",
@@ -505,8 +485,6 @@
                 }
             ]
         },
-
-
         "smarttubes": {
             "name": "Smart Tubes",
             "date": "9/11/2016",
@@ -547,9 +525,6 @@
                 }
             ]
         },
-
-
-
         "ceo-project": {
             "name": "Startup CEO Project",
             "date": "4/25/2020",
@@ -582,15 +557,18 @@
                 }
             ]
         },
-
         "weavercore": {
             "name": "WeaverCore",
             "date": "1/09/2022",
             "description": [
-                "TODO TODO TODO"
+                "WeaverCore is a library that is used for developing new content for the game Hollow Knight",
+                "It was what I used to develop Corrupted Kin and Inferno King Grimm",
+                "The library allows you to develop new enemies, bosses, areas, and more from within the Unity Editor, allowing you to utilize all the capabilities of the Unity game engine",
+                "There is a documentation website where you can learn how to use it, and contains full XML comments for all of the publicly used classes and methods in the library"
             ],
             "skills": [
-                "TODO TODO TODO"
+                "Using DocFX to generate a website containing documentation and tutorials for the library",
+                "Using C# XML comments to document the behaviour of all public classes and methods in the library"
             ],
             "image": "screenshots/weavercore.png",
             "video": "videos/weavercore.m4v",

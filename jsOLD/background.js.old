@@ -1,5 +1,4 @@
-
-var contextSet = false;
+/*var contextSet = false;
 var backgrondScale = 750.0;
 var speedMultiplier = 0.15;
 var parallaxAmount = 3.0;
@@ -129,13 +128,6 @@ function drawBackground()
 {
 	var documentStyle = getComputedStyle(document.documentElement);
 
-
-
-	/*glCanvas.width = window.innerWidth;
-	glCanvas.height = window.innerHeight;
-
-	glCanvas.width = Math.max(window.innerWidth,document.body.scrollWidth);
-	glCanvas.height = Math.max(window.innerHeight,document.body.scrollHeight);*/
 
 
 
@@ -295,17 +287,4 @@ function setupGlContext()
 
 backgroundLoaded = true;
 ResetColors();
-
-/*function ErrorCheck()
-{
-	var error = gl.getError();
-	if (error !== gl.NO_ERROR) {
-		console.log(error);
-	}
-}*/
-
-/*function testPrint(message)
-{
-	var debugTest = document.getElementById('debugTest');
-	debugTest.innerText += message + "-:-";
-}*/
+*/

@@ -1,5 +1,3 @@
-window.shaders = window.shaders || {}; window.shaders.backgroundFragmentShader = `
-//SHADER START
 //Based on the shader by patricio gonzalez vivo
 // https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83
 #define PI 3.14159265358979323846
@@ -146,4 +144,3 @@ void main(void) {
 
 	//gl_FragColor = topColor;
 }
-`;

@@ -569,6 +569,36 @@ core.setupHeaderBar = function() {
     updateHeaderBar();
 }
 
+core.setupScrollBlackBackgrounds = function() {
+    var headerBar = document.getElementById("header-bar");
+    var hamburger = document.getElementById("hamburger-menu");
+
+
+    var updateBackgrounds = () => {
+        if (window.scrollY > core.fontSize * 1.75) {
+            if (!headerBar.classList.contains("black-background")){
+                headerBar.classList.add("black-background");
+            }
+            if (!hamburger.classList.contains("black-background")){
+                hamburger.classList.add("black-background");
+            }
+        }
+        else
+        {
+            if (headerBar.classList.contains("black-background")){
+                headerBar.classList.remove("black-background");
+            }
+            if (hamburger.classList.contains("black-background")){
+                hamburger.classList.remove("black-background");
+            }
+        }
+    };
+
+    document.addEventListener('scroll',updateBackgrounds);
+
+    window.addEventListener('resize',updateBackgrounds);
+}
+
 /*console.log("CSS Test = " + core.cssToColor("rgb(171, 221, 126)"));
 console.log("CSS Test 2 = " + core.cssToColor("rgba(46, 56, 58, 1.00)"));
 
@@ -585,6 +615,9 @@ core.loadPanels();
 core.loadDefaultPanel();
 
 core.setupHeaderBar();
+
+
+core.setupScrollBlackBackgrounds();
 
 if (core.onMobile) {
     core.setupHamburgerMenu();

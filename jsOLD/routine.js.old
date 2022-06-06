@@ -1,5 +1,5 @@
 
-var previousRoutineTime = 0;
+/*var previousRoutineTime = 0;
 
 var routines = [];
 
@@ -31,9 +31,4 @@ window.requestAnimationFrame(Routine_loop);
 function AddRoutine(routine)
 {
 	routines.push(routine);
-}
-
-/*function RemoveRoutine(routineID)
-{
-
 }*/

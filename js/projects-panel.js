@@ -193,7 +193,7 @@ projectPanel.prepareProject = function (projectName) {
     var description = "";
 
     for (var i = 0; i < project.description.length; i++) {
-        description += "</br>" + project.description[i] + ".";
+        description += "</br>" + project.description[i] + ".</br>";
     }
 
     descriptionElement.innerHTML = date + description;

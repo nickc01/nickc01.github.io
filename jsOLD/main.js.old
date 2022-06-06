@@ -1,4 +1,4 @@
-var aboutButton = document.getElementById("aboutme-button");
+/*var aboutButton = document.getElementById("aboutme-button");
 var homeButton = document.getElementById("home-button");
 var projectButton = document.getElementById("projects-button");
 var mainScript = document.getElementById("main-script");
@@ -269,7 +269,7 @@ function updateHeaderHeight() {
 }
 
 window.onresize = updateHeaderHeight;
-updateHeaderHeight();
+updateHeaderHeight();*/
 
 
 

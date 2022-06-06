@@ -44,6 +44,9 @@ background.endBottomColor = background.defaultBottomColor.slice();
 
 background.timer = 0.0;
 
+background.vertexShader = "";
+background.fragmentShader = "";
+
 
 /*var background.backgroundRunning = false;
 var background.Scale = 750.0;
@@ -73,17 +76,21 @@ var interpolatePreviousBottomColor = null;*/
 
 function onWindowLoad() {
 	background.glCanvas = document.getElementById('backgroundCanvas');
-	//background.gl = WebGLDebugUtils.makeDebugContext(background.glCanvas.getContext("webgl"));
 	background.gl = background.glCanvas.getContext("webgl");
 	if (background.gl === null) {
 		return;
 	}
-	//background.currentTopColor = background.defaultTopColor.slice();
-	//background.currentBottomColor = background.defaultBottomColor.slice();
-	background.backgroundRunning = true;
-	setupGlContext();
+	Promise.all([fetch("js/shaders/perlin.vert"), fetch("js/shaders/perlin.frag")]).then(responses => Promise.all([responses[0].text(), responses[1].text()])).then(responses => {
+		background.vertexShader = responses[0];
+		background.fragmentShader = responses[1];
 
-	background.glCanvas.style.opacity = "1";
+		background.backgroundRunning = true;
+		setupGlContext();
+	
+		background.glCanvas.style.opacity = "1";
+	});
+
+
 	//window.requestAnimationFrame(loop);
 }
 
@@ -309,9 +316,9 @@ function setupGlContext() {
 	background.gl.bindBuffer(background.gl.ELEMENT_ARRAY_BUFFER, null);
 
 	//Create Vertex Shader
-	var vertCode = window.shaders.backgroundVertexShader;
+	//var vertCode = window.shaders.backgroundVertexShader;
 	var vertShader = background.gl.createShader(background.gl.VERTEX_SHADER);
-	background.gl.shaderSource(vertShader, vertCode);
+	background.gl.shaderSource(vertShader, background.vertexShader);
 	background.gl.compileShader(vertShader);
 	var message = background.gl.getShaderInfoLog(vertShader);
 	if (message.length > 0) {
@@ -320,10 +327,10 @@ function setupGlContext() {
 	}
 
 	//Create Fragment/Pixel Shader
-	var fragCode = window.shaders.backgroundFragmentShader;
+	//var fragCode = window.shaders.backgroundFragmentShader;
 
 	var fragShader = background.gl.createShader(background.gl.FRAGMENT_SHADER);
-	background.gl.shaderSource(fragShader, fragCode);
+	background.gl.shaderSource(fragShader, background.fragmentShader);
 	background.gl.compileShader(fragShader);
 
 	var message = background.gl.getShaderInfoLog(fragShader);
