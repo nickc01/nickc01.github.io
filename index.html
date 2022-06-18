@@ -33,7 +33,21 @@
 
 <body>
     <canvas id='backgroundCanvas'></canvas>
-    <div id="hamburger-menu">
+    <div id="panel-menu">
+        <!--<div id="click-plane"></div>-->
+        <div id="hamburger-menu">
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+            <div class="hamburger-line"></div>
+        </div>
+        <div id="panels" class="unhighlightable">
+            <a id="aboutme-button">About</a>
+            <a id="home-button">Home</a>
+            <a id="projects-button">Projects</a>
+            <a id="contact-button">Contact</a>
+        </div>
+    </div>
+    <!--<div id="hamburger-menu">
         <div id="hoverBackground"></div>
         <div class="hamburger-line"></div>
         <div class="hamburger-line"></div>
@@ -44,19 +58,14 @@
             <a href="https://github.com/nickc01" target="_blank" rel="noopener noreferrer"><img src="images/icons/github.png" />Github</a>
             <a href="https://www.linkedin.com/in/nickc01/" target="_blank" rel="noopener noreferrer"><img src="images/icons/linked-in.png" />LinkedIn</a>
         </div>
-    </div>
-    <div id="header-container">
-        <!--<svg>
-            <filter width="100" height="100" id="blur">
-                <feGaussianBlur stdDeviation="20" />
-              </filter>
-        </svg>-->
+    </div>-->
+    <!--<div id="header-container">
         <div id="header-bar" class="unhighlightable">
             <a id="aboutme-button">About</a>
             <a id="home-button">Home</a>
             <a id="projects-button">Projects</a>
         </div>
-    </div>
+    </div>-->
     <noscript>
         <h3 id="no-script-text">Javascript is required to navigate this site</h3>
     </noscript>
@@ -90,9 +99,11 @@
     <div id="console"></div>
     <script src="js/core.js"></script>
     <script src="js/projects-panel.js"></script>
+    <script src="js/contact-panel.js"></script>
     <!--<script src="webgl-debug.js"></script>-->
     <script defer src="js/preloader.js"></script>
     <script defer src="js/background.js"></script>
+    <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <!--<script id="main-script" src="js/main.js"></script>
     <script src="js/routine.js"></script>
     <script src="js/projects-menu.js"></script>

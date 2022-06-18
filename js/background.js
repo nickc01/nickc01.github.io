@@ -1,5 +1,3 @@
-"use strict";
-
 // @ts-check
 
 //This file contains the functionality for the background perlin noise effect
@@ -18,6 +16,8 @@ background.darkenAmount = 0.75;
 background.scale = 750.0;
 background.speed = 0.15;
 background.parallaxAmount = 3.0;
+
+background.qualty = 1;
 
 background.uniforms = {};
 
@@ -85,6 +85,11 @@ function onWindowLoad() {
 		background.fragmentShader = responses[1];
 
 		background.backgroundRunning = true;
+
+		if (core.onMobile) {
+			background.qualty /= 2;
+        }
+
 		setupGlContext();
 	
 		background.glCanvas.style.opacity = "1";
@@ -99,7 +104,14 @@ function onWindowLoad() {
  * @param {string} topColor
  * @param {string} bottomColor
  */
-background.interpolateToColor = function(topColor, bottomColor) {
+background.interpolateToColor = function (topColor, bottomColor) {
+
+	if (core.onMobile) {
+		background.currentTopColor = core.cssToColor(topColor);
+		background.currentBottomColor = core.cssToColor(bottomColor);
+		return;
+	}
+
 	core.removeFromEvent(core.events.updateEvent, background.bg_revert_colors_update);
 	core.removeFromEvent(core.events.updateEvent, background.bg_interpolate_colors_update);
 
@@ -114,15 +126,22 @@ background.interpolateToColor = function(topColor, bottomColor) {
 	core.addToEvent(core.events.updateEvent, background.bg_interpolate_colors_update);
 }
 
-background.revertInterpolation = function() {
+background.revertInterpolation = function () {
+
+	if (core.onMobile) {
+		background.currentTopColor = background.defaultTopColor.slice();
+		background.currentBottomColor = background.defaultBottomColor.slice();
+		return;
+    }
+
 	core.removeFromEvent(core.events.updateEvent, background.bg_interpolate_colors_update);
 	core.removeFromEvent(core.events.updateEvent, background.bg_revert_colors_update);
 
 	background.endTopColor = core.lerpArray(background.startTopColor, background.endTopColor, background.interpolationTimer);
 	background.endBottomColor = core.lerpArray(background.startBottomColor, background.endBottomColor, background.interpolationTimer);
 
-	background.startTopColor = projectPanel.originalTopColor.slice();
-	background.startBottomColor = projectPanel.originalBottomColor.slice();
+	background.startTopColor = background.defaultTopColor.slice();
+	background.startBottomColor = background.defaultBottomColor.slice();
 
 	background.interpolationTimer = 1.0;
 
@@ -236,11 +255,20 @@ function drawBackground() {
 	background.glCanvas.height = Math.max(window.innerHeight,document.body.scrollHeight);*/
 
 
+	//var width = window.innerWidth;
+	//var height = window.innerHeight;
+
+	var width = Math.max(document.body.clientWidth, window.innerWidth);
+	var height = Math.max(document.body.clientHeight, window.innerHeight);
+	//var width = document.body.clientWidth;
+	//var height = document.body.clientHeight;
 
 
+	background.glCanvas.width = width * background.qualty;
+	background.glCanvas.height = height * background.qualty;
 
-	background.glCanvas.width = window.innerWidth;
-	background.glCanvas.height = window.innerHeight;
+	background.glCanvas.style.width = width.toString() + "px";
+	background.glCanvas.style.height = height.toString() + "px";
 	//background.glCanvas.width = "100%";
 
 	//background.glCanvas.width = window.innerWidth;//Math.max(window.innerWidth,document.body.scrollWidth);
@@ -249,21 +277,20 @@ function drawBackground() {
 	//background.glCanvas.width = Math.max(window.innerWidth,window.scrollWidth);
 	//background.glCanvas.height = Math.max(window.innerHeight,window.scrollHeight);
 	//Set background.uniforms
-	background.uniforms.setNoiseScale(background.scale);
+	background.uniforms.setNoiseScale(background.scale * background.qualty);
 	background.uniforms.setTopColor(background.currentTopColor);
 	background.uniforms.setBottomColor(background.currentBottomColor);
 
 	background.uniforms.setNoiseZ((background.timer) * background.speed);
-	background.uniforms.setVerticalOffset((window.scrollY / background.parallaxAmount) - window.scrollY);
+	background.uniforms.setVerticalOffset((window.scrollY / background.parallaxAmount) - (window.scrollY * background.qualty) - height);
 	// Clear the canvas
 	background.gl.clearColor(1.0, 0.0, 0.0, 1.0);
 
 	// Clear the color buffer bit
 	background.gl.clear(background.gl.COLOR_BUFFER_BIT);
-
 	// Set the view port
 	//console.log("Width = " + window.innerWidth + " Height = " + window.innerHeight);
-	background.gl.viewport(0, 0, window.innerWidth, window.innerHeight);
+	background.gl.viewport(0, 0, width * background.qualty, height * background.qualty);
 
 	// Draw the triangle
 	//background.gl.drawArrays(background.gl.POINTS, 0, 6);

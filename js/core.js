@@ -73,7 +73,7 @@ core.PanelState = {
 //---------------------------------------------------
 
 core.root = document.querySelector(':root');
-core.headerBar = document.getElementById("header-bar");
+core.headerBar = document.getElementById("panels");
 
 /** @type {Array.<{button: Element, name: string, title: string, buttonID: string}>} */
 core.panels = [];
@@ -168,16 +168,18 @@ window.addEventListener('popstate', (event) => {
 core.loadPanels = function() {
     for (var i = 0; i < core.headerBar.childElementCount; i++) {
         var button = core.headerBar.children[i];
-        var name = button.id.slice(0, -7);
-        var title = button.innerHTML;
-        button.setAttribute("onclick", "core.clickPanelButton(this);");
+        if (button.tagName == "A") {
+            var name = button.id.slice(0, -7);
+            var title = button.innerHTML;
+            button.setAttribute("onclick", "core.clickPanelButton(this);");
 
-        core.panels.push({
-            button: button,
-            name: name,
-            buttonID: button.id,
-            title: title
-        });
+            core.panels.push({
+                button: button,
+                name: name,
+                buttonID: button.id,
+                title: title
+            });
+        }
     }
 }
 
@@ -188,7 +190,7 @@ core.loadPanels = function() {
  */
 core.switchToPanel = function(panelName, addToHistory = true) {
     var panel = core.panels.find(p => p.name == panelName);
-    if (panel != null) {
+    if (panel != null && (core.selectedPanel == null || core.selectedPanel.name != panel.name)) {
         return core.clickPanelButton(panel.button, addToHistory);
     }
     else {
@@ -202,10 +204,11 @@ core.switchToPanel = function(panelName, addToHistory = true) {
  * @returns {Promise.<void>}
  */
 core.clickPanelButton = function(button, addToHistory = true) {
+    var oldPanel = core.selectedPanel;
+
     if (oldPanel != null && oldPanel.buttonID == button.id) {
         return;
     }
-    var oldPanel = core.selectedPanel;
 
     if (oldPanel != null) {
         oldPanel.button.classList.remove("selected-menu-item");
@@ -223,6 +226,12 @@ core.clickPanelButton = function(button, addToHistory = true) {
 
     if (oldPanel != null) {
         core.callEvent(core.events.onPanelLeaveEvent, oldPanel);
+    }
+
+    var panelMenu = document.getElementById("panel-menu");
+    if (panelMenu.classList.contains("panel-hovered")) {
+        panelMenu.classList.remove("panel-hovered");
+        core.updateBackgrounds();
     }
 
     if (addToHistory) {
@@ -285,6 +294,12 @@ core.unloadCurrentPanel = function() {
                     oldSection.classList.add("doFadeOut");
                 }
             }
+
+            /*window.scroll({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });*/
 
             setTimeout(() => {
                 if (oldSection) {
@@ -532,8 +547,18 @@ function RemoveAutoPlay() {
     }
 }
 
+/**
+ * 
+ * @param {number} a
+ * @param {number} b
+ */
+core.randomInRange = function (a, b) {
+    return core.lerp(a, b, Math.random());
+}
+
 core.setupHamburgerMenu = function () {
     var menu = document.getElementById("hamburger-menu");
+    var panelMenu = document.getElementById("panel-menu");
     /*menu.addEventListener("mouseover", src => {
         menu.classList.add("hamburger-hovered");
     });
@@ -541,27 +566,59 @@ core.setupHamburgerMenu = function () {
         menu.classList.remove("hamburger-hovered");
     });*/
     menu.addEventListener("click", src => {
-        if (menu.classList.contains("hamburger-hovered")) {
-            menu.classList.remove("hamburger-hovered");
+        if (panelMenu.classList.contains("panel-hovered")) {
+            panelMenu.classList.remove("panel-hovered");
         }
         else {
-            menu.classList.add("hamburger-hovered");
+            panelMenu.classList.add("panel-hovered");
         }
+        core.updateBackgrounds();
     });
 
-    document.onclick = event => {
-        menu.classList.remove("hamburger-hovered");
+    var checkPanel = e => {
+        if (panelMenu.classList.contains("panel-hovered")) {
+            var rect = panelMenu.getBoundingClientRect();
+            var mouseX = e.pageX;
+            var mouseY = e.pageY - window.scrollY;
+            if (mouseX < 0 || mouseX > rect.right || mouseY < 0 || mouseY > rect.bottom) {
+                panelMenu.classList.remove("panel-hovered");
+                core.updateBackgrounds();
+            }
+        }
     };
+
+    panelMenu.addEventListener("mouseout", checkPanel);
+    //panelMenu.addEventListener("mouseleave", checkPanel);
+    //panelMenu.addEventListener("touchend", checkPanel);
+    //document.addEventListener("mouseover", checkPanel);
+    //window.addEventListener("mouseout", checkPanel);
+    /*document.onclick = event => {
+        console.log("DOCUMENT CLICKED");
+        console.log("Event = " + event.target.id);
+        if (event.target.id != "hamburger-menu") {
+            panelMenu.classList.remove("panel-hovered");
+        }
+    };*/
+
+    if (core.onMobile) {
+        document.addEventListener("mouseover", checkPanel);
+
+        window.addEventListener("touchstart", e => {
+            if (e.touches.length > 0) {
+                checkPanel({ pageX: e.touches[0].pageX, pageY: e.touches[0].pageY });
+            }
+        });
+    }
 }
 
-core.setupHeaderBar = function() {
-    var headerBar = document.getElementById("header-bar");
+core.setupPanelMenu = function() {
+    var panelMenu = document.getElementById("panel-menu");
 
     /** @type {any} */
     var root = document.querySelector(':root');
 
     var updateHeaderBar = () => {
-        root.style.setProperty('--header-height', headerBar.offsetHeight.toString() + "px");
+        root.style.setProperty('--header-height', panelMenu.offsetHeight.toString() + "px");
     };
 
     window.addEventListener('resize', updateHeaderBar);
@@ -570,33 +627,27 @@ core.setupHeaderBar = function() {
 }
 
 core.setupScrollBlackBackgrounds = function() {
-    var headerBar = document.getElementById("header-bar");
-    var hamburger = document.getElementById("hamburger-menu");
+    var panelMenu = document.getElementById("panel-menu");
+    //var hamburger = document.getElementById("hamburger-menu");
 
 
-    var updateBackgrounds = () => {
-        if (window.scrollY > core.fontSize * 1.75) {
-            if (!headerBar.classList.contains("black-background")){
-                headerBar.classList.add("black-background");
-            }
-            if (!hamburger.classList.contains("black-background")){
-                hamburger.classList.add("black-background");
+    core.updateBackgrounds = () => {
+        if (window.scrollY > core.fontSize * 1.75 || panelMenu.classList.contains("panel-hovered")) {
+            if (!panelMenu.classList.contains("black-background")){
+                panelMenu.classList.add("black-background");
             }
         }
         else
         {
-            if (headerBar.classList.contains("black-background")){
-                headerBar.classList.remove("black-background");
-            }
-            if (hamburger.classList.contains("black-background")){
-                hamburger.classList.remove("black-background");
+            if (panelMenu.classList.contains("black-background")){
+                panelMenu.classList.remove("black-background");
             }
         }
     };
 
-    document.addEventListener('scroll',updateBackgrounds);
+    document.addEventListener('scroll', core.updateBackgrounds);
 
-    window.addEventListener('resize',updateBackgrounds);
+    window.addEventListener('resize', core.updateBackgrounds);
 }
 
 /*console.log("CSS Test = " + core.cssToColor("rgb(171, 221, 126)"));
@@ -614,13 +665,12 @@ core.loadPanels();
 
 core.loadDefaultPanel();
 
-core.setupHeaderBar();
-
+//core.setupPanelMenu();
+core.setupHamburgerMenu();
 
 core.setupScrollBlackBackgrounds();
 
 if (core.onMobile) {
-    core.setupHamburgerMenu();
     RemoveAutoPlay();
 }
 
@@ -644,6 +694,4 @@ function Update_Loop(time) {
 
     window.requestAnimationFrame(Update_Loop);
 }
-
-
 console.log("Core Loaded");

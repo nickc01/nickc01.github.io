@@ -318,12 +318,12 @@ core.addToEvent(core.events.onPanelLeaveEvent, panel => {
 })
 
 core.addToEvent(core.events.onEnterPanelEvent, panel => {
-    /*if (panel.name != "projects") {
+    if (panel.name != "projects") {
         //projectPanel.clearColors();
         return;
-    }*/
+    }
 
-    var projectAreas = document.getElementsByClassName("projects-area");
+    var projectAreas = document.getElementsByClassName("content-area");
     for (var i = 0; i < projectAreas.length; i++) {
         //Distribute(projectAreas.item(i));
         var projectsArea = projectAreas.item(i);
@@ -357,7 +357,7 @@ core.addToEvent(core.events.onEnterPanelEvent, panel => {
         }
     }
 
-    //var projectsArea = document.getElementById("projects-area");
+    //var projectsArea = document.getElementById("content-area");
 
     //var root = window.getComputedStyle(document.documentElement);
     //originalTopColor = root.getPropertyValue("--project-window-top-color");
@@ -440,7 +440,7 @@ function registerProjectEvent(element, evtName, func) {
         //console.log("ACTION = " + evtName + ", sourc = " + source.id);
         /** @type {Node} */
         var currentElement = source.target;
-        while (currentElement != null && currentElement.parentNode != null && !currentElement.parentNode.classList.contains("projects-area")) {
+        while (currentElement != null && currentElement.parentNode != null && !currentElement.parentNode.classList.contains("content-area")) {
             currentElement = currentElement.parentNode;
         }
         func(currentElement);
@@ -473,6 +473,12 @@ var endBottomColor = projectPanel.originalBottomColor.slice();
 
 
 function interpolateToColor(topColor, bottomColor) {
+
+    if (core.onMobile) {
+        rootStyle.style.setProperty("--project-window-top-color", topColor);
+        rootStyle.style.setProperty("--project-window-bottom-color", bottomColor);
+        return;
+    }
     //console.log("Interpolating");
     //console.log("Trace = " + console.trace());
     //printInterpState();
@@ -510,6 +516,12 @@ function interpolateToColor(topColor, bottomColor) {
 }
 
 function revertInterpolation() {
+
+    if (core.onMobile) {
+        rootStyle.style.setProperty("--project-window-top-color", core.colorToCSS(projectPanel.originalTopColor));
+        rootStyle.style.setProperty("--project-window-bottom-color", core.colorToCSS(projectPanel.originalBottomColor));
+        return;
+    }
     //console.log("Reverting");
     /*if (colorInterpolationState == projectPanel.ColorInterpolationState.Interpolating) {
         

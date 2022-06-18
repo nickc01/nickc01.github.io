@@ -18,7 +18,7 @@
             "textColor": "#f32d49",
             "backgroundColor": "#2e383aBB",
             "perlinBackgroundColor": "#0b0e0e",
-            "titleColor": "#ed8796",
+            "titleColor": "#fcccd4",
             "titleWidth": 150,
             "links": [
                 {
@@ -54,7 +54,7 @@
             "video": "videos/corrupted-kin.m4v",
             "color": "#e68a24",
             "textColor": "#d28e3d",
-            "titleColor": "#4b3014",
+            "titleColor": "#2e383a",
             "titleWidth": 110,
             "backgroundColor": "#2e383aBB",
             "perlinBackgroundColor": "#0b0e0e",
@@ -97,7 +97,7 @@
             "textColor": "#ffbc78",
             "backgroundColor": "#2e383aBB",
             "perlinColor": "#dd8833",
-            "titleColor": "#ffe6cc",
+            "titleColor": "#fff3e6",
             "titleWidth": 130,
             "perlinBackgroundColor": "#6a4623",
             "links": [
@@ -354,7 +354,7 @@
             "textColor": "#ffffff",
             "backgroundColor": "#2e383aBB",
             "perlinBackgroundColor": "#0b0e0e",
-            "titleColor": "#ffd1d1",
+            "titleColor": "#fae6e6",
             "titleWidth": 70,
             "links": [
                 {
@@ -410,7 +410,7 @@
             "textColor": "#5c8aff",
             "backgroundColor": "#2e383aBB",
             "perlinBackgroundColor": "#0b0e0e",
-            "titleColor": "#09132e",
+            "titleColor": "#2e383a",
             "titleWidth": 85,
             "links": [
                 {
@@ -577,7 +577,7 @@
             "backgroundColor": "#2e383aBB",
             "perlinBackgroundColor": "#0b0e0e",
             "titleColor": "#c4c4c4",
-            "titleWidth": 160,
+            "titleWidth": 100,
             "links": [
                 {
                     "name": "Github",

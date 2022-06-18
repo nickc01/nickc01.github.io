@@ -1,5 +1,5 @@
 /*//var selectedProjectArea = document.getElementById("selected-project-area");
-//var projectsArea = document.getElementById("projects-area");
+//var projectsArea = document.getElementById("content-area");
 var projectOpen = false;
 
 var projectDetails = null;
@@ -350,7 +350,7 @@ onStateChange.push(state =>
 		return;
 	}
 
-	var projectAreas = document.getElementsByClassName("projects-area");
+	var projectAreas = document.getElementsByClassName("content-area");
 	for (var i = 0; i < projectAreas.length; i++) {
 		//Distribute(projectAreas.item(i));
 		var projectsArea = projectAreas.item(i);
@@ -373,7 +373,7 @@ onStateChange.push(state =>
 		}
 	}
 
-	//var projectsArea = document.getElementById("projects-area");
+	//var projectsArea = document.getElementById("content-area");
 
 	var rootStyle = window.getComputedStyle(document.documentElement);
 	originalTopColor = rootStyle.getPropertyValue("--project-window-top-color");
@@ -384,7 +384,7 @@ function registerProjectEvent(element,evtName,func)
 {
 	element.addEventListener(evtName,source => {
 		var currentElement = source.target;
-		while (currentElement != null && currentElement.parentNode != null && !currentElement.parentNode.classList.contains("projects-area")) {
+		while (currentElement != null && currentElement.parentNode != null && !currentElement.parentNode.classList.contains("content-area")) {
 			currentElement = currentElement.parentNode;
 		}
 		func(currentElement);
