@@ -487,50 +487,89 @@ body {
     padding-top: var(--header-height);
 }
 
-#home-section {
-    /*position: absolute;
-    left: 50px;
-    right: 50px;
-    top: 150px;
-    bottom: 50px;*/
+/*#home-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /*background-color: red;*/
-    /*background-color: green;*/
 }
 
     #home-section > div {
         width: 100vw;
-        height: 100vh;
+        min-height: calc(100vh - var(--header-height));
         margin-top: 0.625rem;
-    }
+    }*/
 
-#home-section > div:first-child {
+/*#home-section > div:first-child {
     margin-top: 0;
     height: calc(100vh - var(--header-height));
-}
+}*/
 
 #landing-page {
     display: flex;
-    flex-flow: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-content: center;
-    flex-direction: column;
-    flex-shrink: 100;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: calc(85vh - var(--header-height));
     /*background-color: red;*/
 }
 
+#home-left-side {
+    height: fit-content;
+    max-height: 100%;
+    margin: 2rem 0 1rem 0;
+}
+
+#home-right-side {
+    height: fit-content;
+    max-height: 100%;
+    margin: 2rem 1rem 1rem 1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+    animation: var(--sub-fade-in-speed) fadeInFromBelowSecond;
+    animation-fill-mode: forwards;
+}
+
+#home-right-side > h1 {
+    color: var(--project-window-top-color);
+    font-size: min(7vw,2rem);
+}
+
 #main-logo {
-    min-height: 0;
-    min-width: 0;
-    padding: 0 6.25rem 1.25rem 6.25rem;
-    max-height: min(calc(80vh - 20rem),30vw);
+    max-height: min(30rem,50vw,calc(100vh - 15rem));
+    /*padding: 0 6.25rem 1.25rem 6.25rem;*/
+    margin: 3rem;
     object-fit: contain;
     animation: var(--main-fade-in-speed) fadeInFromBelowFirst;
     animation-fill-mode: forwards;
+    flex-shrink: 100;
 }
+
+#get-in-contact {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin: 4rem;
+    border-radius: 0.8rem;
+    opacity: 1;
+    color: var(--project-window-bottom-color);
+    background-color: var(--call-to-action-color);
+    transition: color 200ms, background-color 200ms;
+}
+
+    #get-in-contact:hover {
+        background-color: white;
+        color: var(--project-window-bottom-color);
+    }
+
+
 
 .main-title,
 .sub-title {
@@ -625,6 +664,11 @@ body {
     margin-bottom: 1rem;
 }
 
+#contact-container > h2 {
+    width: 100%;
+    font-size: min(1.5rem,4vw);
+}
+
 #contact-form > div {
     display: flex;
     flex-wrap: wrap;
@@ -691,36 +735,37 @@ body {
         background-blend-mode:color;
     }
 
-#icon-links {
+.icon-links {
     display: flex;
     justify-content: space-evenly;
     margin-top: 2rem;
     max-width: min(40rem,70vw);
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }
 
-#icon-links > a {
+.icon-links > a {
     display: flex;
     flex-direction: column;
     align-items: center;
     color: var(--project-window-top-color);
 }
 
-#icon-links > a > img {
+.icon-links > a > img {
     width: 3rem;
 }
 
-    #icon-links > a > p {
+    .icon-links > a > p {
         opacity: 0;
         transition: opacity 100ms;
     }
 
-    #icon-links > a:hover > p {
+    .icon-links > a:hover > p {
         opacity: 1;
     }
 
-    #icon-links > a:hover > img {
+    .icon-links > a:hover > img {
         opacity: 1;
         color: var(--project-window-top-color);
     }

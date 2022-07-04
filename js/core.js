@@ -633,12 +633,14 @@ core.setupScrollBlackBackgrounds = function() {
 
     core.updateBackgrounds = () => {
         if (window.scrollY > core.fontSize * 1.75 || panelMenu.classList.contains("panel-hovered")) {
+            console.log("HIGHLIGHTING");
             if (!panelMenu.classList.contains("black-background")){
                 panelMenu.classList.add("black-background");
             }
         }
         else
         {
+            console.log("DEHIGHLIGHTING");
             if (panelMenu.classList.contains("black-background")){
                 panelMenu.classList.remove("black-background");
             }

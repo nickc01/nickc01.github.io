@@ -110,6 +110,10 @@ contactPanel.update = function (dt) {
     contactPanel.updatePercentage();
 }
 
+contactPanel.openContactPanel = function () {
+    core.switchToPanel("contact");
+}
+
 
 
 contactPanel.updatePercentage = function () {
