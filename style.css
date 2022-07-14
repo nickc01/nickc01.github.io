@@ -540,6 +540,87 @@ body {
     font-size: min(7vw,2rem);
 }
 
+#bottom-side {
+    min-height: 6rem;
+}
+
+#down-arrow {
+    height: 4rem;
+    display: block;
+    margin: auto;
+    opacity: 0.5;
+    filter: brightness(1);
+    transition: opacity 100ms, filter 100ms;
+}
+
+    #down-arrow:hover {
+        opacity: 1;
+        filter: brightness(4);
+    }
+
+#skills-section {
+    min-height: 100vh;
+}
+
+#icon-container {
+    min-height: 75vh;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+}
+
+    #icon-container > div {
+        height: 30em;
+        width: 30rem;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 5rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+        #icon-container > div:first-child {
+            transform: rotateZ(5deg);
+            margin-bottom: 3rem;
+            margin-right: 1rem;
+            margin-left: 1rem;
+        }
+
+        #icon-container > div:last-child {
+            align-self: flex-end;
+            justify-self: flex-end;
+            transform: rotateZ(-5deg);
+            margin-top: 3rem;
+            margin-left: 1rem;
+            margin-right: 1rem;
+        }
+
+
+        #icon-container > div > h2 {
+            color: var(--project-window-top-color);
+            padding: 3rem;
+        }
+
+        #icon-container > div:first-child > h2 {
+            transform: rotateZ(-5deg);
+        }
+
+        #icon-container > div:last-child > h2 {
+            transform: rotateZ(5deg);
+        }
+
+    #skills-section > h1 {
+        margin: auto;
+        padding-top: 6rem;
+        padding-bottom: 0rem;
+        text-align: center;
+        font-size: 5rem;
+        color: var(--project-window-top-color);
+    }
+
 #main-logo {
     max-height: min(30rem,50vw,calc(100vh - 15rem));
     /*padding: 0 6.25rem 1.25rem 6.25rem;*/

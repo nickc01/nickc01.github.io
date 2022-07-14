@@ -633,14 +633,12 @@ core.setupScrollBlackBackgrounds = function() {
 
     core.updateBackgrounds = () => {
         if (window.scrollY > core.fontSize * 1.75 || panelMenu.classList.contains("panel-hovered")) {
-            console.log("HIGHLIGHTING");
             if (!panelMenu.classList.contains("black-background")){
                 panelMenu.classList.add("black-background");
             }
         }
         else
         {
-            console.log("DEHIGHLIGHTING");
             if (panelMenu.classList.contains("black-background")){
                 panelMenu.classList.remove("black-background");
             }
@@ -651,12 +649,6 @@ core.setupScrollBlackBackgrounds = function() {
 
     window.addEventListener('resize', core.updateBackgrounds);
 }
-
-/*console.log("CSS Test = " + core.cssToColor("rgb(171, 221, 126)"));
-console.log("CSS Test 2 = " + core.cssToColor("rgba(46, 56, 58, 1.00)"));
-
-console.log("Color Test 1 = " + core.colorToCSS([255,0,0,127]));
-console.log("Color Test 2 = " + core.colorToCSS([128, 125, 0, 255]));*/
 
 
 //---------------------------------------------------
