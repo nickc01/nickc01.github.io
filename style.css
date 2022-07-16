@@ -672,18 +672,136 @@ body {
 
 #aboutme-section {
     overflow: hidden;
-    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - var(--header-height));
 }
 
-    #aboutme-section > h1,
-    #aboutme-section > h2,
-    #aboutme-section > h3 {
-        font-family: spaceGrotesk;
-        color: var(--upper-bg-color);
-        text-align: center;
-        margin-left: 10%;
-        margin-right: 10%;
+#aboutme-primary {
+    flex-grow: 1;
+    margin: auto;
+    padding: 2rem;
+    /*width: 40%;*/
+    max-width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: var(--main-fade-in-speed) fadeInFromBelowFirst;
+    animation-fill-mode: forwards;
+    font-size: 0.75rem;
+}
+
+@media only screen and (max-width: 62.5rem) {
+    #aboutme-section {
+        flex-direction: column;
     }
+
+    #aboutme-primary {
+        max-width: 80%;
+    }
+}
+
+    #aboutme-primary > h1 {
+        color: var(--project-window-top-color);
+    }
+
+#aboutme-secondary {
+    background-color: rgba(0, 0, 0, 0.7);
+    margin: 2rem;
+    /*width: 40%;*/
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    animation: var(--sub-fade-in-speed) fadeInFromBelowSecond;
+    animation-fill-mode: forwards;
+    /*max-width: calc(50% - 2rem);*/
+}
+
+#aboutme-secondary > div > h1 {
+    font-size: 2rem;
+    color: var(--project-window-top-color);
+}
+
+#aboutme-secondary > div {
+    margin: 0rem 2rem 2rem 2rem;
+    width: calc(100% - 4rem);
+}
+
+#aboutme-tools {
+    text-align: right;
+}
+
+.aboutme-icon-container {
+    background-color: rgba(55,55,55,0.5);
+    border-radius: 1.5rem;
+    padding: 1.25rem;
+}
+
+.aboutme-icon-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .aboutme-icon-list > div {
+        width: 4rem;
+        height: 4rem;
+        margin: 0.5rem;
+        position: relative;
+        transition: filter .15s;
+    }
+
+    .aboutme-icon-list > div > img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: filter .15s;
+    }
+
+.aboutme-icon-list > div > h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    font-size: 1.5rem;
+    transform: translate(-50%,-50%);
+    text-align: center;
+
+    opacity: 0;
+
+    transition: opacity .15s;
+}
+
+    #aboutme-tools > .aboutme-icon-list {
+        justify-content: flex-end;
+    }
+
+.aboutme-icon-list > div:hover {
+    filter: brightness(2);
+}
+
+.aboutme-icon-list > div:hover > img {
+    filter: blur(0.5rem);
+}
+
+    .aboutme-icon-list > div:hover > h1 {
+        opacity: 1;
+    }
+
+#aboutme-section > h1,
+#aboutme-section > h2,
+#aboutme-section > h3 {
+    font-family: spaceGrotesk;
+    color: var(--upper-bg-color);
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
     #aboutme-section > h1 {
         font-size: min(20vw,3.75rem);
@@ -1169,6 +1287,22 @@ body {
         max-width: 100%;
         margin-top: 0.9375rem;
         border-radius: 0.9375rem;
+    }
+
+#selected-project-tags {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+    #selected-project-tags > h1 {
+        color: var(--title-text-color);
+        background-color: var(--project-window-top-color-solid);
+        margin: 0.5rem;
+        font-size: 1.25rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
     }
 
 #contents-background {
