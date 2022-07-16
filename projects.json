@@ -12,6 +12,11 @@
                 "Using a pixel shader over the camera to tint everything blue",
                 "Using object pooling to spawn and destroy many projectiles rapidly"
             ],
+            "tags": [
+                "C#",
+                "Unity3D",
+                "HLSL Shaders"
+            ],
             "image": "screenshots/inferno-king-grimm.jpg",
             "video": "videos/inferno-king-grimm.m4v",
             "color": "#f32d49",
@@ -49,6 +54,11 @@
                 "Created a custom GPU shader for displaying the wave system",
                 "Using sine and cosine functions to generate waves",
                 "Created a custom script to generate mesh verticies at runtime"
+            ],
+            "tags": [
+                "C#",
+                "Unity3D",
+                "HLSL Shaders"
             ],
             "image": "screenshots/corrupted-kin.jpg",
             "video": "videos/corrupted-kin.m4v",
@@ -91,6 +101,13 @@
                 "Freezing time when the game is paused",
                 "Using the nav-mesh system to make the enemies walk towards the player and avoid obstacles"
             ],
+            "tags": [
+                "C#",
+                "Unity3D",
+                "NavMesh",
+                "Animations",
+                "Baked Lighting"
+            ],
             "image": "screenshots/badland-battles.jpg",
             "video": "videos/badland-battles.m4v",
             "color": "#ec964f",
@@ -123,6 +140,11 @@
             "skills": [
                 "Using Github Wiki to create guides on how to use the library",
                 "Using object oriented programming to create different types of powerups"
+            ],
+            "tags": [
+                "C#",
+                "Unity3D",
+                "Wiki Docs"
             ],
             "image": "screenshots/nitro.jpg",
             "video": "videos/nitro.m4v",
@@ -177,6 +199,10 @@
                     "label": "Explosion",
                     "link": "https://opengameart.org/content/explosion-3"
                 }
+            ],
+            "tags": [
+                "C#",
+                "Unity3D"
             ],
             "image": "screenshots/mega-muncher.png",
             "video": "videos/mega-muncher.m4v",
@@ -245,6 +271,10 @@
                     "label": "Origami Mommy Font",
                     "link": "https://www.1001fonts.com/origami-mommy-font.html"
                 }
+            ],
+            "tags": [
+                "C#",
+                "Unity3D"
             ],
             "image": "screenshots/ultimate-asteroid-tactical-control.jpg",
             "video": "videos/ultimate-asteroid-tactical-control.m4v",
@@ -348,6 +378,11 @@
                     "link": "https://opengameart.org/content/weapon-pack"
                 }
             ],
+            "tags": [
+                "C#",
+                "Unity3D",
+                "Multiplayer"
+            ],
             "image": "screenshots/uatanks.jpg",
             "video": "videos/uatanks.mp4",
             "color": "#ff4040",
@@ -380,7 +415,7 @@
                 "This goes back and forth until you or the enemy looses all of their programs"
             ],
             "skills": [
-                "Using the program <a href=\"https://www.mapeditor.org\">Tiled</a> to create each of the maps"
+                "Using the program <a href=\"https://www.mapeditor.org\" target=\"_blank\" rel=\"noopener noreferrer\">Tiled</a> to create each of the maps"
             ],
             "credits": [
                 {
@@ -403,6 +438,10 @@
                     "label": "Robots and Computers Sound Effects",
                     "link": "https://www.amazon.com/dp/B008OBLI2G/?coliid=I1LOPLWQYEV6U&colid=2LABLE1NWXHIC&psc=0&ref_=lv_ov_lig_dp_it"
                 }
+            ],
+            "tags": [
+                "C#",
+                "Unity3D"
             ],
             "image": "screenshots/hacktrons.png",
             "video": "videos/hacktrons.mp4",
@@ -467,6 +506,12 @@
                     "link": "https://www.1001fonts.com/squares-bold-font.html"
                 }
             ],
+            "tags": [
+                "C++",
+                "SFML",
+                "CMake",
+                "Multithreading"
+            ],
             "image": "screenshots/dungeon-escape.png",
             "video": "videos/dungeon-escape.m4v",
             "color": "#785669",
@@ -498,6 +543,10 @@
                 "Rendering a different sprite depending on an object's surroundings",
                 "Using Dijkstra's pathfinding algorithm to transport items from one place to another",
                 "Using a render texture to display the entire network via the Conduit Terminal"
+            ],
+            "tags": [
+                "Lua",
+                "Pathfinding"
             ],
             "image": "screenshots/smarttubes.png",
             "video": "videos/smarttubes.m4v",
@@ -533,11 +582,18 @@
                 "You can input an employee's salary, years worked, age, name, etc, and all this information will be stored in a list",
                 "Once added, you can calculate an employee's raise, bonuses, vacation days and several others",
                 "This list can then be saved to a file on your computer and loaded back up at any time",
-                "It also uses the <a href=\"https://thielj.github.io/MetroFramework/\">Metro UI Framework</a> to make it look fancy, and it even allows for custom themes"
+                "It also uses the <a href=\"https://thielj.github.io/MetroFramework/\" target=\"_blank\" rel=\"noopener noreferrer\">Metro UI Framework</a> to make it look fancy, and it even allows for custom themes"
             ],
             "skills": [
                 "Using WinForms and .Net Framework to design a custom Windows Application",
-                "Storing information to an external file and loading them back up again"
+                "Storing information to an external file and loading them back up again",
+                "Allowing the user to modify and delete elements in the employee list"
+            ],
+            "tags": [
+                "C#",
+                "Windows App",
+                "Metro UI",
+                "WinForms"
             ],
             "image": "screenshots/ceo-project.png",
             "video": "videos/ceo-project.m4v",
@@ -570,6 +626,12 @@
                 "Using DocFX to generate a website containing documentation and tutorials for the library",
                 "Using C# XML comments to document the behaviour of all public classes and methods in the library"
             ],
+            "tags": [
+                "C#",
+                "Unity 3D",
+                "DocFX",
+                "XML"
+            ],
             "image": "screenshots/weavercore.png",
             "video": "videos/weavercore.m4v",
             "color": "#6c6c6c",
@@ -586,6 +648,39 @@
                 {
                     "name": "Documentation",
                     "link": "https://nickc01.github.io/WeaverCore/"
+                }
+            ]
+        },
+        "portfolio": {
+            "name": "Portfolio Site",
+            "date": "7/15/2022",
+            "description": [
+                "My portfolio site is a website made with HTML, Javascript and CSS for hosting all of my projects",
+                "It was built completely from scratch, meaning it doesn't use templates or other frameworks like Wordpress or Bootstrap",
+                "It was a way of challenging myself, seeing how well I could make a site using the basic tools needed for web development",
+                "All the code used for controlling page navigation was built from scratch using plain Javascript"
+            ],
+            "skills": [
+                "Using plain Javascript, HTML and CSS to control the website",
+                "Using <a href=\"https://www.emailjs.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Email JS</a> to send contact emails"
+            ],
+            "tags": [
+                "HTML",
+                "CSS",
+                "JS"
+            ],
+            "image": "screenshots/portfolio-purple.png",
+            "video": "videos/portfolio.m4v",
+            "color": "#8a58b8",
+            "textColor": "#ffffff",
+            "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#341e48",
+            "titleColor": "#c4c4c4",
+            "titleWidth": 110,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/nickc01.github.io"
                 }
             ]
         }

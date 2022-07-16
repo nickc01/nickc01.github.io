@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
+    "\\js",
     "\\panels"
   ],
-  "SelectedNode": "\\panels\\projects.html",
+  "SelectedNode": "\\js\\projects-panel.js",
   "PreviewInSolutionExplorer": false
 }

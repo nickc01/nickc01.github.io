@@ -236,6 +236,20 @@ projectPanel.prepareProject = function (projectName) {
         }
         sourceElement.setAttribute('src', project.video);
     }
+
+    var tagsElement = document.getElementById("selected-project-tags");
+
+    if (project.tags != undefined) {
+        var tags = "";
+        for (var i = 0; i < project.tags.length; i++) {
+            tags += "<h1>" + project.tags[i] + "</h1>";
+        }
+
+        tagsElement.innerHTML = tags;
+    }
+    else {
+        tagsElement.innerHTML = "";
+    }
 }
 
 /**
