@@ -32,17 +32,23 @@
 
 @font-face {
     font-family: spaceGrotesk;
-    src: url(fonts/spacegrotesk-regular.ttf);
+    src: url(fonts/spacegrotesk-regular.woff2) format('woff2'), 
+        url(fonts/spacegrotesk-regular.woff) format('woff'), 
+        url(fonts/spacegrotesk-regular.ttf) format('truetype');
 }
 
 @font-face {
     font-family: spaceGrotesk-Bold;
-    src: url(fonts/spacegrotesk-bold.ttf);
+    src: url(fonts/spacegrotesk-bold.woff2) format('woff2'), 
+        url(fonts/spacegrotesk-bold.woff) format('woff'), 
+        url(fonts/spacegrotesk-bold.ttf) format('truetype');
 }
 
 @font-face {
     font-family: spaceGrotesk-SemiBold;
-    src: url(fonts/spacegrotesk-semibold.ttf);
+    src: url(fonts/spacegrotesk-semibold.woff2) format('woff2'), 
+        url(fonts/spacegrotesk-semibold.woff) format('woff'), 
+        url(fonts/spacegrotesk-semibold.ttf) format('truetype');
 }
 
 @keyframes fadeIn {
