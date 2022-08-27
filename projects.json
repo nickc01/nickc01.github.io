@@ -599,10 +599,10 @@
             ]
         },
         "ceo-project": {
-            "name": "Startup CEO Project",
+            "name": "Benefits Calculator",
             "date": "4/25/2020",
             "description": [
-                "Startup CEO Project is a Windows Application that allows you to keep track of a list of employees at a company and perform calculations on each employee",
+                "The Employee Benefits Calculator is a Windows Application that allows you to keep track of a list of employees at a company and perform calculations on each employee",
                 "You can input an employee's salary, years worked, age, name, etc, and all this information will be stored in a list",
                 "Once added, you can calculate an employee's raise, bonuses, vacation days and several others",
                 "This list can then be saved to a file on your computer and loaded back up at any time",

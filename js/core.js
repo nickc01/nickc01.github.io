@@ -150,10 +150,40 @@ core.loadDefaultPanel = function () {
                 break;
             }
         }
-
-        //If we reached this point, then switch to the home panel by default
         if (!foundPanel) {
-            core.switchToPanel("home", false);
+            loadingInterval = setInterval(() => {
+                if (projectPanel !== undefined && projectPanel.projects !== undefined) {
+                    var loadedProject = false;
+                    for (var p in projectPanel.projects) {
+                        if (projectPanel.projects.hasOwnProperty(p)) {
+                            if (core.urlParams.has(p)) {
+                                clearInterval(loadingInterval);
+                                loadingInterval = 0;
+
+                                core.switchToPanel("projects", false).then(() => {
+                                    //Repeat until the projects have been loaded
+                                    loadingInterval = setInterval(() => {
+                                        if (projectPanel !== undefined && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded) {
+                                            projectPanel.openProject(p);
+                                            clearInterval(loadingInterval);
+                                            loadingInterval = 0;
+                                        }
+                                    }, 100);
+                                });
+                                loadedProject = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    //If we reached this point, then switch to the home panel by default
+                    if (!loadedProject) {
+                        clearInterval(loadingInterval);
+                        loadingInterval = 0;
+                        core.switchToPanel("home", false);
+                    }
+                }
+            }, 100);
         }
     }
 };

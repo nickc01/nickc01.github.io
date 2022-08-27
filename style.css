@@ -511,6 +511,10 @@ body {
     height: calc(100vh - var(--header-height));
 }*/
 
+#home-section {
+    overflow-y: hidden;
+}
+
 #landing-page {
     display: flex;
     justify-content: space-evenly;
