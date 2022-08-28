@@ -278,7 +278,7 @@ projectPanel.closeProject = function() {
     projectPanel.projectOpen = false;
     projectPanel.openedProject = null;
 
-    document.documentElement.style.overflowY = "scroll";
+    document.documentElement.style.overflowY = "auto";
 
     projectPanel.refreshColors();
 

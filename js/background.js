@@ -412,7 +412,8 @@ function setupGlContext() {
 	//ErrorCheck();
 }
 
-window.onload = onWindowLoad;
+//window.onload = onWindowLoad;
+core.addToEvent(core.events.onWindowLoad, onWindowLoad);
 
 core.addToEvent(core.events.updateEvent, update);
 

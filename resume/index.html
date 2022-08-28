@@ -462,6 +462,37 @@
             height: 0.15rem;
         }
 
+        #left-side > h2 {
+            color: var(--green-color);
+            padding: 0rem 0.5rem 0rem 0.5rem;
+            margin-top: 0.0755rem;
+            margin-bottom: 0.0755rem;
+            font-size: 1rem;
+        }
+
+        .skills-section {
+            background-color: var(--green-color);
+            padding: 0.25rem 0 0 0;
+            margin: 0 0.5rem 0 0.5rem;
+        }
+
+        .skills-contents {
+            background-color: var(--side-color);
+        }
+
+        .skills-contents > ul {
+            margin: 0;
+            padding-left: 1.25rem;
+            padding-bottom: 2rem;
+        }
+
+        .skills-contents > ul > li {
+            font-size: 0.9rem;
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+            color: var(--green-color);
+        }
+
 	</style>
 </head>
 
@@ -483,9 +514,36 @@
         </div>
     </div>
 	<div id="middle-section">
-		<div id="left-side">
-
-		</div>
+        <div id="left-side">
+            <h2>Skills</h2>
+            <div class="skills-section">
+                <div class="skills-contents">
+                    <ul>
+                        <li>C#</li>
+                        <li>C++</li>
+                        <li>HTML</li>
+                        <li>JS</li>
+                        <li>Lua</li>
+                        <li>CSS</li>
+                        <li>HLSL Shaders</li>
+                    </ul>
+                </div>
+            </div>
+            <h2>Tools & Frameworks</h2>
+            <div class="skills-section">
+                <div class="skills-contents">
+                    <ul>
+                        <li>.NET Core</li>
+                        <li>Git</li>
+                        <li>SFML</li>
+                        <li>Unity3D</li>
+                        <li>Visual Studio</li>
+                        <li>VS Code</li>
+                        <li>CMake</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div id="right-side">
             <div id="summary-section" class="white-section section">
                 <h1 class="section-title">Summary</h1>
@@ -509,7 +567,7 @@
                             <img src="../screenshots/corrupted-kin.jpg" />
                         </div>
                         <h2>
-                            Corrupted Kin is Hollow Knight mod built in C# that adds a revamped bossfight. It uses a 2D Wave System created using HLSL shaders and a dynamically updating mesh.
+                            Corrupted Kin is a Hollow Knight mod built in C# that adds a revamped bossfight. It uses a 2D Wave System created using HLSL shaders and a dynamically updating mesh.
                         </h2>
                         <h3>
                             <a target="_blank" rel="noopener noreferrer" href="https://nickc01.github.io?corrupted-kin">nickc01.github.io?corrupted-kin</a>
@@ -523,13 +581,13 @@
                         <div class="picture-area">
                             <div class="project-title inline-project-text">Benefits Calculator</div>
                             <div class="project-date inline-project-text">4/25/2020</div>
-                            <img src="benefits-calculator-resume.png" />
+                            <img src="../screenshots/benefits-calculator-resume.png" />
                         </div>
                         <h2>
-                            This is a program that allows you to input employee info, calculate their benefits, and save everything to a file. It uses WinForms and <a target="_blank" rel="noopener noreferrer" href="http://thielj.github.io/MetroFramework/">Metro Framework</a> in C# for the GUI.
+                            Benefits Calculator allows you to input employee info, calculate their benefits, and save everything to a file. It uses WinForms and <a target="_blank" rel="noopener noreferrer" href="http://thielj.github.io/MetroFramework/">Metro Framework</a> in C# for the GUI.
                         </h2>
                         <h3>
-                            <a target="_blank" rel="noopener noreferrer" href="https://nickc01.github.io?dungeon-escape">nickc01.github.io?ceo-project</a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://nickc01.github.io?ceo-project">nickc01.github.io?ceo-project</a>
                         </h3>
                         <h3>
                             <a target="_blank" rel="noopener noreferrer" href="https://github.com/nickc01/Startup-CEO-Project">github.com/nickc01/Startup-CEO-Project</a>
@@ -552,20 +610,6 @@
                             <a target="_blank" rel="noopener noreferrer" href="https://github.com/nickc01/Dungeon-Escape">github.com/nickc01/Dungeon-Escape</a>
                         </h3>
                     </div>
-
-                    <!--<div id="benefits-calculator" class="project">
-        <img src="../screenshots/corrupted-kin.jpg" />
-        <h2>
-            This is a test section Version 2
-        </h2>
-    </div>
-
-    <div id="dungeon-escape" class="project">
-        <img src="../screenshots/corrupted-kin.jpg" />
-        <h2>
-            This is a test section Version 3
-        </h2>
-    </div>-->
                 </div>
             </div>
             <div id="work-experience-section" class="white-section section">
@@ -575,9 +619,9 @@
                         <h1 class="experience-title">Utility Clerk / Bagger<br />Strack & Van Til Grocery Store</h1>
                         <h1 class="experience-date">Jan 2018 – Present<br />Munster, IN</h1>
                         <ul class="experience-description">
-                            <li>Helped bag and carry people's groceries</li>
-                            <li>Replaced trash cans around the store</li>
-                            <li>Cleaned and sweeped the floors</li>
+                            <li>Bag and carry people's groceries</li>
+                            <li>Replace trash cans around the store</li>
+                            <li>Clean and sweep the floors</li>
                             <li>Help customers find what they're looking for</li>
                         </ul>
                     </div>
@@ -586,7 +630,7 @@
                         <h1 class="experience-title">Summer Assistant<br />Homewood-Flossmoor High School</h1>
                         <h1 class="experience-date">June 2017 – August 2017<br />Homewood, IL</h1>
                         <ul class="experience-description">
-                            <li>Used Clonezilla on old machines</li>
+                            <li>Installed custom network cables</li>
                             <li>Configured and setup chromebooks & printers</li>
                             <li>Disassembled and reassembled computers</li>
                             <li>Transported equipment between buildings</li>

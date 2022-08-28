@@ -11,21 +11,24 @@ function preloadImages(images) {
     return images;
 }
 
-window.onload = function () {
+core.addToEvent(core.events.onWindowLoad, () => {
     if (core.selectedPanel == null || (core.selectedPanel.name == "aboutme" || core.selectedPanel.name == "home")) {
-        preloadImages([
-            "screenshots/corrupted-kin.jpg",
-            "screenshots/uatanks.jpg",
-            "screenshots/dungeon-escape.png",
-            "screenshots/ceo-project.png",
-            "screenshots/nitro.jpg",
-            "screenshots/badland-battles.jpg",
-            "screenshots/inferno-king-grimm.jpg",
-            "screenshots/weavercore.jpg",
-            "screenshots/mega-muncher.png",
-            "screenshots/hacktrons.png",
-            "screenshots/ultimate-asteroid-tactical-control.jpg",
-            "screenshots/smarttubes.png"
-        ]);
+        setTimeout(() => {
+            preloadImages([
+                "screenshots/inferno-king-grimm.jpg",
+                "screenshots/corrupted-kin.jpg",
+                "screenshots/badland-battles.jpg",
+                "screenshots/nitro.jpg",
+                "screenshots/mega-muncher.png",
+                "screenshots/ultimate-asteroid-tactical-control.jpg",
+                "screenshots/uatanks.jpg",
+                "screenshots/hacktrons.png",
+                "screenshots/dungeon-escape.png",
+                "screenshots/smarttubes.png",
+                "screenshots/ceo-project.png",
+                "screenshots/weavercore.png",
+                "screenshots/portfolio-purple.png"
+            ]);
+        }, 1000);
     }
-}
+});

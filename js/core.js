@@ -113,6 +113,9 @@ core.events.updateEvent = new Array(0);
 /** @type {Array.<(newState: number) => void>} */
 core.events.panelStateChangeEvent = new Array(0);
 
+/** @type {Array.<() => void>} */
+core.events.onWindowLoad = new Array(0);
+
 
 
 
@@ -133,7 +136,7 @@ core.loadDefaultPanel = function () {
         core.switchToPanel("projects", false).then(() => {
             //Repeat until the projects have been loaded
             loadingInterval = setInterval(() => {
-                if (projectPanel !== undefined && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded) {
+                if (projectPanel && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded) {
                     projectPanel.openProject(project);
                     clearInterval(loadingInterval);
                     loadingInterval = 0;
@@ -152,7 +155,7 @@ core.loadDefaultPanel = function () {
         }
         if (!foundPanel) {
             loadingInterval = setInterval(() => {
-                if (projectPanel !== undefined && projectPanel.projects !== undefined) {
+                if (projectPanel && projectPanel.projects) {
                     var loadedProject = false;
                     for (var p in projectPanel.projects) {
                         if (projectPanel.projects.hasOwnProperty(p)) {
@@ -718,4 +721,11 @@ function Update_Loop(time) {
 
     window.requestAnimationFrame(Update_Loop);
 }
+
+
+
+window.onload = () => {
+    core.callEvent(core.events.onWindowLoad);
+}
+
 console.log("Core Loaded");

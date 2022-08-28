@@ -5,7 +5,7 @@
     --project-window-bottom-color: rgb(20, 40, 10);
     --perlin-starting-color: rgb(20, 40, 10);
     --project-title-font-size: 4vw;
-    --project-background-image: url("screenshots/corrupted-kin.jpg");
+    --project-background-image: url("");
     --project-text-color: rgb(171, 221, 126);
     --title-text-color: rgb(171, 221, 126);
     --project-window-bottom-color-solid: rgb(46, 56, 58);
@@ -231,6 +231,22 @@ html, body {
 body {
     /*background-color: rgb(20, 40, 10);*/
     background-color: var(--perlin-starting-color);
+}
+
+    body::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 0.5rem;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    body::-webkit-scrollbar-thumb {
+        background-color: rgba(128, 128, 128, 1);
+        border-radius: 1rem;
+    }
+
+html, #description, #contents {
+    scrollbar-color: rgba(128, 128, 128, 1) rgba(0, 0, 0, 0.7);
+    scrollbar-width: thin;
 }
 
 #backgroundCanvas {
@@ -1240,6 +1256,10 @@ body {
     z-index: 5;
 }
 
+#contents {
+    scrollbar-color: var(--project-window-top-color) var(--project-window-bottom-color);
+}
+
     #description > a {
         color: var(--project-window-top-color);
     }
@@ -1248,15 +1268,15 @@ body {
             color: var(--project-text-color);
         }
 
-    #description::-webkit-scrollbar {
-        width: 0.5rem;
-        height: 0.5rem;
-        background-color: var(--project-window-bottom-color);
-    }
+#description::-webkit-scrollbar, #contents::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: var(--project-window-bottom-color);
+}
 
-    #description::-webkit-scrollbar-thumb {
-        background: var(--project-window-top-color);
-    }
+#description::-webkit-scrollbar-thumb, #contents::-webkit-scrollbar-thumb {
+    background: var(--project-window-top-color);
+}
 
 #description-links {
     margin-top: 1.25rem;
