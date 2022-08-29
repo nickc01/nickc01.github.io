@@ -1265,6 +1265,11 @@ html, #description, #contents {
     z-index: 5;
 }
 
+#description > h3, #description > h2, #description > h1 {
+    font-family: spaceGrotesk-SemiBold;
+    font-weight: 500;
+}
+
 #contents {
     scrollbar-color: var(--project-window-top-color) var(--project-window-bottom-color);
 }
@@ -1342,6 +1347,7 @@ html, #description, #contents {
         font-size: 1.25rem;
         padding: 0.5rem;
         border-radius: 0.5rem;
+        font-weight: 500;
     }
 
 #contents-background {
