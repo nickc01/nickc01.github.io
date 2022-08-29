@@ -18,6 +18,7 @@
                 "HLSL Shaders"
             ],
             "image": "screenshots/inferno-king-grimm.jpg",
+			"imageAVIF": "screenshots/avif/inferno-king-grimm.avif",
             "video": "videos/inferno-king-grimm.m4v",
             "color": "#f32d49",
             "textColor": "#f32d49",
@@ -61,6 +62,7 @@
                 "HLSL Shaders"
             ],
             "image": "screenshots/corrupted-kin.jpg",
+			"imageAVIF": "screenshots/avif/corrupted-kin.avif",
             "video": "videos/corrupted-kin.m4v",
             "color": "#e68a24",
             "textColor": "#d28e3d",
@@ -109,6 +111,7 @@
                 "Baked Lighting"
             ],
             "image": "screenshots/badland-battles.jpg",
+			"imageAVIF": "screenshots/avif/badland-battles.avif",
             "video": "videos/badland-battles.m4v",
             "color": "#ec964f",
             "textColor": "#ffbc78",
@@ -151,6 +154,7 @@
                 "Wiki Docs"
             ],
             "image": "screenshots/nitro.jpg",
+			"imageAVIF": "screenshots/avif/nitro.avif",
             "video": "videos/nitro.m4v",
             "color": "#3881ff",
             "textColor": "#ffffff",
@@ -213,6 +217,7 @@
                 "Unity3D"
             ],
             "image": "screenshots/mega-muncher.png",
+			"imageAVIF": "screenshots/avif/mega-muncher.avif",
             "video": "videos/mega-muncher.m4v",
             "color": "#777777",
             "textColor": "#ffffff",
@@ -289,6 +294,7 @@
                 "Unity3D"
             ],
             "image": "screenshots/ultimate-asteroid-tactical-control.jpg",
+			"imageAVIF": "screenshots/avif/ultimate-asteroid-tactical-control.avif",
             "video": "videos/ultimate-asteroid-tactical-control.m4v",
             "color": "#4e42f5",
             "textColor": "#c7a1ff",
@@ -400,6 +406,7 @@
                 "Multiplayer"
             ],
             "image": "screenshots/uatanks.jpg",
+			"imageAVIF": "screenshots/avif/uatanks.avif",
             "video": "videos/uatanks.mp4",
             "color": "#ff4040",
             "textColor": "#ffffff",
@@ -464,6 +471,7 @@
                 "Unity3D"
             ],
             "image": "screenshots/hacktrons.png",
+			"imageAVIF": "screenshots/avif/hacktrons.avif",
             "video": "videos/hacktrons.mp4",
             "color": "#3464de",
             "textColor": "#5c8aff",
@@ -537,6 +545,7 @@
                 "Multithreading"
             ],
             "image": "screenshots/dungeon-escape.png",
+			"imageAVIF": "screenshots/avif/dungeon-escape.avif",
             "video": "videos/dungeon-escape.m4v",
             "color": "#785669",
             "textColor": "#cfc6b8",
@@ -573,6 +582,7 @@
                 "Pathfinding"
             ],
             "image": "screenshots/smarttubes.png",
+			"imageAVIF": "screenshots/avif/smarttubes.avif",
             "video": "videos/smarttubes.m4v",
             "color": "#ff4040",
             "textColor": "#ffffff",
@@ -620,6 +630,7 @@
                 "WinForms"
             ],
             "image": "screenshots/ceo-project.png",
+			"imageAVIF": "screenshots/avif/ceo-project.avif",
             "video": "videos/ceo-project.m4v",
             "color": "#d11141",
             "textColor": "#ffffff",
@@ -657,6 +668,7 @@
                 "XML"
             ],
             "image": "screenshots/weavercore.png",
+			"imageAVIF": "screenshots/avif/weavercore.avif",
             "video": "videos/weavercore.m4v",
             "color": "#6c6c6c",
             "textColor": "#ffffff",
@@ -694,6 +706,7 @@
                 "JS"
             ],
             "image": "screenshots/portfolio-purple.png",
+			"imageAVIF": "screenshots/avif/portfolio-purple.avif",
             "video": "videos/portfolio.m4v",
             "color": "#8a58b8",
             "textColor": "#ffffff",

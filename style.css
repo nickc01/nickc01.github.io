@@ -37,12 +37,13 @@
         url(fonts/spacegrotesk-regular.ttf) format('truetype');
 }
 
-@font-face {
+/*@font-face {
     font-family: spaceGrotesk-Bold;
-    src: url(fonts/spacegrotesk-bold.woff2) format('woff2'), 
-        url(fonts/spacegrotesk-bold.woff) format('woff'), 
-        url(fonts/spacegrotesk-bold.ttf) format('truetype');
-}
+    font-weight: 900;
+    src: url(fonts/spacegrotesk-regular.woff2) format('woff2'), 
+        url(fonts/spacegrotesk-regular.woff) format('woff'), 
+        url(fonts/spacegrotesk-regular.ttf) format('truetype');
+}*/
 
 @font-face {
     font-family: spaceGrotesk-SemiBold;
@@ -930,7 +931,8 @@ html, #description, #contents {
     outline: none;
     border-radius: 0.75rem;
     border: 0 solid var(--project-window-bottom-color);
-    font-family: spaceGrotesk-Bold;
+    font-family: spaceGrotesk-SemiBold;
+    font-weight: 400;
     font-size: 1.25rem;
     color: var(--project-window-bottom-color);
     background-color: var(--call-to-action-color);
@@ -1084,18 +1086,25 @@ html, #description, #contents {
     transform: scale(1.05,1.05);
 }
 
-#projects-container > div > div > img {
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-    color: white;
-    transition: filter 200ms ease-in-out;
-    filter: blur(0px) brightness(100%);
-}
+    #projects-container > div > div > picture {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        color: white;
+        transition: filter 200ms ease-in-out;
+        filter: blur(0px) brightness(100%);
+    }
 
-#projects-container > div > div:hover > img {
-    filter: blur(6px) brightness(175%);
-}
+        #projects-container > div > div > picture > img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            color: white;
+        }
+
+    #projects-container > div > div:hover > picture {
+        filter: blur(6px) brightness(175%);
+    }
 
 #projects-container > div > div > div {
     font-size: 2.5rem;

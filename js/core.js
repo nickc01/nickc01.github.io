@@ -91,6 +91,8 @@ core.fontSize = parseFloat(window.getComputedStyle(document.body).getPropertyVal
 
 core.onMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
+core.AVIFSupported = null;
+
 
 //---------------------------------------------------
 //-----------------------Events----------------------
@@ -683,6 +685,43 @@ core.setupScrollBlackBackgrounds = function() {
     window.addEventListener('resize', core.updateBackgrounds);
 }
 
+/** @type {Array.<(supported: boolean) => void>} */
+var onAvifSupport = new Array(0);
+
+/**
+ * 
+ * @param {(supported: boolean) => void} event
+ */
+core.checkAVIFSupport = function (event) {
+    if (core.AVIFSupported === null) {
+        onAvifSupport.push(event);
+    }
+    else {
+        event(core.AVIFSupported);
+    }
+}
+
+function verifyAVIF() {
+    new Promise(() => {
+        const image = new Image();
+        image.onerror = () => {
+            core.AVIFSupported = false;
+            for (var i = 0; i < onAvifSupport.length; i++) {
+                onAvifSupport[i](core.AVIFSupported);
+            }
+        }
+        image.onload = () => {
+            core.AVIFSupported = true;
+            for (var i = 0; i < onAvifSupport.length; i++) {
+                onAvifSupport[i](core.AVIFSupported);
+            }
+        }
+                image.src =
+                "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=";
+    }).catch(() => false);
+}
+
+verifyAVIF();
 
 //---------------------------------------------------
 //------------------Initialization-------------------

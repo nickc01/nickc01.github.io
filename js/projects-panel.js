@@ -177,7 +177,7 @@ projectPanel.prepareProject = function (projectName) {
         root.style.setProperty('--title-text-color', project.textColor);
     }
 
-    root.style.setProperty('--project-background-image', "url(" + project.image + ")");
+    root.style.setProperty('--project-background-image', "url(" + (core.AVIFSupported ? project.imageAVIF : project.image) + ")");
     root.style.setProperty('--project-text-color', project.textColor);
 
     var bottomColor = core.cssToColor(project.backgroundColor);
