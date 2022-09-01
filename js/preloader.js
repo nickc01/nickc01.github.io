@@ -4,19 +4,6 @@ function preloadImage(url) {
     return img;
 }
 
-/*function preloadImages(images, useAvif, extension) {
-    for (var i = 0; i < images.length; i++) {
-        if (useAvif) {
-            images[i] = preloadImage("screenshots/avif/" + images[i] + ".avif");
-        }
-        else {
-            images[i] = preloadImage("screenshots/" + images[i] + "." + extension);
-        }
-        //images[i] = preloadImage(images[i]);
-    }
-    return images;
-}*/
-
 core.addToEvent(core.events.onWindowLoad, () => {
     if (core.selectedPanel == null || (core.selectedPanel.name == "aboutme" || core.selectedPanel.name == "home")) {
         var intervalID = null;

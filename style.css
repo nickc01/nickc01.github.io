@@ -658,13 +658,13 @@ html, #description, #contents {
     flex-shrink: 100;
 }
 
-#get-in-contact {
-    font-size: 1.5rem;
+.important-button {
+    font-size: 1.25rem;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    margin: 4rem;
+    margin: 2rem;
     border-radius: 0.8rem;
     opacity: 1;
     color: var(--project-window-bottom-color);
@@ -672,7 +672,7 @@ html, #description, #contents {
     transition: color 200ms, background-color 200ms;
 }
 
-    #get-in-contact:hover {
+    .important-button:hover {
         background-color: white;
         color: var(--project-window-bottom-color);
     }
@@ -1328,7 +1328,9 @@ html, #description, #contents {
 }
 
     #video-area > video {
-        max-width: 100%;
+        width: 100%;
+        background-color: black;
+        max-height: 75%;
         margin-top: 0.9375rem;
         border-radius: 0.9375rem;
     }
@@ -1432,7 +1434,7 @@ html, #description, #contents {
         width: calc(100% - 1.25rem);
         padding-left: 0.625rem;
         padding-right: 0.625rem;
-        padding-bottom: 0.625rem;
+        margin-bottom: calc(-7vw + 2.6rem);
     }
 
     #contents-background {
