@@ -142,16 +142,17 @@
                 "Nitro is a library that makes it easier to create custom powerups for your game",
                 "Whether it be a racing game, an RPG game, or any game you want",
                 "It also has support for having combinable powerups, where two or more different powerups can have their abilities combined for a more powerful effect",
-                "The download link below contains a demo of how combinable powerups can be utilized"
+                "The download link below contains a small racing game demo that demonstrates Nitro's Combinable Powerup System"
             ],
             "skills": [
-                "Using Github Wiki to create guides on how to use the library",
-                "Using object oriented programming to create different types of powerups"
+                "Using DocFX to create guides on how to use the library",
+                "Using object oriented programming to create different types of powerups",
+                "Using delegates to chain powerups together and combine their effects"
             ],
             "tags": [
                 "C#",
                 "Unity3D",
-                "Wiki Docs"
+                "DocFX"
             ],
             "image": "screenshots/nitro.jpg",
             "imageAVIF": "screenshots/avif/nitro.avif",
@@ -167,12 +168,8 @@
                     "link": "https://github.com/nickc01/Nitro"
                 },
                 {
-                    "name": "Play",
-                    "link": "https://nickc01.github.io/Online-Games/Nitro/"
-                },
-                {
-                    "name": "Wiki",
-                    "link": "https://github.com/nickc01/Nitro/wiki"
+                    "name": "Docs",
+                    "link": "https://nickc01.github.io/Nitro/docs/"
                 },
                 {
                     "name": "Download",
