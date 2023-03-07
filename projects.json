@@ -762,6 +762,48 @@
                     "link": "https://www.teamntstudios.com/"
                 }
             ]
+        },
+
+
+        "europa2109": {
+            "name": "Europa 2109",
+            "date": "11/13/2022",
+            "description": [
+                "Europa 2109 is a small game where you are sent to the moon Europa to explore the moon's underwater cave systems",
+                "The goal of the game is to dig around and collect 5 red crystals to win the game",
+                "You need to collect the crystals before running out of energy or loosing all of your health by bumping into walls",
+                "The game was going to have a much larger scope, like a giant monster lurking underneath, but I didn't have enough time to include them"
+            ],
+            "skills": [
+                "Using a marching cubes algorithm to generate polygonal terrain. This is based off a tutorial made by <a href=\"https://www.mapeditor.org\" target=\"_blank\" rel=\"noopener noreferrer\">Sebastian Lague</a>",
+                "Using a 3D chunk system to only render terrain that's near the player, and to allow for terrain of nearly infinite size.",
+                "Using multithreading via the C# Parallel namespace, async Tasks, and ComputeShaders to speed up the terrain generation process and the digging"
+            ],
+            "tags": [
+                "C#",
+                "Unity3D",
+                "Multithreading",
+                "Computer Shaders"
+            ],
+            "image": "screenshots/europa2109.jpg",
+            "imageAVIF": "screenshots/avif/europa2109.avif",
+            "video": "videos/europa2109.mp4",
+            "color": "#3469ae",
+            "textColor": "#ffffff",
+            "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#1e3148",
+            "titleColor": "#b6c4d1",
+            "titleWidth": 135,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Europa-2109"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/Europa-2109/releases/latest/download/Europa2109.Windows.Build.zip"
+                }
+            ]
         }
     }
 }
