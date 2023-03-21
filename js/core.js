@@ -2,64 +2,15 @@
 
 //This file contains many common and core components for the website to function
 
-/*if (window.console) console = {
-    log: function () {
-        var output = '',
-            console = document.getElementById('console');
-        for (var i = 0; i < arguments.length; i++) {
-            output += arguments[i] + ' ';
-        }
-        console.innerText += output + "\n";
-    },
-    error: function () {
-        var output = '',
-            console = document.getElementById('console');
-        for (var i = 0; i < arguments.length; i++) {
-            output += arguments[i] + ' ';
-        }
-        console.innerText += output + "\n";
-    },
-    warn: function () {
-        var output = '',
-            console = document.getElementById('console');
-        for (var i = 0; i < arguments.length; i++) {
-            output += arguments[i] + ' ';
-        }
-        console.innerText += output + "\n";
-    },
-    debug: function () {
-        var output = '',
-            console = document.getElementById('console');
-        for (var i = 0; i < arguments.length; i++) {
-            output += arguments[i] + ' ';
-        }
-        console.innerText += output + "\n";
-    },
-    info: function () {
-        var output = '',
-            console = document.getElementById('console');
-        for (var i = 0; i < arguments.length; i++) {
-            output += arguments[i] + ' ';
-        }
-        console.innerText += output + "\n";
-    },
-    exception: function () {
-        var output = '',
-            console = document.getElementById('console');
-        for (var i = 0; i < arguments.length; i++) {
-            output += arguments[i] + ' ';
-        }
-        console.innerText += output + "\n";
-    }
-};
-console.log("Console Working");*/
-
 var core = {};
 
 //---------------------------------------------------
 //-----------------------Enums-----------------------
 //---------------------------------------------------
 
+/**
+ * A enum of possible states a panel can be in
+ */
 core.PanelState = {
     Empty: 0,
     Unloading: 1,
@@ -75,14 +26,21 @@ core.PanelState = {
 core.root = document.querySelector(':root');
 core.headerBar = document.getElementById("panels");
 
-/** @type {Array.<{button: Element, name: string, title: string, buttonID: string}>} */
+/** 
+ * Stores a list of all the available panels
+ * @type {Array.<{button: Element, name: string, title: string, buttonID: string}>} */
 core.panels = [];
 
-/** @type {{button: Element, name: string, title: string, buttonID: string}} */
+/** 
+ * Contains the currently loaded panel, or null if no panel is currently loaded
+ * @type {{button: Element, name: string, title: string, buttonID: string} | null} */
 core.selectedPanel = null;
 
 core.urlParams = new URLSearchParams(window.location.search);
 
+/**
+ * How fast a panel should fade out when a panel button is clicked
+ */
 core.fadeOutSpeed = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--fade-speed').slice(0, -2));
 
 core.currentPanelState = core.PanelState.Empty;
@@ -100,22 +58,35 @@ core.AVIFSupported = null;
 
 core.events = {};
 
-/** @type {Array.<(panel: {button: Element, name: string, title: string, buttonID: string}) => void>} */
+/** 
+ * An event called whenever a panel button at the top of the screen is clicked
+ * @type {Array.<(panel: {button: Element, name: string, title: string, buttonID: string}) => void>} */
 core.events.onPanelButtonClickedEvent = new Array(0);
 
-/** @type {Array.<(panel: {button: Element, name: string, title: string, buttonID: string}) => void>} */
+/** 
+ * An event called whenever a panel unloads
+ * @type {Array.<(panel: {button: Element, name: string, title: string, buttonID: string}) => void>} */
 core.events.onPanelLeaveEvent = new Array(0);
 
-/** @type {Array.<(panel: {button: Element, name: string, title: string, buttonID: string}) => void>} */
+/** 
+ * An event called whenever a new panel loads in
+ * @type {Array.<(panel: {button: Element, name: string, title: string, buttonID: string}) => void>} */
 core.events.onEnterPanelEvent = new Array(0);
 
-/** @type {Array.<(dt: number) => void>} */
+/**
+ * An event called once every frame 
+ * @type {Array.<(dt: number) => void>} */
 core.events.updateEvent = new Array(0);
 
-/** @type {Array.<(newState: number) => void>} */
+/** 
+ * An event called whenever the current panel state changes.
+ * @type {Array.<(newState: number) => void>}
+ * @see core.PanelState */
 core.events.panelStateChangeEvent = new Array(0);
 
-/** @type {Array.<() => void>} */
+/** 
+ * An event called when the window is fully loaded
+ * @type {Array.<() => void>} */
 core.events.onWindowLoad = new Array(0);
 
 
@@ -126,69 +97,78 @@ core.events.onWindowLoad = new Array(0);
 //---------------------Functions---------------------
 //---------------------------------------------------
 
-var loadingInterval = 0;
+/**
+ * Waits until conditionFunc returns true. When it does, it will call afterFunc
+ * @param {() => boolean} conditionFunc The condition function to test
+ * @param {() => void} afterFunc The function to call when conditionFunc returns true
+ */
+function waitUntil(conditionFunc, afterFunc)
+{
+    var interval = 0;
+    interval = setInterval(() => {
+        if (conditionFunc()) {
+            clearInterval(interval);
+            afterFunc();
+        }
+    });
+}
 
+/**
+ * Loads the default panel upon loading the page, which may depend on what is in the URL
+ */
 core.loadDefaultPanel = function () {
-    if (loadingInterval != 0) {
-        clearInterval(loadingInterval);
-        loadingInterval = 0;
-    }
+    //If the url has "?project" in it. Then attempt to load up a project in the project panel
     if (core.urlParams.has("project") && core.urlParams.get("project")) {
         var project = core.urlParams.get("project");
+        //Switch to the "Projects" panel
         core.switchToPanel("projects", false).then(() => {
-            //Repeat until the projects have been loaded
-            loadingInterval = setInterval(() => {
-                if (projectPanel && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded) {
-                    projectPanel.openProject(project);
-                    clearInterval(loadingInterval);
-                    loadingInterval = 0;
-                }
-            }, 100);
+            //Wait until the projects-panel.js script has loaded and the projects panel has loaded
+            waitUntil(() => projectPanel && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded,() => {
+                //Open up the project and display it in a window
+                projectPanel.openProject(project);
+            });
         });
     }
     else {
         var foundPanel = false;
+        //Loop through all the possible panels
         for (var i = 0; i < core.panels.length; i++) {
+            //If "?PANEL_NAME" is included in the URL
             if (core.urlParams.has(core.panels[i].name)) {
+                //Switch to that panel and break out of the loop
                 core.switchToPanel(core.panels[i].name, false);
                 foundPanel = true;
                 break;
             }
         }
+        //If no panel was found
         if (!foundPanel) {
-            loadingInterval = setInterval(() => {
-                if (projectPanel && projectPanel.projects) {
-                    var loadedProject = false;
-                    for (var p in projectPanel.projects) {
-                        if (projectPanel.projects.hasOwnProperty(p)) {
-                            if (core.urlParams.has(p)) {
-                                clearInterval(loadingInterval);
-                                loadingInterval = 0;
-
-                                core.switchToPanel("projects", false).then(() => {
-                                    //Repeat until the projects have been loaded
-                                    loadingInterval = setInterval(() => {
-                                        if (projectPanel !== undefined && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded) {
-                                            projectPanel.openProject(p);
-                                            clearInterval(loadingInterval);
-                                            loadingInterval = 0;
-                                        }
-                                    }, 100);
+            //Wait until the projects-panel.js script has loaded
+            waitUntil(() => projectPanel && projectPanel.projects,() => {
+                var loadedProject = false;
+                //Loop over all the projects in the projects panel
+                for (var p in projectPanel.projects) {
+                    if (projectPanel.projects.hasOwnProperty(p)) {
+                        //If "?PROJECT_NAME" is stored in the URL
+                        if (core.urlParams.has(p)) {
+                            //Switch to the projects panel
+                            core.switchToPanel("projects", false).then(() => {
+                                //Wait until the projects panel has loaded
+                                waitUntil(() => projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded,() => {
+                                    projectPanel.openProject(p);
                                 });
-                                loadedProject = true;
-                                break;
-                            }
+                            });
+                            loadedProject = true;
+                            break;
                         }
                     }
-
-                    //If we reached this point, then switch to the home panel by default
-                    if (!loadedProject) {
-                        clearInterval(loadingInterval);
-                        loadingInterval = 0;
-                        core.switchToPanel("home", false);
-                    }
                 }
-            }, 100);
+
+                //If we reached this point, then switch to the home panel by default
+                if (!loadedProject) {
+                    core.switchToPanel("home", false);
+                }
+            });
         }
     }
 };
@@ -199,7 +179,9 @@ window.addEventListener('popstate', (event) => {
 });
 
 
-//Loads all the available panels
+/**
+ * Loads all the available panels
+ */
 core.loadPanels = function() {
     for (var i = 0; i < core.headerBar.childElementCount; i++) {
         var button = core.headerBar.children[i];
@@ -219,8 +201,9 @@ core.loadPanels = function() {
 }
 
 /**
- * 
- * @param {string} panelName
+ * Switches to a new panel
+ * @param {string} panelName The name of the panel to switch to
+ * @param {boolean} addToHistory If set to true, will record switch to the browser's history
  * @returns {Promise.<void>}
  */
 core.switchToPanel = function(panelName, addToHistory = true) {
@@ -234,59 +217,77 @@ core.switchToPanel = function(panelName, addToHistory = true) {
 }
 
 /**
- * 
- * @param {Element} button
+ * Called when a panel button is clicked
+ * @param {Element} button The panel button that was clicked on
  * @returns {Promise.<void>}
  */
 core.clickPanelButton = function(button, addToHistory = true) {
     var oldPanel = core.selectedPanel;
-
+    
+    //If the button leads the the panel that is currently already open, then return and do nothing
     if (oldPanel != null && oldPanel.buttonID == button.id) {
-        return;
+        return Promise.resolve();
     }
 
+    //Deselect the old button
     if (oldPanel != null) {
         oldPanel.button.classList.remove("selected-menu-item");
     }
 
+    //Find the panel that corresponds to the one the button is referring to
     var newPanel = core.panels.find(p => p.buttonID == button.id);
 
+    //The new panel becomes the selected panel
     core.selectedPanel = newPanel;
 
-    if (newPanel != null) {
-        newPanel.button.classList.add("selected-menu-item");
-    }
+    //Select the new button
+    newPanel.button.classList.add("selected-menu-item");
 
+    //Trigger the panel button clicked event
     core.callEvent(core.events.onPanelButtonClickedEvent, newPanel);
 
+    //Trigger the on panel leave event if an old panel was originally loaded
     if (oldPanel != null) {
         core.callEvent(core.events.onPanelLeaveEvent, oldPanel);
     }
 
+    //Close up the panel selection menu (only visible on mobile devices)
     var panelMenu = document.getElementById("panel-menu");
     if (panelMenu.classList.contains("panel-hovered")) {
         panelMenu.classList.remove("panel-hovered");
         core.updateBackgrounds();
     }
 
+    //If this is being recorded to the browser history
     if (addToHistory) {
+        //If we are going to the home panel, then no URL extensions are needed
         if (newPanel.name == "home") {
             window.history.pushState({}, "Nickc01 Portfolio", core.getURL());
         }
         else {
+            //if we are going to any other panel, then extend the URL with the panel name
             window.history.pushState({}, "Nickc01 Portfolio", core.getURL() + "?" + newPanel.name);
         }
     }
 
+    //Return a promise that will finish until the new panel is loaded
     return new Promise((resolve, reject) => {
+        //Unload the current panel and fetch the html for the new panel
         Promise.all([core.unloadCurrentPanel(), fetch("panels/" + newPanel.name + ".html")]).then(response => {
+            //If the unloading succeeded
             if (response[0]) {
+                //Change the panel state to loading a new panel
                 core.changePanelState(core.PanelState.Loading);
+
+                //Convert the fetch response to to text 
                 return response[1].text().then(panelSrc => {
+                    //Create a new div element and add the entire html source to the new element
                     var newElement = document.createElement("div");
                     document.body.appendChild(newElement);
                     newElement.outerHTML = panelSrc;
+                    //Change the panel state to idle
                     core.changePanelState(core.PanelState.Idle);
+                    //Trigger the on enter panel event
                     core.callEvent(core.events.onEnterPanelEvent, newPanel);
                     resolve();
                 });
@@ -302,18 +303,22 @@ core.clickPanelButton = function(button, addToHistory = true) {
     });
 }
 
-/** @returns {Promise.<boolean>} */
+/**
+ * Unloads the current panel 
+ * @returns {Promise.<boolean>} */
 core.unloadCurrentPanel = function() {
     if (core.currentPanelState == core.PanelState.Idle) {
         core.changePanelState(core.PanelState.Unloading);
         return new Promise((resolve, reject) => {
             var valid = true;
-
             var onNewPanelClicked = null;
             onNewPanelClicked = function (panel) {
                 valid = false;
                 core.removeFromEvent(core.events.onPanelButtonClickedEvent, onNewPanelClicked);
             }
+            //The onNewPanelClicked function will get called if a new panel button is clicked on
+            //If that happens, then this means that the current panel load operation will need to be interrupted
+            //This is signaled by resolving the promise to false if a panel button is clicked while the unloading process happens
             core.addToEvent(core.events.onPanelButtonClickedEvent, onNewPanelClicked);
 
 
@@ -329,12 +334,6 @@ core.unloadCurrentPanel = function() {
                     oldSection.classList.add("doFadeOut");
                 }
             }
-
-            /*window.scroll({
-                top: 0,
-                left: 0,
-                behavior: 'smooth'
-            });*/
 
             setTimeout(() => {
                 if (oldSection) {

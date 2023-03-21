@@ -936,26 +936,9 @@ html, #description, #contents {
     font-size: 1.25rem;
     color: var(--project-window-bottom-color);
     background-color: var(--call-to-action-color);
-    /*transition: height,width,margin,border-width;
-    transition-duration: 200ms;*/
     transition: background-color,color;
     transition-duration: 200ms;
 }
-
-
-    /*#send-email-button:hover {
-        border: 0.25rem solid var(--project-window-bottom-color);
-        margin: 0.25rem auto 0.25rem auto;
-        height: 3rem;
-        width: 10.5rem;
-    }*/
-
-    /*#send-email-button:hover {
-        background: -moz-linear-gradient(left,var(--progress-background-color) var(--progress-percentage), var(--call-to-action-color) var(--progress-percentage));
-        background: linear-gradient(left,var(--progress-background-color) var(--progress-percentage), var(--call-to-action-color) var(--progress-percentage));
-        background: -webkit-linear-gradient(left,var(--progress-background-color) var(--progress-percentage), var(--call-to-action-color) var(--progress-percentage));
-    }*/
-
     #send-email-button:hover {
         color: var(--project-window-bottom-color);
         background-color: rgb(255,255,255);
@@ -1010,21 +993,39 @@ html, #description, #contents {
     }
 
 
-/*#message-field {
-    flex-grow: 100;
-}*/
-/*input, textarea {
-    width: 100%;
-    resize: none;
-    display: block;
-}*/
-/*#contact-container > h1 {
-    display: block;
-}
+    #objectives-container {
+        max-width: min(75rem,70vw);
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1.5rem;
+        padding: 0.625rem;
+        margin-bottom: 1rem;
+        margin-bottom: 1rem;
+        background-color: rgba(0, 0, 0, 0.35);
+        border-radius: 0.9375rem;
+    }
 
-#contact-form {
-    display: block;
-}*/
+    #objectives-content {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    #objectives-content > p {
+        font-size: min(1.5rem,4vw);
+        font-family: spaceGrotesk;
+        font-weight: bolder;
+        color: var(--upper-bg-color);
+        max-width: 30rem;
+
+        padding: 1.625rem;
+        margin: 1rem;
+        background-color: rgba(0, 0, 0, 0.65);
+        border-radius: 0.9375rem;
+    }
+
 #projects-container > h1,
 #projects-container > h2,
 #projects-container > h3 {
