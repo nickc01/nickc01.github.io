@@ -89,6 +89,11 @@ core.events.panelStateChangeEvent = new Array(0);
  * @type {Array.<() => void>} */
 core.events.onWindowLoad = new Array(0);
 
+/** 
+ * Called when AVIF support is tested
+ * @type {Array.<(supported: boolean) => void>} */
+var onAvifSupport = new Array(0);
+
 
 
 
@@ -102,8 +107,7 @@ core.events.onWindowLoad = new Array(0);
  * @param {() => boolean} conditionFunc The condition function to test
  * @param {() => void} afterFunc The function to call when conditionFunc returns true
  */
-function waitUntil(conditionFunc, afterFunc)
-{
+function waitUntil(conditionFunc, afterFunc) {
     var interval = 0;
     interval = setInterval(() => {
         if (conditionFunc()) {
@@ -116,20 +120,19 @@ function waitUntil(conditionFunc, afterFunc)
 /**
  * Loads the default panel upon loading the page, which may depend on what is in the URL
  */
-core.loadDefaultPanel = function () {
+core.loadDefaultPanel = function() {
     //If the url has "?project" in it. Then attempt to load up a project in the project panel
     if (core.urlParams.has("project") && core.urlParams.get("project")) {
         var project = core.urlParams.get("project");
         //Switch to the "Projects" panel
         core.switchToPanel("projects", false).then(() => {
             //Wait until the projects-panel.js script has loaded and the projects panel has loaded
-            waitUntil(() => projectPanel && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded,() => {
+            waitUntil(() => projectPanel && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded, () => {
                 //Open up the project and display it in a window
                 projectPanel.openProject(project);
             });
         });
-    }
-    else {
+    } else {
         var foundPanel = false;
         //Loop through all the possible panels
         for (var i = 0; i < core.panels.length; i++) {
@@ -144,7 +147,7 @@ core.loadDefaultPanel = function () {
         //If no panel was found
         if (!foundPanel) {
             //Wait until the projects-panel.js script has loaded
-            waitUntil(() => projectPanel && projectPanel.projects,() => {
+            waitUntil(() => projectPanel && projectPanel.projects, () => {
                 var loadedProject = false;
                 //Loop over all the projects in the projects panel
                 for (var p in projectPanel.projects) {
@@ -154,7 +157,7 @@ core.loadDefaultPanel = function () {
                             //Switch to the projects panel
                             core.switchToPanel("projects", false).then(() => {
                                 //Wait until the projects panel has loaded
-                                waitUntil(() => projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded,() => {
+                                waitUntil(() => projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded, () => {
                                     projectPanel.openProject(p);
                                 });
                             });
@@ -210,8 +213,7 @@ core.switchToPanel = function(panelName, addToHistory = true) {
     var panel = core.panels.find(p => p.name == panelName);
     if (panel != null && (core.selectedPanel == null || core.selectedPanel.name != panel.name)) {
         return core.clickPanelButton(panel.button, addToHistory);
-    }
-    else {
+    } else {
         return Promise.resolve();
     }
 }
@@ -223,7 +225,7 @@ core.switchToPanel = function(panelName, addToHistory = true) {
  */
 core.clickPanelButton = function(button, addToHistory = true) {
     var oldPanel = core.selectedPanel;
-    
+
     //If the button leads the the panel that is currently already open, then return and do nothing
     if (oldPanel != null && oldPanel.buttonID == button.id) {
         return Promise.resolve();
@@ -263,8 +265,7 @@ core.clickPanelButton = function(button, addToHistory = true) {
         //If we are going to the home panel, then no URL extensions are needed
         if (newPanel.name == "home") {
             window.history.pushState({}, "Nickc01 Portfolio", core.getURL());
-        }
-        else {
+        } else {
             //if we are going to any other panel, then extend the URL with the panel name
             window.history.pushState({}, "Nickc01 Portfolio", core.getURL() + "?" + newPanel.name);
         }
@@ -291,8 +292,7 @@ core.clickPanelButton = function(button, addToHistory = true) {
                     core.callEvent(core.events.onEnterPanelEvent, newPanel);
                     resolve();
                 });
-            }
-            else {
+            } else {
                 reject("Panel is already being loaded");
             }
         }).catch(reason => {
@@ -307,27 +307,30 @@ core.clickPanelButton = function(button, addToHistory = true) {
  * Unloads the current panel 
  * @returns {Promise.<boolean>} */
 core.unloadCurrentPanel = function() {
+    //If the panel currently isn't doing anything, then begin the fade out process
     if (core.currentPanelState == core.PanelState.Idle) {
         core.changePanelState(core.PanelState.Unloading);
         return new Promise((resolve, reject) => {
             var valid = true;
             var onNewPanelClicked = null;
-            onNewPanelClicked = function (panel) {
+            onNewPanelClicked = function(panel) {
                 valid = false;
                 core.removeFromEvent(core.events.onPanelButtonClickedEvent, onNewPanelClicked);
+                return true;
             }
             //The onNewPanelClicked function will get called if a new panel button is clicked on
             //If that happens, then this means that the current panel load operation will need to be interrupted
             //This is signaled by resolving the promise to false if a panel button is clicked while the unloading process happens
             core.addToEvent(core.events.onPanelButtonClickedEvent, onNewPanelClicked);
 
-
+            //Get the primary sections of the document
             var sections = document.getElementsByClassName("primary-section");
             var oldSection = null;
             if (sections.length > 0) {
                 oldSection = sections[0];
             }
 
+            //Fade out the main section of the document
             if (oldSection) {
                 oldSection.classList.remove("doFadeIn");
                 if (!oldSection.classList.contains("doFadeOut")) {
@@ -335,85 +338,97 @@ core.unloadCurrentPanel = function() {
                 }
             }
 
+            //Run this code after the fade out is complete
             setTimeout(() => {
+                //Remove the old section
                 if (oldSection) {
                     oldSection.parentElement.removeChild(oldSection);
                 }
+                //Notify the Promise that the old section has fully faded out
                 if (valid) {
                     core.removeFromEvent(core.events.onPanelButtonClickedEvent, onNewPanelClicked);
                     core.changePanelState(core.PanelState.Empty);
                     resolve(true);
-                }
-                else {
+                } else {
                     core.changePanelState(core.PanelState.Empty);
                     resolve(false);
                 }
             }, core.fadeOutSpeed);
         });
-    }
-    else if (core.currentPanelState == core.PanelState.Unloading) {
+        //If the page is currently going through the unloading process, then wait until the panel gets removed
+    } else if (core.currentPanelState == core.PanelState.Unloading) {
         return new Promise((resolve, reject) => {
             var onStateChange = null;
             var onNewPanelClicked = null;
             var cleanup = null;
 
-            onStateChange = function (newState) {
+            //Called when the panel state changes
+            onStateChange = function(newState) {
+                //If the state is Empty, then the unloading process has finished
                 if (newState == core.PanelState.Empty) {
                     cleanup();
+                    //Return true for success
                     resolve(true);
-                }
-                else {
+                } else {
+                    //Return false for cancellation
                     resolve(false);
                 }
             };
 
-            onNewPanelClicked = function (panel) {
+            //Called when a new panel button is clicked on, then the current unload process should be cancelled
+            onNewPanelClicked = function(panel) {
                 cleanup();
+                //Return false for cancellation
                 resolve(false);
             };
 
-            cleanup = function () {
+            //Used for removing the hooked events upon completion
+            cleanup = function() {
                 core.removeFromEvent(core.events.panelStateChangeEvent, onStateChange);
                 core.removeFromEvent(core.events.onPanelButtonClickedEvent, onNewPanelClicked);
             };
 
 
+            //Hook the events
             core.addToEvent(core.events.panelStateChangeEvent, onStateChange);
             core.addToEvent(core.events.onPanelButtonClickedEvent, onNewPanelClicked);
         });
-    }
-    else if (core.currentPanelState == core.PanelState.Loading) {
+        //If the current panel is being loaded in, then immediately cancel unloading the panel
+    } else if (core.currentPanelState == core.PanelState.Loading) {
         return Promise.resolve(false);
-    }
-    else {
+        //If the current panel is already unloaded, then immediately return true for success
+    } else {
         return Promise.resolve(true);
     }
 }
 
 /**
- * 
- * @param {Array} array
- * @param {any} func
+ * Adds an function to an event so the function gets called whenever the event is triggered
+ * @param {Array<(...any) => any>} array The event array to add to
+ * @param {(...any) => any} func The function to add
  */
 core.addToEvent = function(array, func) {
     array.splice(0, 0, func);
 }
 
 /**
- *
- * @param {Array} array
- * @param {any} func
+ * Removes a function from an event so it no longer gets called when the event is triggered
+ * @param {Array<(...any) => any>} array The event array to remove from
+ * @param {(...any) => any} func The function to remove
+ * @returns {boolean} Returns true if the event was removed
  */
 core.removeFromEvent = function(array, func) {
     var index = array.findIndex(f => f == func);
     if (index > -1) {
         array.splice(index, 1);
+        return true;
     }
+    return false;
 }
 /**
- * 
- * @param {Array} eventArray
- * @param {...any} parameters
+ * Triggers an event
+ * @param {Array<(...any) => any>} eventArray The event array to trigger
+ * @param {...any} parameters Any parameters to pass to each of the functions in the array
  */
 core.callEvent = function(eventArray, ...parameters) {
     for (var i = eventArray.length - 1; i >= 0; i--) {
@@ -422,8 +437,9 @@ core.callEvent = function(eventArray, ...parameters) {
 }
 
 /**
- * 
- * @param {number} newState
+ * Changes the current state of the panel
+ * @param {number} newState The new state of the panel
+ * @see core.PanelState
  */
 core.changePanelState = function(newState) {
     if (core.currentPanelState !== newState) {
@@ -432,84 +448,79 @@ core.changePanelState = function(newState) {
     }
 }
 
-/** @returns {string} */
+/**
+ * Obtains the URL, excluding anything after the "?" query string
+ * @returns {string} */
 core.getURL = function() {
     var url = window.location.href;
     if (url.search("/?") !== -1) {
         return url.split("?")[0];
-    }
-    else {
+    } else {
         return url;
     }
 }
 
-/** */
+/**
+ * Tests whether or not the browser is a touch device
+ * @returns {boolean} Returns true if the browser is a touch device
+ */
 core.usingTouchDevice = function() {
     return ('ontouchstart' in window) ||
         (navigator.maxTouchPoints > 0) ||
         (navigator.msMaxTouchPoints > 0);
 }
 
-//var cssExpression = new RegExp(/^rgba?\((\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})((,\s*[\d\.]*)?)\)/g);
-
 /**
- * 
- * @param {string} value
- * @returns {Array.<number>}
+ * Converts a css string into an array of RGBA colors ranging from 0 - 255
+ * @param {string} value The css string to convert
+ * @returns {Array.<number>} Returns the css string converted to RGBA
  */
-core.cssToColor = function (value) {
+core.cssToColor = function(value) {
+    //If the string is a hex string, then run hexToRgb()
     if (value.startsWith("#")) {
         return core.hexToRgb(value);
     }
+    //If the string is an rgba string, then slice the string to obtain only the numeric portion
     if (value.startsWith("rgba")) {
-        value = value.slice(5,-1);
-    }
-    else {
-        value = value.slice(4,-1);
+        value = value.slice(5, -1);
+        //If the string is an rgb string, then do the same thing
+    } else {
+        value = value.slice(4, -1);
     }
 
+    //Split the string by commas
     var result = value.split(", ");
 
     var colorResult = [0, 0, 0, 1.0];
 
-
+    //Loop through each of the split strings and convert them into numbers
     for (var i = 0; i < result.length; i++) {
         colorResult[i] = Number(result[i]);
     }
 
-    /*if (result.length == 3) {
-        result.push(1.0);
-    }*/
-
+    //Multiply the alpha by 255 to so it's also in the range of 0 - 255 like the rest of the numbers
     colorResult[3] *= 255;
 
     return colorResult;
-
-    //171, 221, 126
-
-    /*console.log("Value = " + value);
-    console.log("Expression = " + cssExpression);
-    return cssExpression.test(value);*/
 }
 
 /**
- * 
- * @param {Array.<number>} colors
- * @returns {string}
+ * Converts an RGBA color array into a css string
+ * @param {Array.<number>} colors The colors to convert
+ * @returns {string} Returns the converted css string
  */
-core.colorToCSS = function (colors) {
+core.colorToCSS = function(colors) {
     if (colors.length > 3) {
         return "rgba(" + colors[0] + ", " + colors[1] + ", " + colors[2] + ", " + (colors[3] / 255.0) + ")";
-    }
-    else {
+    } else {
         return "rgb(" + colors[0] + ", " + colors[1] + ", " + colors[2] + ")";
     }
 }
 
 /**
- * 
- * @param {number} c
- * @return {string}
+ * Converts a color component into a hex representation
+ * @param {number} c The color component to convert
+ * @return {string} THe output hex representation
  */
 function componentToHex(c) {
     var hex = Math.round(c).toString(16);
@@ -517,9 +528,9 @@ function componentToHex(c) {
 }
 
 /**
- * 
- * @param {Array.<number>} color
- * @returns {string}
+ * Converts an RGBA color array into a css hex string
+ * @param {Array.<number>} color The color array to convert
+ * @returns {string} The output css hex string
  */
 core.rgbToHex = function(color) {
     var result = "#" + componentToHex(color[0]) + componentToHex(color[1]) + componentToHex(color[2]);
@@ -530,17 +541,16 @@ core.rgbToHex = function(color) {
 }
 
 /**
- * 
- * @param {string} hex
- * @returns {Array.<number>}
+ * Converts a hex string to an RGBA array
+ * @param {string} hex The hex string to convert
+ * @returns {Array.<number>} The output RGBA array
  */
 core.hexToRgb = function(hex) {
     hex = hex.replace(" ", "");
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     if (result) {
         return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16), parseInt(result[4], 16)];
-    }
-    else {
+    } else {
         result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
         if (result) {
             return [parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16), 255];
@@ -550,27 +560,30 @@ core.hexToRgb = function(hex) {
 }
 
 /**
- * 
- * @param {number} a
- * @param {number} b
- * @param {number} t
- * @returns {number}
+ * Linearly interpolates between {a} and {b} by {t}.
+ * @param {number} a The first number to interpolate from
+ * @param {number} b The second number to interpolate to
+ * @param {number} t The interpolation amount
+ * @returns {number} The interpolated number
  */
 core.lerp = function(a, b, t) {
     return a + ((b - a) * t);
 }
 
 /**
- * 
- * @param {Array.<number>} a
- * @param {Array.<number>} b
- * @param {number} t
- * @returns {Array.<number>}
+ * Linearly interpolates between array {a} and array {b} by {t}
+ * @param {Array.<number>} a The first arrray to interpolate from
+ * @param {Array.<number>} b The second array to interpolate to
+ * @param {number} t The interpolation amount
+ * @returns {Array.<number>} The interpolated array
  */
 core.lerpArray = function(a, b, t) {
     return [core.lerp(a[0], b[0], t), core.lerp(a[1], b[1], t), core.lerp(a[2], b[2], t), core.lerp(a[3], b[3], t)];
 }
 
+/**
+ * Removes autoplay from the "#video-area" element
+ */
 function RemoveAutoPlay() {
     var videoAreaElement = document.getElementById("video-area");
     var vs = videoAreaElement.getElementsByTagName("video");
@@ -582,28 +595,25 @@ function RemoveAutoPlay() {
 }
 
 /**
- * 
- * @param {number} a
- * @param {number} b
+ * Pick a random number between two numbers
+ * @param {number} a The lower bound number
+ * @param {number} b The upper bound number
+ * @returns Returns a random value between a and b
  */
-core.randomInRange = function (a, b) {
+core.randomInRange = function(a, b) {
     return core.lerp(a, b, Math.random());
 }
 
-core.setupHamburgerMenu = function () {
+/**
+ * Sets up the hamburger menu, which is only visible on mobile devices
+ */
+core.setupHamburgerMenu = function() {
     var menu = document.getElementById("hamburger-menu");
     var panelMenu = document.getElementById("panel-menu");
-    /*menu.addEventListener("mouseover", src => {
-        menu.classList.add("hamburger-hovered");
-    });
-    menu.addEventListener("mouseout", src => {
-        menu.classList.remove("hamburger-hovered");
-    });*/
     menu.addEventListener("click", src => {
         if (panelMenu.classList.contains("panel-hovered")) {
             panelMenu.classList.remove("panel-hovered");
-        }
-        else {
+        } else {
             panelMenu.classList.add("panel-hovered");
         }
         core.updateBackgrounds();
@@ -622,33 +632,24 @@ core.setupHamburgerMenu = function () {
     };
 
     panelMenu.addEventListener("mouseout", checkPanel);
-    //panelMenu.addEventListener("mouseleave", checkPanel);
-    //panelMenu.addEventListener("touchend", checkPanel);
-    //document.addEventListener("mouseover", checkPanel);
-    //window.addEventListener("mouseout", checkPanel);
-    /*document.onclick = event => {
-        console.log("DOCUMENT CLICKED");
-        console.log("Event = " + event.target.id);
-        if (event.target.id != "hamburger-menu") {
-            panelMenu.classList.remove("panel-hovered");
-        }
-    };*/
 
     if (core.onMobile) {
         document.addEventListener("mouseover", checkPanel);
 
         window.addEventListener("touchstart", e => {
             if (e.touches.length > 0) {
-                checkPanel({ pageX: e.touches[0].pageX, pageY: e.touches[0].pageY });
+                checkPanel({
+                    pageX: e.touches[0].pageX,
+                    pageY: e.touches[0].pageY
+                });
             }
         });
     }
 }
 
-core.setupPanelMenu = function() {
+/*core.setupPanelMenu = function() {
     var panelMenu = document.getElementById("panel-menu");
 
-    /** @type {any} */
     var root = document.querySelector(':root');
 
     var updateHeaderBar = () => {
@@ -658,22 +659,21 @@ core.setupPanelMenu = function() {
     window.addEventListener('resize', updateHeaderBar);
 
     updateHeaderBar();
-}
+}*/
 
+/**
+ * Sets up the panel menu so that when you scroll down the page, a black background fades in on the panel area
+ */
 core.setupScrollBlackBackgrounds = function() {
     var panelMenu = document.getElementById("panel-menu");
-    //var hamburger = document.getElementById("hamburger-menu");
-
 
     core.updateBackgrounds = () => {
         if (window.scrollY > core.fontSize * 1.75 || panelMenu.classList.contains("panel-hovered")) {
-            if (!panelMenu.classList.contains("black-background")){
+            if (!panelMenu.classList.contains("black-background")) {
                 panelMenu.classList.add("black-background");
             }
-        }
-        else
-        {
-            if (panelMenu.classList.contains("black-background")){
+        } else {
+            if (panelMenu.classList.contains("black-background")) {
                 panelMenu.classList.remove("black-background");
             }
         }
@@ -684,22 +684,21 @@ core.setupScrollBlackBackgrounds = function() {
     window.addEventListener('resize', core.updateBackgrounds);
 }
 
-/** @type {Array.<(supported: boolean) => void>} */
-var onAvifSupport = new Array(0);
-
 /**
- * 
- * @param {(supported: boolean) => void} event
+ * Checks if the AVIF image format is supported in this browser
+ * @param {(supported: boolean) => void} event The event to call when the AVIF test is applied
  */
-core.checkAVIFSupport = function (event) {
+core.checkAVIFSupport = function(event) {
     if (core.AVIFSupported === null) {
         onAvifSupport.push(event);
-    }
-    else {
+    } else {
         event(core.AVIFSupported);
     }
 }
 
+/**
+ * Verifies if AVIF is supported in the browser
+ */
 function verifyAVIF() {
     new Promise(() => {
         const image = new Image();
@@ -715,26 +714,31 @@ function verifyAVIF() {
                 onAvifSupport[i](core.AVIFSupported);
             }
         }
-                image.src =
-                "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=";
+        image.src =
+            "data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgANogQEAwgMg8f8D///8WfhwB8+ErK42A=";
     }).catch(() => false);
 }
-
-verifyAVIF();
 
 //---------------------------------------------------
 //------------------Initialization-------------------
 //---------------------------------------------------
 
+//Verify AVIF support
+verifyAVIF();
+
+//Load all the possible panels
 core.loadPanels();
 
+//Load the starting panel
 core.loadDefaultPanel();
 
-//core.setupPanelMenu();
+//Setup the mobile hamburger menu
 core.setupHamburgerMenu();
 
+//Setup the fading black background for the panel menu
 core.setupScrollBlackBackgrounds();
 
+//If we are on mobile, then disable video autoplay
 if (core.onMobile) {
     RemoveAutoPlay();
 }
@@ -750,18 +754,18 @@ window.requestAnimationFrame(Update_Loop);
 var prevTime = 0;
 
 /**
- * 
- * @param {number} time 
+ * The main update loop for the website
+ * @param {number} time The current time
  */
 function Update_Loop(time) {
-    core.callEvent(core.events.updateEvent,(time - prevTime) / 1000.0);
+    core.callEvent(core.events.updateEvent, (time - prevTime) / 1000.0);
     prevTime = time;
 
     window.requestAnimationFrame(Update_Loop);
 }
 
 
-
+//Trigger the onWindowLoad event
 window.onload = () => {
     core.callEvent(core.events.onWindowLoad);
 }
