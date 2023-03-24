@@ -85,62 +85,7 @@ float snoise(vec3 v){
                                 dot(p2,x2), dot(p3,x3) ) );
 }
 
-/*float rand(vec2 c){
-	return fract(sin(dot(c.xy ,vec2(12.9898,78.233))) * 43758.5453);
-}
-
-float noiseInternal(vec2 p, float freq ){
-	float unit = noiseScale/freq;
-	vec2 ij = floor(p/unit);
-	vec2 xy = mod(p,unit)/unit;
-	//xy = 3.*xy*xy-2.*xy*xy*xy;
-	xy = .5*(1.-cos(PI*xy));
-	float a = rand((ij+vec2(0.,0.)));
-	float b = rand((ij+vec2(1.,0.)));
-	float c = rand((ij+vec2(0.,1.)));
-	float d = rand((ij+vec2(1.,1.)));
-	float x1 = mix(a, b, xy.x);
-	float x2 = mix(c, d, xy.x);
-	return mix(x1, x2, xy.y);
-}
-
-float pNoise(vec2 p, int res){
-	float persistance = .5;
-	float n = 0.;
-	float normK = 0.;
-	float f = 4.;
-	float amp = 1.;
-	int iCount = 0;
-	for (int i = 0; i<50; i++){
-		n+=amp*noiseInternal(p, f);
-		f*=2.;
-		normK+=amp;
-		amp*=persistance;
-		if (iCount == res) break;
-		iCount++;
-	}
-	float nf = n/normK;
-	return nf*nf*nf*nf;
-}*/
-
-/*vec4 lerp(vec4 colorone, vec4 colortwo, float value)
-{
-	return (colorone + value*(colortwo-colorone));
-}*/
-
 void main(void) {
-    //gl_FragColor = vec4(0, 0.0, 1.0, 1);
-	//float noiseValue = pNoise(gl_FragCoord.xy,1);
-	//vec2 pixelPosition = vec2();
-	//gl_FragColor = vec4(noiseValue, noiseValue, noiseValue, 1.0);
 	float noiseVal = snoise(vec3(gl_FragCoord.x / noiseScale, ((gl_FragCoord.y + verticalOffset) / noiseScale), noiseZ));
 	gl_FragColor = mix(bottomColor,topColor,floor(((noiseVal + 1.0) / 2.0) * 12.0) / 12.0);
-
-
-
-	//gl_FragColor = lerp(bottomColor,topColor,);
-
-	//gl_FragColor = vec4(mix(bottomColor.r,topColor.r,noiseVal),mix(bottomColor.g,topColor.g,noiseVal),mix(bottomColor.b,topColor.b,noiseVal),mix(bottomColor.a,topColor.a,noiseVal));
-
-	//gl_FragColor = topColor;
 }

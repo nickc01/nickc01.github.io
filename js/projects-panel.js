@@ -8,12 +8,14 @@ var projectPanel = {};
 //-----------------------Enums-----------------------
 //---------------------------------------------------
 
+/** A list of valid states the projectPanel.projects array can be in */
 projectPanel.ProjectsState = {
     Unloaded: 0,
     Loading: 1,
     Loaded: 2
 }
 
+/** The different states used for interpolating colors */
 projectPanel.ColorInterpolationState = {
     Idle: 0,
     Interpolating: 1,
@@ -25,28 +27,34 @@ projectPanel.ColorInterpolationState = {
 //---------------------Variables---------------------
 //---------------------------------------------------
 
+/** Is a project currently being viewed in a window? */
 projectPanel.projectOpen = false;
 
-/** @type {string} */
+/** @type {string | null} The project that is currently being viewed in a window */
 projectPanel.openedProject = null;
 
-/** @type {string} */
+/** @type {string | null} The project that is currently being hovered over and/or viewed in a window */
 projectPanel.preparedProject = null;
 
+/** The current state of the project window */
 projectPanel.currentProjectsState = projectPanel.ProjectsState.Unloaded;
 
-/** @type {string} */
+/** @type {string | null} The project to open upon loading the page. Used if the URL contains a project name */
 projectPanel.startupProject = null;
 
+/** Contains all possible projects that can be loaded into a window*/
 projectPanel.projects = [];
 
+//The top color of the UI
 projectPanel.originalTopColor = [107, 157, 62, 255];
 
+//The bottom color of the UI
 projectPanel.originalBottomColor = [20, 40, 10, 255];
 
+//How fast to interpolate between two colors
 projectPanel.interpolationSpeed = 5;
 
-/** @type {Array.<string>} */
+/** @type {Array.<string>} A list of all the buttons currently being hovered over */
 projectPanel.hoveredButtons = [];
 
 //---------------------------------------------------
@@ -55,7 +63,7 @@ projectPanel.hoveredButtons = [];
 
 projectPanel.events = {};
 
-/** @type {Array.<(project: any) => void>} */
+/** @type {Array.<(project: any) => void>} Called whenever the UI changes color, which is called when a button is hovered over */
 projectPanel.events.projectColorChangeEvent = new Array(0);
 
 
@@ -67,37 +75,36 @@ projectPanel.events.projectColorChangeEvent = new Array(0);
 //---------------------------------------------------
 
 /**
- * 
- * @param {string} projectName
+ * Opens a project and display's it in a window
+ * @param {string} projectName The name of the project to open
  */
 projectPanel.openProject = function(projectName) {
+    //Return if the projects panel isn't open
     if (projectPanel.projectOpen) {
         return;
     }
 
+    //Return if no projects have been loaded yet
     if (projectPanel.currentProjectsState != projectPanel.ProjectsState.Loaded) {
         return;
     }
 
-
-
+    //Return if there is no panel loaded or if we aren't on the projects panel or the panel isn't loaded yet
     if (core.selectedPanel == null || core.selectedPanel.name != "projects" || core.currentPanelState != core.PanelState.Idle) {
         return;
     }
 
+    //Prepare the project. Used for changing the UI colors
     projectPanel.prepareProject(projectName);
 
     projectPanel.openedProject = projectName;
     projectPanel.projectOpen = true;
 
-    projectPanel.refreshColors();
+    //Notify that the colors have changed
+    projectPanel.triggerColorChangeEvent();
 
+    //Disable scrolling in the main document so the user can scroll within the project window
     document.documentElement.style.overflowY = "hidden";
-    //DisableWindowScrolling();
-    /*if (colorSetter === null) {
-        clearTimeout(colorSetter);
-        colorSetter = null;
-    }*/
 
     var project = projectPanel.projects[projectName];
 
@@ -106,10 +113,12 @@ projectPanel.openProject = function(projectName) {
     document.documentElement.style.setProperty('--project-window-bottom-color', project.backgroundColor);
 
     var selectedProjectArea = document.getElementById("selected-project-area")
+
+    //Fade in the project window
     selectedProjectArea.classList.remove("fade-out-proj-window");
     selectedProjectArea.classList.add("fade-in-proj-window");
-    //onResize();
 
+    //Load the project video
     var videoAreaElement = document.getElementById("video-area");
     var vs = videoAreaElement.getElementsByTagName("video");
     if (vs.length > 0) {
@@ -119,33 +128,16 @@ projectPanel.openProject = function(projectName) {
 }
 
 /**
- * 
- * @param {string} projectName
+ * Prepares the project for being displayed in a window. Also used for updating the UI colors
+ * @param {string} projectName The name of the project to prepare
  */
-projectPanel.prepareProject = function (projectName) {
-    //console.log("Project Name = " + projectName);
-    //console.log("Prepared Project = " + projectPanel.preparedProject);
-    /*if (projectPanel.preparedProject != projectName) {
-        projectPanel.preparedProject = projectName;
-        if (projectName == null) {
-            core.callEvent(projectPanel.events.projectColorChangeEvent, null);
-        }
-        else {
-            core.callEvent(projectPanel.events.projectColorChangeEvent, projectPanel.projects[projectName]);
-        }
-    }
-    else {
-        return;
-    }*/
-
+projectPanel.prepareProject = function(projectName) {
     if (projectName == null) {
         projectPanel.preparedProject = null;
         return;
-    }
-    else if (projectPanel.preparedProject == projectName) {
+    } else if (projectPanel.preparedProject == projectName) {
         return;
-    }
-    else {
+    } else {
         projectPanel.preparedProject = projectName;
     }
 
@@ -161,28 +153,30 @@ projectPanel.prepareProject = function (projectName) {
         child.setAttribute("height", 0.5 * core.fontSize);
     }
 
+    //Update the project window title
     var projectTitle = document.getElementById("selected-project-title");
-
     projectTitle.textContent = project.name;
 
+    //Update the title dimensions
     if (project.titleWidth != undefined) {
         projectTitle.parentElement.setAttribute("viewBox", "0 " + (-(core.fontSize - 16)) + " " + (project.titleWidth * core.fontSize / 16) + " " + (25 * core.fontSize / 16));
     }
 
-
+    //Set the title color
     if (project.titleColor != undefined) {
         root.style.setProperty('--title-text-color', project.titleColor);
-    }
-    else {
+    } else {
         root.style.setProperty('--title-text-color', project.textColor);
     }
 
+    //Update the background image and text color
     root.style.setProperty('--project-background-image', "url(" + (core.AVIFSupported ? project.imageAVIF : project.image) + ")");
     root.style.setProperty('--project-text-color', project.textColor);
 
     var bottomColor = core.cssToColor(project.backgroundColor);
     var topColor = core.cssToColor(project.color);
 
+    //Update the top and bottom colors
     root.style.setProperty('--project-window-bottom-color-solid', "rgb(" + bottomColor[0] + ", " + bottomColor[1] + ", " + bottomColor[2] + ")");
     root.style.setProperty('--project-window-top-color-solid', "rgb(" + topColor[0] + ", " + topColor[1] + ", " + topColor[2] + ")");
 
@@ -196,8 +190,10 @@ projectPanel.prepareProject = function (projectName) {
         description += "</br>" + project.description[i] + ".</br>";
     }
 
+    //Set the date and description
     descriptionElement.innerHTML = date + description;
 
+    //Setup the skills section
     if (project.skills != undefined) {
         var skills = "</br><h3>Skills:</h3>";
 
@@ -208,6 +204,7 @@ projectPanel.prepareProject = function (projectName) {
         descriptionElement.innerHTML += skills;
     }
 
+    //Setup the credits section
     if (project.credits != undefined) {
         var credits = "</br><h3>Credits:</h3>";
 
@@ -219,8 +216,10 @@ projectPanel.prepareProject = function (projectName) {
         descriptionElement.innerHTML += credits;
     }
 
+    //Setup the project button links
     descriptionElement.innerHTML += projectPanel.GenerateLinksElement(project.links);
 
+    //Setup the main video area
     var videoAreaElement = document.getElementById("video-area");
     var vs = videoAreaElement.getElementsByTagName("video");
     if (vs.length > 0) {
@@ -230,15 +229,14 @@ projectPanel.prepareProject = function (projectName) {
         if (sources.length == 0) {
             sourceElement = document.createElement('source');
             videoElement.appendChild(sourceElement);
-        }
-        else {
+        } else {
             sourceElement = sources[0];
         }
         sourceElement.setAttribute('src', project.video);
     }
 
+    //Add project tags
     var tagsElement = document.getElementById("selected-project-tags");
-
     if (project.tags != undefined) {
         var tags = "";
         for (var i = 0; i < project.tags.length; i++) {
@@ -246,16 +244,15 @@ projectPanel.prepareProject = function (projectName) {
         }
 
         tagsElement.innerHTML = tags;
-    }
-    else {
+    } else {
         tagsElement.innerHTML = "";
     }
 }
 
 /**
- * 
- * @param {Array.<{link: string, name: string}>} links
- * @returns {string}
+ * Generates button elements for each URL link
+ * @param {Array.<{link: string, name: string}>} links The links to display as buttons
+ * @returns {string} The outerHTML needed to display the links as buttons
  */
 projectPanel.GenerateLinksElement = function(links) {
     if (links === undefined || links == null) {
@@ -270,6 +267,7 @@ projectPanel.GenerateLinksElement = function(links) {
     return outerHTML;
 }
 
+/** Closes the project window */
 projectPanel.closeProject = function() {
     if (!projectPanel.projectOpen) {
         return;
@@ -278,165 +276,159 @@ projectPanel.closeProject = function() {
     projectPanel.projectOpen = false;
     projectPanel.openedProject = null;
 
+    //Allow scrolling again in the main document
     document.documentElement.style.overflowY = "auto";
 
-    projectPanel.refreshColors();
+    projectPanel.triggerColorChangeEvent();
 
+    //Fade the project window out
     var selectedProjectArea = document.getElementById("selected-project-area")
     selectedProjectArea.classList.remove("fade-in-proj-window");
     selectedProjectArea.classList.add("fade-out-proj-window");
 
 }
 
+/** Opens a project whenever ready */
 projectPanel.openWhenReady = function(projectName) {
+    //If the projects array has been loaded
     if (projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded) {
         projectPanel.openProject(projectName);
-    }
-    else {
+        //If the project panel isn't loaded yet, then set it as the startup project so it can be loaded later
+    } else {
         projectPanel.startupProject = projectName;
     }
 }
 
-
+/** Loads all the possible projects that can be displayed */
 projectPanel.loadProjects = function() {
+    //Set the current state to loading
     projectPanel.currentProjectsState == projectPanel.ProjectsState.Loading;
+    //Fetch all the projects
     fetch("projects.json").then(response => {
-		return response.json();
+        return response.json();
     }).then(value => {
+        //If successful, then set the projects array to the loaded projects
         projectPanel.projects = value["projects"];
         projectPanel.currentProjectsState = projectPanel.ProjectsState.Loaded;
+        //If a startup project has been set
         if (projectPanel.startupProject) {
+            //Display it in a window
             projectPanel.openProject(projectPanel.startupProject);
         }
-	});
+    });
 }
 
-projectPanel.clearColors = function () {
+/** Clears all colors */
+projectPanel.clearColors = function() {
     projectPanel.hoveredButtons.length = 0;
-    projectPanel.refreshColors();
-    //projectPanel.prepareProject(null);
+    projectPanel.triggerColorChangeEvent();
 }
 
-
-
-/*projectPanel.setColors = function() {
-
-}*/
-
-
+//Called when a panel is unloading
 core.addToEvent(core.events.onPanelLeaveEvent, panel => {
+    //If the projects panel is unloading, then close the project window if it's displayed
     if (panel.name == "projects") {
         projectPanel.closeProject();
         projectPanel.clearColors();
     }
 })
 
+//Called when a panel is loaded
 core.addToEvent(core.events.onEnterPanelEvent, panel => {
     if (panel.name != "projects") {
-        //projectPanel.clearColors();
         return;
     }
 
     var projectAreas = document.getElementsByClassName("content-area");
+
+    //Loop over all the project containers in the UI
     for (var i = 0; i < projectAreas.length; i++) {
-        //Distribute(projectAreas.item(i));
         var projectsArea = projectAreas.item(i);
 
+        //Get all divs within a project container
         var divs = projectsArea.getElementsByTagName("div");
 
+        //Loop over all the divs within a project container and hook into their click, mouseover, and mouseout events
         for (var i = 0; i < divs.length; i++) {
             registerProjectEvent(divs[i], 'click', source => {
-                //OpenProject(source);
-                //console.log("Button Pressed = " + source.id);
+                //Open the container's project when clicked
                 projectPanel.openWhenReady(source.id);
             });
             registerProjectEvent(divs[i], 'mouseover', source => {
-                //UpdateSelectedProject(source);
+                //Prepare the project for display.
                 projectPanel.prepareProject(source.id);
+                //Add the button to the hovered list to change colors on mouse over
                 projectPanel.addHoveredButton(source.id);
-
-                //console.log("Hovered = " + source.id);
-                //console.log("List = " + projectPanel.hoveredButtons);
-
+                //If we are on mobile, then open the project up
                 if (core.usingTouchDevice() && window.innerWidth < (59.375 * core.fontSize)) {
-                    //OpenProject(source);
                     projectPanel.openWhenReady(source.id);
                 }
             });
             registerProjectEvent(divs[i], 'mouseout', source => {
-                //console.log("Unhovered = " + source.id);
-                //console.log("List = " + projectPanel.hoveredButtons);
+                //Remove the button from the hovered list to change colors on mouse out
                 projectPanel.removeHoveredButton(source.id);
             });
         }
     }
-
-    //var projectsArea = document.getElementById("content-area");
-
-    //var root = window.getComputedStyle(document.documentElement);
-    //originalTopColor = root.getPropertyValue("--project-window-top-color");
-    //originalBottomColor = root.getPropertyValue("--project-window-bottom-color-solid");
 });
 
+//Called when the project panel changes colors
 core.addToEvent(projectPanel.events.projectColorChangeEvent, project => {
-    //console.log("Project");
-    //console.log(project);
-    if (project == null)
-    {
-        //TODO TODO TODO - RESET COLORS
-        //console.log("REVERTING");
+    //If no project is being hovered over, then revert to original colors
+    if (project == null) {
         revertInterpolation();
-    }
-    else
-    {
-        //TODO TODO TODO - Change colors to project
-        interpolateToColor(project.color,project.backgroundColor);
+    } else {
+        //Interpolate between the old color and the new project colors
+        interpolateToColor(project.color, project.backgroundColor);
     }
 });
 
 /**
- * 
- * @param {string} id
+ * Adds a button to the hovered list. When a button is hovered over, this triggers the UI to change colors
+ * @param {string} id The id of the button hovered over
  */
-projectPanel.addHoveredButton = function (id) {
+projectPanel.addHoveredButton = function(id) {
     if (projectPanel.hoveredButtons.length > 0 && projectPanel.hoveredButtons[0] != id) {
         projectPanel.hoveredButtons.length = 0;
     }
     projectPanel.hoveredButtons.push(id);
-    projectPanel.refreshColors();
+    projectPanel.triggerColorChangeEvent();
 }
 
 /**
- * 
- * @param {string} id
+ * Removes a button from the hovered list. When the list is empty, this triggers the UI to revert the colors
+ * @param {string} id The id of the button no longer hovered over
  */
-projectPanel.removeHoveredButton = function (id) {
+projectPanel.removeHoveredButton = function(id) {
     var index = projectPanel.hoveredButtons.findIndex(v => v == id);
     if (index > -1) {
         projectPanel.hoveredButtons.splice(index, 1);
-        projectPanel.refreshColors();
+        projectPanel.triggerColorChangeEvent();
     }
 }
 
-
-projectPanel.refreshColors = function () {
-    //console.log("CORE = " + core.j);
+/**
+ * Triggers the color change event
+ */
+projectPanel.triggerColorChangeEvent = function() {
+    //If no project is selected or we aren't in the project panel, then trigger the event with a null project
     if (core.selectedPanel == null || core.selectedPanel.name != "projects") {
         core.callEvent(projectPanel.events.projectColorChangeEvent, null);
         return;
     }
+    //if a project is opened, then pass the info of the opened project to the event
     if (projectPanel.projectOpen) {
         core.callEvent(projectPanel.events.projectColorChangeEvent, projectPanel.projects[projectPanel.openedProject]);
-    }
-    else if (projectPanel.hoveredButtons.length > 0) {
+        //If we are hovering over a project, then pass the info of the hovered project to the event
+    } else if (projectPanel.hoveredButtons.length > 0) {
         core.callEvent(projectPanel.events.projectColorChangeEvent, projectPanel.projects[projectPanel.hoveredButtons[0]]);
-    }
-    else {
+    } else {
         core.callEvent(projectPanel.events.projectColorChangeEvent, null);
     }
 }
 
-projectPanel.closeButtonHover = function () {
+/** This closes the project window upon hover (ONLY ON MOBILE DEVICES) */
+projectPanel.closeButtonHover = function() {
     if (window.innerWidth < (59.375 * core.fontSize) && core.usingTouchDevice()) {
         projectPanel.closeProject();
     }
@@ -444,14 +436,13 @@ projectPanel.closeButtonHover = function () {
 
 
 /**
- * 
- * @param {HTMLDivElement} element
- * @param {string} evtName
- * @param {(source: Element) => void} func
+ * Used for adding an event to a content-area element and it's children
+ * @param {HTMLDivElement} element The child element to hook the event to
+ * @param {string} evtName The name of the event
+ * @param {(source: Element) => void} func The function called when the event is triggered
  */
 function registerProjectEvent(element, evtName, func) {
     element.addEventListener(evtName, source => {
-        //console.log("ACTION = " + evtName + ", sourc = " + source.id);
         /** @type {Node} */
         var currentElement = source.target;
         while (currentElement != null && currentElement.parentNode != null && !currentElement.parentNode.classList.contains("content-area")) {
@@ -461,54 +452,35 @@ function registerProjectEvent(element, evtName, func) {
     });
 }
 
+/** The interpolation factor. This starts at 0 and slowly increments to 1 to interpolate between colors */
 var colorInterpolationValue = 0.0;
+/** The current color interpolation state */
 var colorInterpolationState = projectPanel.ColorInterpolationState.Idle;
 
+/** The top color to start from */
 var startTopColor = projectPanel.originalTopColor.slice();
+/** The bottom color to start from */
 var startBottomColor = projectPanel.originalBottomColor.slice();
 
+/** The top color to end to */
 var endTopColor = projectPanel.originalTopColor.slice();
+/** The bottom color to end to */
 var endBottomColor = projectPanel.originalBottomColor.slice();
 
-/*function printInterpState() {
-    if (colorInterpolationState == projectPanel.ColorInterpolationState.Full) {
-        console.log("Interp State = Full");
-    }
-    else if (colorInterpolationState == projectPanel.ColorInterpolationState.Idle) {
-        console.log("Interp State = Idle");
-    }
-    else if (colorInterpolationState == projectPanel.ColorInterpolationState.Interpolating) {
-        console.log("Interp State = Interpolating");
-    }
-    else if (colorInterpolationState == projectPanel.ColorInterpolationState.Reverting) {
-        console.log("Interp State = Reverting");
-    }
-}*/
-
-
+/**
+ * Interpolates the UI to a new color
+ * @param {string} topColor The top color to interpolate to
+ * @param {string} bottomColor The bottom color to interpolate to
+ */
 function interpolateToColor(topColor, bottomColor) {
-
+    //If on mobile, then immediately set the UI to the new color
     if (core.onMobile) {
         rootStyle.style.setProperty("--project-window-top-color", topColor);
         rootStyle.style.setProperty("--project-window-bottom-color", bottomColor);
         return;
     }
-    //console.log("Interpolating");
-    //console.log("Trace = " + console.trace());
-    //printInterpState();
-    /*if (colorInterpolationState == projectPanel.ColorInterpolationState.Reverting) {
-        
-    }*/
     core.removeFromEvent(core.events.updateEvent, projectPanel.revert_color_update);
     core.removeFromEvent(core.events.updateEvent, projectPanel.interpolation_color_update);
-
-    /*if (startTopColor == null) {
-        startTopColor = projectPanel.originalTopColor.slice();
-        startBottomColor = projectPanel.originalBottomColor.slice();
-    }
-    else {
-        
-    }*/
 
     startTopColor = core.lerpArray(startTopColor, endTopColor, colorInterpolationValue);
     startBottomColor = core.lerpArray(startBottomColor, endBottomColor, colorInterpolationValue);
@@ -520,26 +492,18 @@ function interpolateToColor(topColor, bottomColor) {
 
     colorInterpolationState = projectPanel.ColorInterpolationState.Interpolating;
 
-    //console.log("Start Top Color = " + startTopColor);
-    //console.log("Start Bottom Color = " + startBottomColor);
-
-    //console.log("End Top Color = " + endTopColor);
-    //console.log("End Bottom Color = " + endBottomColor);
-
     core.addToEvent(core.events.updateEvent, projectPanel.interpolation_color_update);
 }
 
+/** Reverts a color interpolation back to it's original color */
 function revertInterpolation() {
-
+    //If on mobile, then immediately set the UI to the original color
     if (core.onMobile) {
         rootStyle.style.setProperty("--project-window-top-color", core.colorToCSS(projectPanel.originalTopColor));
         rootStyle.style.setProperty("--project-window-bottom-color", core.colorToCSS(projectPanel.originalBottomColor));
         return;
     }
-    //console.log("Reverting");
-    /*if (colorInterpolationState == projectPanel.ColorInterpolationState.Interpolating) {
-        
-    }*/
+
     core.removeFromEvent(core.events.updateEvent, projectPanel.interpolation_color_update);
     core.removeFromEvent(core.events.updateEvent, projectPanel.revert_color_update);
 
@@ -549,35 +513,19 @@ function revertInterpolation() {
     startTopColor = projectPanel.originalTopColor.slice();
     startBottomColor = projectPanel.originalBottomColor.slice();
 
-    //console.log("Reverting To = " + startTopColor);
-    //console.log("Reverting To Bottom = " + startBottomColor);
-
     colorInterpolationValue = 1.0;
 
     colorInterpolationState == projectPanel.ColorInterpolationState.Reverting;
 
     core.addToEvent(core.events.updateEvent, projectPanel.revert_color_update);
-
-
-    /*if (startTopColor != null) {
-        startTopColor = projectPanel.originalTopColor.slice();
-        startBottomColor = projectPanel.originalBottomColor.slice();
-    }
-    else {
-        startTopColor = lerpArray(startTopColor, endTopColor, colorInterpolationValue);
-        startBottomColor = lerpArray(startBottomColor, endBottomColor, colorInterpolationValue);
-    }*/
-    //console.log("Interpolation State = " + colorInterpolationState);
-
-    /*if (colorInterpolationState == projectPanel.ColorInterpolationState.Full ||
-        colorInterpolationState == projectPanel.ColorInterpolationState.Interpolating) {
-        
-    }*/
 }
 
+/**
+ * Called every frame to interpolate to a new color
+ * @param {number} dt The amount of time since the last update
+ */
 projectPanel.interpolation_color_update = function(dt) {
     colorInterpolationValue += dt * projectPanel.interpolationSpeed;
-    //console.log("PROJECT PANEL INTERP = " + colorInterpolationValue);
     if (colorInterpolationValue >= 1) {
         colorInterpolationValue = 1;
         colorInterpolationState = projectPanel.ColorInterpolationState.Full;
@@ -589,18 +537,20 @@ projectPanel.interpolation_color_update = function(dt) {
 
 var rootStyle = document.documentElement;
 
+/** Calculates the new colors for the UI based on the interpolated colors */
 projectPanel.calculate_colors = function() {
-    //console.log("FROM = " + core.colorToCSS(lerpArray(startTopColor, endTopColor, colorInterpolationValue)));
-    //console.log("TO = " + core.colorToCSS(lerpArray(startBottomColor, endBottomColor, colorInterpolationValue)));
     rootStyle.style.setProperty("--project-window-top-color", core.colorToCSS(core.lerpArray(startTopColor, endTopColor, colorInterpolationValue)));
     rootStyle.style.setProperty("--project-window-bottom-color", core.colorToCSS(core.lerpArray(startBottomColor, endBottomColor, colorInterpolationValue)));
 }
 
+/**
+ * Called every frame to interpolate to the original color
+ * @param {number} dt The amount of time since the last update
+ */
 projectPanel.revert_color_update = function(dt) {
     colorInterpolationValue -= dt * projectPanel.interpolationSpeed;
     if (colorInterpolationValue <= 0) {
         colorInterpolationValue = 0;
-        //console.log("Interp = " + colorInterpolationValue);
         colorInterpolationState = projectPanel.ColorInterpolationState.Idle;
         core.removeFromEvent(core.events.updateEvent, projectPanel.revert_color_update);
     }
@@ -616,6 +566,7 @@ projectPanel.revert_color_update = function(dt) {
 //------------------Initialization-------------------
 //---------------------------------------------------
 
+//Load all the possible projects
 projectPanel.loadProjects();
 
 console.log("Project Panel Loaded");

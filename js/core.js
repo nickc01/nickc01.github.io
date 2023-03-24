@@ -107,14 +107,14 @@ var onAvifSupport = new Array(0);
  * @param {() => boolean} conditionFunc The condition function to test
  * @param {() => void} afterFunc The function to call when conditionFunc returns true
  */
-function waitUntil(conditionFunc, afterFunc) {
+core.waitUntil = function(conditionFunc, afterFunc) {
     var interval = 0;
     interval = setInterval(() => {
         if (conditionFunc()) {
             clearInterval(interval);
             afterFunc();
         }
-    });
+    }, 25);
 }
 
 /**
@@ -127,7 +127,7 @@ core.loadDefaultPanel = function() {
         //Switch to the "Projects" panel
         core.switchToPanel("projects", false).then(() => {
             //Wait until the projects-panel.js script has loaded and the projects panel has loaded
-            waitUntil(() => projectPanel && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded, () => {
+            core.waitUntil(() => projectPanel && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded, () => {
                 //Open up the project and display it in a window
                 projectPanel.openProject(project);
             });
@@ -147,7 +147,7 @@ core.loadDefaultPanel = function() {
         //If no panel was found
         if (!foundPanel) {
             //Wait until the projects-panel.js script has loaded
-            waitUntil(() => projectPanel && projectPanel.projects, () => {
+            core.waitUntil(() => projectPanel && projectPanel.projects, () => {
                 var loadedProject = false;
                 //Loop over all the projects in the projects panel
                 for (var p in projectPanel.projects) {
@@ -157,7 +157,7 @@ core.loadDefaultPanel = function() {
                             //Switch to the projects panel
                             core.switchToPanel("projects", false).then(() => {
                                 //Wait until the projects panel has loaded
-                                waitUntil(() => projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded, () => {
+                                core.waitUntil(() => projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded, () => {
                                     projectPanel.openProject(p);
                                 });
                             });
@@ -425,6 +425,17 @@ core.removeFromEvent = function(array, func) {
     }
     return false;
 }
+
+/**
+ * Checks if a function is added to an event array
+ * @param {Array<(...any) => any>} array The event array to check
+ * @param {(...any) => any} func The function to check
+ * @returns {boolean} Returns true if the function is inside of the event array
+ */
+core.containsEvent = function(array, func) {
+    return array.findIndex(f => f == func) > -1;
+}
+
 /**
  * Triggers an event
  * @param {Array<(...any) => any>} eventArray The event array to trigger
@@ -646,20 +657,6 @@ core.setupHamburgerMenu = function() {
         });
     }
 }
-
-/*core.setupPanelMenu = function() {
-    var panelMenu = document.getElementById("panel-menu");
-
-    var root = document.querySelector(':root');
-
-    var updateHeaderBar = () => {
-        root.style.setProperty('--header-height', panelMenu.offsetHeight.toString() + "px");
-    };
-
-    window.addEventListener('resize', updateHeaderBar);
-
-    updateHeaderBar();
-}*/
 
 /**
  * Sets up the panel menu so that when you scroll down the page, a black background fades in on the panel area
