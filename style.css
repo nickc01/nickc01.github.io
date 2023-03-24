@@ -795,6 +795,10 @@ html {
     flex-wrap: wrap
 }
 
+.mail-link {
+    color: var(--project-window-top-color);
+}
+
 #email-field,
 #name-field {
     flex-grow: 2;
