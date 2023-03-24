@@ -4,6 +4,7 @@
 
 var core = {};
 
+
 //---------------------------------------------------
 //-----------------------Enums-----------------------
 //---------------------------------------------------
@@ -24,7 +25,11 @@ core.PanelState = {
 //---------------------------------------------------
 
 core.root = document.querySelector(':root');
+
 core.headerBar = document.getElementById("panels");
+
+//This will be defined by the projects-panel.js script
+var projectPanel = undefined;
 
 /** 
  * Stores a list of all the available panels
