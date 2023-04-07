@@ -1,0 +1,50 @@
+{
+    "objectives": [
+        {
+            "title" : "Objective 1",
+            "projects": [
+                {
+                    "name": "corrupted-kin",
+                    "title": "Corrupted Kin",
+                    "color": "#e68a24",
+                    "image": "screenshots/corrupted-kin.jpg",
+                    "avifImage": "screenshots/avif/corrupted-kin.avif",
+                    "info": "This project fits this objective because test test test",
+                    "backColor": "#e68a24",
+                    "foreColor": "rgb(46, 56, 58)"
+                },
+                {
+                    "name": "corrupted-kin",
+                    "title": "Corrupted Kin",
+                    "color": "#e68a24",
+                    "image": "screenshots/corrupted-kin.jpg",
+                    "avifImage": "screenshots/avif/corrupted-kin.avif",
+                    "info": "This project fits this objective because test test test" 
+                },
+                {
+                    "name": "corrupted-kin",
+                    "title": "Corrupted Kin",
+                    "color": "#e68a24",
+                    "image": "screenshots/corrupted-kin.jpg",
+                    "avifImage": "screenshots/avif/corrupted-kin.avif",
+                    "info": "This project fits this objective because test test test" 
+                }
+            ]
+        },
+        {
+            "title" : "Objective 2"
+        },
+        {
+            "title" : "Objective 3"
+        },
+        {
+            "title" : "Objective 4"
+        },
+        {
+            "title" : "Objective 5"
+        },
+        {
+            "title" : "Objective 6"
+        }
+    ]
+}

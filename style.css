@@ -1,15 +1,15 @@
 :root {
     --upper-bg-color: rgb(107, 157, 62);
     --lower-bg-color: rgb(46, 56, 58);
-    --project-window-top-color: rgb(107, 157, 62);
-    --project-window-bottom-color: rgb(20, 40, 10);
+    --main-top-color: rgb(107, 157, 62);
+    --main-bottom-color: rgb(20, 40, 10);
     --perlin-starting-color: rgb(20, 40, 10);
     --project-title-font-size: 4vw;
     --project-background-image: url("");
     --project-text-color: rgb(171, 221, 126);
     --title-text-color: rgb(171, 221, 126);
-    --project-window-bottom-color-solid: rgb(46, 56, 58);
-    --project-window-top-color-solid: rgb(107, 157, 62);
+    --main-bottom-color-solid: rgb(46, 56, 58);
+    --main-top-color-solid: rgb(107, 157, 62);
     --fade-speed: 400ms;
     --main-fade-in-speed: 0.5s;
     --sub-fade-in-speed: 0.625s;
@@ -19,7 +19,10 @@
     --selected-project-title-size: 2em;
     --call-to-action-color: #8a58b8;
     --progress-background-color: #4e7a26;
-    --progress-percentage: 100%
+    --progress-percentage: 100%;
+    --window-foreground-color:rgb(107, 157, 62);
+    --window-background-color:rgba(46, 56, 58,0.75);
+    --window-background-color-noalpha:rgb(46, 56, 58);
 }
 
 @font-face {
@@ -286,17 +289,17 @@ html {
     margin-top: .5rem;
     margin-bottom: .5rem;
     opacity: 1;
-    color: var(--project-window-top-color)
+    color: var(--main-top-color)
 }
 
 #panels>.selected-menu-item {
-    background-color: var(--project-window-top-color);
-    color: var(--project-window-bottom-color-solid)
+    background-color: var(--main-top-color);
+    color: var(--main-bottom-color-solid)
 }
 
 #panels>a:hover {
-    background-color: var(--project-window-top-color);
-    color: var(--project-window-bottom-color-solid)
+    background-color: var(--main-top-color);
+    color: var(--main-bottom-color-solid)
 }
 
 .black-background {
@@ -347,7 +350,7 @@ html {
     .hamburger-line {
         width: 2.5rem;
         height: .25rem;
-        background-color: var(--project-window-top-color);
+        background-color: var(--main-top-color);
         transition: background-color .1s linear;
         margin-top: 7%;
         margin-bottom: 7%
@@ -473,7 +476,7 @@ html {
 }
 
 #home-right-side>h1 {
-    color: var(--project-window-top-color);
+    color: var(--main-top-color);
     font-size: min(7vw, 2rem)
 }
 
@@ -536,7 +539,7 @@ html {
 }
 
 #icon-container>div>h2 {
-    color: var(--project-window-top-color);
+    color: var(--main-top-color);
     padding: 3rem
 }
 
@@ -554,7 +557,7 @@ html {
     padding-bottom: 0;
     text-align: center;
     font-size: 5rem;
-    color: var(--project-window-top-color)
+    color: var(--main-top-color)
 }
 
 #main-logo {
@@ -575,14 +578,14 @@ html {
     margin: 2rem;
     border-radius: .8rem;
     opacity: 1;
-    color: var(--project-window-bottom-color);
+    color: var(--main-bottom-color);
     background-color: var(--call-to-action-color);
     transition: color .2s, background-color .2s
 }
 
 .important-button:hover {
     background-color: #fff;
-    color: var(--project-window-bottom-color)
+    color: var(--main-bottom-color)
 }
 
 .main-title,
@@ -632,7 +635,7 @@ html {
 }
 
 #aboutme-primary>h1 {
-    color: var(--project-window-top-color)
+    color: var(--main-top-color)
 }
 
 #aboutme-secondary {
@@ -650,7 +653,7 @@ html {
 
 #aboutme-secondary>div>h1 {
     font-size: 2rem;
-    color: var(--project-window-top-color)
+    color: var(--main-top-color)
 }
 
 #aboutme-secondary>div {
@@ -796,7 +799,7 @@ html {
 }
 
 .mail-link {
-    color: var(--project-window-top-color);
+    color: var(--main-top-color);
 }
 
 #email-field,
@@ -822,18 +825,18 @@ html {
     background: -webkit-linear-gradient(left, var(--call-to-action-color) var(--progress-percentage), var(--progress-background-color) var(--progress-percentage));
     outline: 0;
     border-radius: .75rem;
-    border: 0 solid var(--project-window-bottom-color);
+    border: 0 solid var(--main-bottom-color);
     font-family: spaceGrotesk-SemiBold;
     font-weight: 400;
     font-size: 1.25rem;
-    color: var(--project-window-bottom-color);
+    color: var(--main-bottom-color);
     background-color: var(--call-to-action-color);
     transition: background-color, color;
     transition-duration: .2s
 }
 
 #send-email-button:hover {
-    color: var(--project-window-bottom-color);
+    color: var(--main-bottom-color);
     background-color: #fff;
     background-blend-mode: color
 }
@@ -852,7 +855,7 @@ html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: var(--project-window-top-color)
+    color: var(--main-top-color)
 }
 
 .icon-links>a>img {
@@ -870,12 +873,12 @@ html {
 
 .icon-links>a:hover>img {
     opacity: 1;
-    color: var(--project-window-top-color)
+    color: var(--main-top-color)
 }
 
 .form-field {
     background-color: rgba(0, 0, 0, .75);
-    color: var(--project-window-top-color);
+    color: var(--main-top-color);
     font-family: spaceGrotesk-SemiBold;
     font-size: 1rem;
     border: none;
@@ -905,8 +908,8 @@ html {
     margin-bottom: 1rem
 }
 
-#objectives-content>p {
-    font-size: min(1.5rem, 4vw);
+#objectives-content > p {
+    font-size: min(1.4rem, 4vw);
     font-family: spaceGrotesk;
     font-weight: bolder;
     color: var(--upper-bg-color);
@@ -914,14 +917,23 @@ html {
     padding: 1.625rem;
     margin: 1rem;
     background-color: rgba(0, 0, 0, .65);
-    border-radius: .9375rem
+    border-radius: .9375rem;
+    transition: color .2s ease-in-out, background-color .2s ease-in-out, transform .2s ease-in-out;
 }
+
+#objectives-content > p:hover {
+    color: black;
+    background-color: var(--main-top-color);
+    transform: scale(1.05, 1.05)
+}
+
+
 
 #projects-container>h1,
 #projects-container>h2,
 #projects-container>h3 {
     font-family: spaceGrotesk;
-    color: var(--project-window-top-color);
+    color: var(--main-top-color);
     text-align: center;
     margin-left: 10%;
     margin-right: 10%
@@ -1051,7 +1063,7 @@ html {
 }
 
 #selected-project-contents {
-    background-color: var(--project-window-top-color);
+    background-color: var(--window-foreground-color);
     width: 75%;
     height: 65%;
     position: relative;
@@ -1075,12 +1087,12 @@ html {
     top: 0;
     right: 0;
     transition: background-color 75ms linear;
-    background-color: var(--project-window-top-color-solid);
+    background-color: var(--window-foreground-color);
     border-radius: .46875rem
 }
 
 #close-button:hover>#close-button-svg {
-    background-color: var(--project-window-bottom-color-solid)
+    background-color: var(--window-background-color-noalpha)
 }
 
 #close-button-svg>rect {
@@ -1088,7 +1100,7 @@ html {
     x: calc(50% - 1.75rem);
     y: calc(50% - 0.25rem);
     transition: fill 75ms linear;
-    fill: var(--project-window-bottom-color-solid)
+    fill: var(--window-background-color-noalpha)
 }
 
 #close-button-svg>rect:first-child {
@@ -1102,7 +1114,7 @@ html {
 }
 
 #close-button:hover>#close-button-svg>rect {
-    fill: var(--project-window-top-color)
+    fill: var(--window-foreground-color)
 }
 
 #contents {
@@ -1113,7 +1125,89 @@ html {
     height: calc(100% - 5.3125rem);
     display: flex;
     flex-grow: 1;
-    overflow-y: hidden
+}
+
+#contents:not(.vertical-contents) {
+    overflow-y: hidden;
+}
+
+.vertical-contents {
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.vertical-contents > #video-area {
+    width: 100%;
+    padding-left: initial;
+    padding-right: initial;
+    overflow-y: initial;
+}
+
+.vertical-contents > #video-area > #extra-content {
+    margin-bottom: 1rem;
+}
+
+.vertical-contents > #video-area > video {
+    max-height: initial;
+}
+
+.vertical-contents > #description {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: initial;
+    /*margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;*/
+    padding-bottom: 1rem;
+    border-radius: 1rem;
+    overflow-y: initial;
+    height:initial;
+}
+
+#extra-content {
+    background-color: var(--window-background-color);
+    border-radius: .9375rem;
+    padding: 0.1rem 1rem 0.1rem 1rem;
+    margin-top: 1.3rem;
+    margin-bottom: calc(10vw - 2.5rem);
+    color: var(--project-text-color);
+}
+
+.double-flexbox {
+    display: flex;
+    flex-direction: row;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    flex-wrap: wrap;
+    row-gap: 2rem;
+    column-gap: 1rem;
+    height: fit-content;
+}
+
+.left-side-content {
+    background-color: rgb(28, 34, 36);
+    border-radius: 1rem;
+    min-width: 20rem;
+    flex-grow: 1;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.left-side-content > h2 {
+    font-weight: bolder;
+}
+
+.grow-space {
+    flex-grow: 1;
+}
+
+.right-side-image {
+    border-radius: 1rem;
+    background-size: cover;
+    background-position: center;
+    min-height: 12rem;
+    min-width: 20rem;
+    flex-grow: 2;
 }
 
 #description {
@@ -1124,8 +1218,8 @@ html {
     padding-right: .625rem;
     overflow-y: auto;
     overflow-x: visible;
-    scrollbar-color: var(--project-window-top-color) var(--project-window-bottom-color);
-    background-color: var(--project-window-bottom-color);
+    scrollbar-color: var(--window-foreground-color) var(--window-background-color);
+    background-color: var(--window-background-color);
     color: var(--project-text-color);
     z-index: 5
 }
@@ -1138,11 +1232,11 @@ html {
 }
 
 #contents {
-    scrollbar-color: var(--project-window-top-color) var(--project-window-bottom-color)
+    scrollbar-color: var(--window-foreground-color) var(--window-background-color)
 }
 
 #description>a {
-    color: var(--project-window-top-color)
+    color: var(--window-foreground-color)
 }
 
 #description>a:hover {
@@ -1153,12 +1247,12 @@ html {
 #description::-webkit-scrollbar {
     width: .5rem;
     height: .5rem;
-    background-color: var(--project-window-bottom-color)
+    background-color: var(--window-background-color)
 }
 
 #contents::-webkit-scrollbar-thumb,
 #description::-webkit-scrollbar-thumb {
-    background: var(--project-window-top-color)
+    background: var(--window-foreground-color)
 }
 
 #description-links {
@@ -1176,24 +1270,29 @@ html {
     transition: color .1s linear;
     transition: background-color .1s linear;
     transition: transform .1s ease-in-out;
-    color: var(--project-window-bottom-color-solid);
-    background-color: var(--project-window-top-color);
+    color: var(--window-background-color);
+    background-color: var(--window-foreground-color);
     border-radius: .9375rem;
     text-align: center;
     white-space: nowrap
 }
 
 #description-links>a:hover {
-    color: var(--project-window-bottom-color-solid);
+    color: var(--window-background-color);
     background-color: #fff;
     transform: scale(110%)
+}
+
+.hide-element {
+    display: none;
 }
 
 #video-area {
     width: 80%;
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-    z-index: 5
+    z-index: 5;
+    overflow-y: auto;
 }
 
 #video-area>video {
@@ -1213,7 +1312,7 @@ html {
 
 #selected-project-tags>h1 {
     color: var(--title-text-color);
-    background-color: var(--project-window-top-color-solid);
+    background-color: var(--window-foreground-color);
     margin: .5rem;
     font-size: 1.25rem;
     padding: .5rem;
@@ -1238,7 +1337,7 @@ html {
     top: 0;
     height: 5.3125rem;
     width: 100%;
-    background-color: var(--project-window-top-color);
+    background-color: var(--window-foreground-color);
     z-index: 5;
     display: flex;
     align-items: center;
@@ -1270,14 +1369,15 @@ html {
 
     #contents {
         flex-direction: column;
-        overflow-y: scroll
+        overflow-y: scroll !important
     }
 
     #video-area {
         width: calc(100% - 1.25rem);
         padding-left: .625rem;
         padding-right: .625rem;
-        margin-bottom: calc(-7vw + 2.6rem)
+        margin-bottom: calc(-7vw + 2.6rem);
+        overflow-y: initial;
     }
 
     #contents-background {
@@ -1293,5 +1393,17 @@ html {
         padding-left: .625rem;
         padding-right: .625rem;
         width: calc(100% - 1.25rem)
+    }
+
+    .vertical-contents > #description {
+        width: initial;
+    }
+
+    .vertical-contents > #video-area {
+        margin-bottom: initial;
+    }
+
+    .vertical-contents > #video-area > #extra-content {
+        margin-bottom: calc(8vw - 1.5rem);
     }
 }

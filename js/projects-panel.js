@@ -43,7 +43,7 @@ projectPanel.currentProjectsState = projectPanel.ProjectsState.Unloaded;
 projectPanel.startupProject = null;
 
 /** Contains all possible projects that can be loaded into a window*/
-projectPanel.projects = [];
+projectPanel.projects = null;
 
 //The top color of the UI
 projectPanel.originalTopColor = [107, 157, 62, 255];
@@ -80,7 +80,7 @@ projectPanel.events.projectColorChangeEvent = new Array(0);
  */
 projectPanel.openProject = function(projectName) {
     //Return if the projects panel isn't open
-    if (projectPanel.projectOpen) {
+    if (projectPanel.projectOpen || typeof windowDisplay === 'undefined') {
         return;
     }
 
@@ -104,27 +104,39 @@ projectPanel.openProject = function(projectName) {
     projectPanel.triggerColorChangeEvent();
 
     //Disable scrolling in the main document so the user can scroll within the project window
-    document.documentElement.style.overflowY = "hidden";
+    //document.documentElement.style.overflowY = "hidden";
 
-    var project = projectPanel.projects[projectName];
+    //var project = projectPanel.projects[projectName];
 
 
-    document.documentElement.style.setProperty('--project-window-top-color', project.color);
-    document.documentElement.style.setProperty('--project-window-bottom-color', project.backgroundColor);
+    //document.documentElement.style.setProperty('--main-top-color', project.color);
+    //document.documentElement.style.setProperty('--main-bottom-color', project.backgroundColor);
 
-    var selectedProjectArea = document.getElementById("selected-project-area")
+    //console.log("Bottom Color = " + project.backgroundColor);
+
+    //var bottomColor = core.cssToColor(project.backgroundColor);
+    //var topColor = core.cssToColor(project.color);
+
+    //document.documentElement.style.setProperty('--window-foreground-color', project.color);
+    //document.documentElement.style.setProperty('--window-background-color', project.backgroundColor);
+    //document.documentElement.style.setProperty('--window-background-color-noalpha', "rgb(" + bottomColor[0] + ", " + bottomColor[1] + ", " + bottomColor[2] + ")");
+    //document.documentElement.style.setProperty('--window-foreground-color', "rgb(" + topColor[0] + ", " + topColor[1] + ", " + topColor[2] + ")");
+
+    //var selectedProjectArea = document.getElementById("selected-project-area")
 
     //Fade in the project window
-    selectedProjectArea.classList.remove("fade-out-proj-window");
-    selectedProjectArea.classList.add("fade-in-proj-window");
+    //selectedProjectArea.classList.remove("fade-out-proj-window");
+    //selectedProjectArea.classList.add("fade-in-proj-window");
 
     //Load the project video
-    var videoAreaElement = document.getElementById("video-area");
+    /*var videoAreaElement = document.getElementById("video-area");
     var vs = videoAreaElement.getElementsByTagName("video");
     if (vs.length > 0) {
         var videoElement = vs[0];
         videoElement.load();
-    }
+    }*/
+
+    windowDisplay.show();
 }
 
 /**
@@ -132,6 +144,11 @@ projectPanel.openProject = function(projectName) {
  * @param {string} projectName The name of the project to prepare
  */
 projectPanel.prepareProject = function(projectName) {
+    if (typeof windowDisplay === 'undefined')
+    {
+        return;
+    }
+
     if (projectName == null) {
         projectPanel.preparedProject = null;
         return;
@@ -141,57 +158,64 @@ projectPanel.prepareProject = function(projectName) {
         projectPanel.preparedProject = projectName;
     }
 
-    var root = document.documentElement;
+    //var root = document.documentElement;
 
     var project = projectPanel.projects[projectName];
 
-    var closeButton = document.getElementById("close-button-svg");
+    /*var closeButton = document.getElementById("close-button-svg");
 
     for (var i = 0; i < closeButton.childElementCount; i++) {
         var child = closeButton.children[i];
         child.setAttribute("width", 3.5 * core.fontSize);
         child.setAttribute("height", 0.5 * core.fontSize);
-    }
+    }*/
 
     //Update the project window title
-    var projectTitle = document.getElementById("selected-project-title");
-    projectTitle.textContent = project.name;
+    //var projectTitle = document.getElementById("selected-project-title");
+    //projectTitle.textContent = project.name;
+    windowDisplay.setWindowTitle(project.name,project.titleWidth);
 
     //Update the title dimensions
-    if (project.titleWidth != undefined) {
+    /*if (project.titleWidth != undefined) {
         projectTitle.parentElement.setAttribute("viewBox", "0 " + (-(core.fontSize - 16)) + " " + (project.titleWidth * core.fontSize / 16) + " " + (25 * core.fontSize / 16));
-    }
+    }*/
 
     //Set the title color
-    if (project.titleColor != undefined) {
+    /*if (project.titleColor != undefined) {
         root.style.setProperty('--title-text-color', project.titleColor);
     } else {
         root.style.setProperty('--title-text-color', project.textColor);
-    }
+    }*/
+    windowDisplay.setTitleColor(project.titleColor ? project.titleColor : project.textColor);
 
     //Update the background image and text color
-    root.style.setProperty('--project-background-image', "url(" + (core.AVIFSupported ? project.imageAVIF : project.image) + ")");
-    root.style.setProperty('--project-text-color', project.textColor);
+    //root.style.setProperty('--project-background-image', "url(" + (core.AVIFSupported ? project.imageAVIF : project.image) + ")");
+    //root.style.setProperty('--project-text-color', project.textColor);
+    windowDisplay.setBackgroundImage("url(" + (core.AVIFSupported ? project.imageAVIF : project.image) + ")");
+    windowDisplay.setTextColor(project.textColor);
 
-    var bottomColor = core.cssToColor(project.backgroundColor);
-    var topColor = core.cssToColor(project.color);
+    //var bottomColor = core.cssToColor(project.backgroundColor);
+    //var topColor = core.cssToColor(project.color);
 
     //Update the top and bottom colors
-    root.style.setProperty('--project-window-bottom-color-solid', "rgb(" + bottomColor[0] + ", " + bottomColor[1] + ", " + bottomColor[2] + ")");
-    root.style.setProperty('--project-window-top-color-solid', "rgb(" + topColor[0] + ", " + topColor[1] + ", " + topColor[2] + ")");
+    //root.style.setProperty('--main-bottom-color-solid', "rgb(" + bottomColor[0] + ", " + bottomColor[1] + ", " + bottomColor[2] + ")");
+    //root.style.setProperty('--main-top-color-solid', "rgb(" + topColor[0] + ", " + topColor[1] + ", " + topColor[2] + ")");
+    windowDisplay.setForegroundColor(project.color);
+    windowDisplay.setBackgroundColor(project.backgroundColor);
 
+    windowDisplay.setVertical(false);
 
-    var descriptionElement = document.getElementById("description");
+    //var descriptionElement = document.getElementById("description");
     var date = "<h3>" + project.date + "</h3>";
 
-    var description = "";
+    var rightContent = "";
 
     for (var i = 0; i < project.description.length; i++) {
-        description += "</br>" + project.description[i] + ".</br>";
+        rightContent += "</br>" + project.description[i] + ".</br>";
     }
 
     //Set the date and description
-    descriptionElement.innerHTML = date + description;
+    rightContent = date + rightContent;
 
     //Setup the skills section
     if (project.skills != undefined) {
@@ -201,7 +225,7 @@ projectPanel.prepareProject = function(projectName) {
             skills += " - " + project.skills[i] + "</br>";
         }
 
-        descriptionElement.innerHTML += skills;
+        rightContent += skills;
     }
 
     //Setup the credits section
@@ -213,14 +237,17 @@ projectPanel.prepareProject = function(projectName) {
             credits += " - " + credit.name + ": <a href=\"" + credit.link + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + credit.label + "</a></br>";
         }
 
-        descriptionElement.innerHTML += credits;
+        rightContent += credits;
     }
 
     //Setup the project button links
-    descriptionElement.innerHTML += projectPanel.GenerateLinksElement(project.links);
+    rightContent += projectPanel.GenerateLinksElement(project.links);
+
+    windowDisplay.setRightContent(rightContent);
+    windowDisplay.clearLeftContent();
 
     //Setup the main video area
-    var videoAreaElement = document.getElementById("video-area");
+    /*var videoAreaElement = document.getElementById("video-area");
     var vs = videoAreaElement.getElementsByTagName("video");
     if (vs.length > 0) {
         var videoElement = vs[0];
@@ -233,10 +260,11 @@ projectPanel.prepareProject = function(projectName) {
             sourceElement = sources[0];
         }
         sourceElement.setAttribute('src', project.video);
-    }
+    }*/
+    windowDisplay.setVideo(project.video);
 
     //Add project tags
-    var tagsElement = document.getElementById("selected-project-tags");
+    /*var tagsElement = document.getElementById("selected-project-tags");
     if (project.tags != undefined) {
         var tags = "";
         for (var i = 0; i < project.tags.length; i++) {
@@ -246,7 +274,9 @@ projectPanel.prepareProject = function(projectName) {
         tagsElement.innerHTML = tags;
     } else {
         tagsElement.innerHTML = "";
-    }
+    }*/
+    windowDisplay.clearTags();
+    windowDisplay.addTags(project.tags);
 }
 
 /**
@@ -269,29 +299,41 @@ projectPanel.GenerateLinksElement = function(links) {
 
 /** Closes the project window */
 projectPanel.closeProject = function() {
-    if (!projectPanel.projectOpen) {
+    if (typeof windowDisplay === 'undefined' || core.selectedPanel == null || core.selectedPanel.name != "projects" || !projectPanel.projectOpen) {
         return;
     }
-
     projectPanel.projectOpen = false;
     projectPanel.openedProject = null;
 
     //Allow scrolling again in the main document
-    document.documentElement.style.overflowY = "auto";
+    //document.documentElement.style.overflowY = "auto";
 
     projectPanel.triggerColorChangeEvent();
 
     //Fade the project window out
-    var selectedProjectArea = document.getElementById("selected-project-area")
+    /*var selectedProjectArea = document.getElementById("selected-project-area")
     selectedProjectArea.classList.remove("fade-in-proj-window");
-    selectedProjectArea.classList.add("fade-out-proj-window");
+    selectedProjectArea.classList.add("fade-out-proj-window");*/
 
+}
+
+/** This closes the project window upon hover (ONLY ON MOBILE DEVICES) */
+/*projectPanel.closeButtonHover = function() {
+    if (window.innerWidth < (59.375 * core.fontSize) && core.usingTouchDevice()) {
+        projectPanel.closeProject();
+    }
+}*/
+
+projectPanel.onWindowClose = function() {
+    projectPanel.closeProject();
+    projectPanel.projectOpen = false;
+    projectPanel.openedProject = null;
 }
 
 /** Opens a project whenever ready */
 projectPanel.openWhenReady = function(projectName) {
     //If the projects array has been loaded
-    if (projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded) {
+    if (typeof windowDisplay !== 'undefined' && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded) {
         projectPanel.openProject(projectName);
         //If the project panel isn't loaded yet, then set it as the startup project so it can be loaded later
     } else {
@@ -311,10 +353,15 @@ projectPanel.loadProjects = function() {
         projectPanel.projects = value["projects"];
         projectPanel.currentProjectsState = projectPanel.ProjectsState.Loaded;
         //If a startup project has been set
-        if (projectPanel.startupProject) {
-            //Display it in a window
-            projectPanel.openProject(projectPanel.startupProject);
-        }
+
+        //Wait until the windowDisplay script has loaded
+        core.waitUntil(() => typeof windowDisplay !== 'undefined', () => {
+            if (projectPanel.startupProject) {
+                //Display it in a window
+                projectPanel.openProject(projectPanel.startupProject);
+            }
+            core.addToEvent(windowDisplay.events.onWindowClose, projectPanel.onWindowClose);
+        });
     });
 }
 
@@ -427,14 +474,6 @@ projectPanel.triggerColorChangeEvent = function() {
     }
 }
 
-/** This closes the project window upon hover (ONLY ON MOBILE DEVICES) */
-projectPanel.closeButtonHover = function() {
-    if (window.innerWidth < (59.375 * core.fontSize) && core.usingTouchDevice()) {
-        projectPanel.closeProject();
-    }
-}
-
-
 /**
  * Used for adding an event to a content-area element and it's children
  * @param {HTMLDivElement} element The child element to hook the event to
@@ -475,8 +514,8 @@ var endBottomColor = projectPanel.originalBottomColor.slice();
 function interpolateToColor(topColor, bottomColor) {
     //If on mobile, then immediately set the UI to the new color
     if (core.onMobile) {
-        rootStyle.style.setProperty("--project-window-top-color", topColor);
-        rootStyle.style.setProperty("--project-window-bottom-color", bottomColor);
+        rootStyle.style.setProperty("--main-top-color", topColor);
+        rootStyle.style.setProperty("--main-bottom-color", bottomColor);
         return;
     }
     core.removeFromEvent(core.events.updateEvent, projectPanel.revert_color_update);
@@ -499,8 +538,8 @@ function interpolateToColor(topColor, bottomColor) {
 function revertInterpolation() {
     //If on mobile, then immediately set the UI to the original color
     if (core.onMobile) {
-        rootStyle.style.setProperty("--project-window-top-color", core.colorToCSS(projectPanel.originalTopColor));
-        rootStyle.style.setProperty("--project-window-bottom-color", core.colorToCSS(projectPanel.originalBottomColor));
+        rootStyle.style.setProperty("--main-top-color", core.colorToCSS(projectPanel.originalTopColor));
+        rootStyle.style.setProperty("--main-bottom-color", core.colorToCSS(projectPanel.originalBottomColor));
         return;
     }
 
@@ -539,8 +578,8 @@ var rootStyle = document.documentElement;
 
 /** Calculates the new colors for the UI based on the interpolated colors */
 projectPanel.calculate_colors = function() {
-    rootStyle.style.setProperty("--project-window-top-color", core.colorToCSS(core.lerpArray(startTopColor, endTopColor, colorInterpolationValue)));
-    rootStyle.style.setProperty("--project-window-bottom-color", core.colorToCSS(core.lerpArray(startBottomColor, endBottomColor, colorInterpolationValue)));
+    rootStyle.style.setProperty("--main-top-color", core.colorToCSS(core.lerpArray(startTopColor, endTopColor, colorInterpolationValue)));
+    rootStyle.style.setProperty("--main-bottom-color", core.colorToCSS(core.lerpArray(startBottomColor, endBottomColor, colorInterpolationValue)));
 }
 
 /**

@@ -28,9 +28,6 @@ core.root = document.querySelector(':root');
 
 core.headerBar = document.getElementById("panels");
 
-//This will be defined by the projects-panel.js script
-var projectPanel = undefined;
-
 /** 
  * Stores a list of all the available panels
  * @type {Array.<{button: Element, name: string, title: string, buttonID: string}>} */
@@ -108,11 +105,25 @@ var onAvifSupport = new Array(0);
 //---------------------------------------------------
 
 /**
+ * 
+ * @param {any} val 
+ * @returns {boolean}
+ */
+/*core.isDefined = function(val) {
+    return typeof val !== 'undefined';
+}*/
+
+/**
  * Waits until conditionFunc returns true. When it does, it will call afterFunc
  * @param {() => boolean} conditionFunc The condition function to test
  * @param {() => void} afterFunc The function to call when conditionFunc returns true
  */
 core.waitUntil = function(conditionFunc, afterFunc) {
+    if (conditionFunc())
+    {
+        afterFunc();
+        return;
+    }
     var interval = 0;
     interval = setInterval(() => {
         if (conditionFunc()) {
@@ -132,7 +143,7 @@ core.loadDefaultPanel = function() {
         //Switch to the "Projects" panel
         core.switchToPanel("projects", false).then(() => {
             //Wait until the projects-panel.js script has loaded and the projects panel has loaded
-            core.waitUntil(() => projectPanel && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded, () => {
+            core.waitUntil(() => typeof projectPanel !== 'undefined' && projectPanel.currentProjectsState == projectPanel.ProjectsState.Loaded, () => {
                 //Open up the project and display it in a window
                 projectPanel.openProject(project);
             });
@@ -152,7 +163,7 @@ core.loadDefaultPanel = function() {
         //If no panel was found
         if (!foundPanel) {
             //Wait until the projects-panel.js script has loaded
-            core.waitUntil(() => projectPanel && projectPanel.projects, () => {
+            core.waitUntil(() => typeof projectPanel !== 'undefined' && projectPanel.projects !== null, () => {
                 var loadedProject = false;
                 //Loop over all the projects in the projects panel
                 for (var p in projectPanel.projects) {

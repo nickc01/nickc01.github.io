@@ -46,14 +46,14 @@
         <h3 id="no-script-text">Javascript is required to navigate this site</h3>
     </noscript>
     <div id="selected-project-area" tabindex="2">
-        <div id="selected-project-background" onclick="projectPanel.closeProject();"></div>
+        <div id="selected-project-background" onclick="windowDisplay.close();"></div>
         <div id="selected-project-contents">
             <div id="selected-project-top-bar">
                 <svg height="16" width="16" viewBox="0 0 200 25" preserveAspectRatio="xMinYMid meet">
                     <text id="selected-project-title" x="0" y="18">Corrupted Kin</text>
                 </svg>
             </div>
-            <div id="close-button" onclick="projectPanel.closeProject();" onmouseover="projectPanel.closeButtonHover();">
+            <div id="close-button" onclick="windowDisplay.close();" onmouseover="windowDisplay.closeHovered();">
                 <svg id="close-button-svg" width="80" height="80">
                     <rect width="50%" height="10%" />
                     <rect width="50%" height="10%" />
@@ -69,6 +69,12 @@
                         <h1>C#</h1>
                         <h1>Unity 3D</h1>
                     </div>
+                    <div id="extra-content">
+                        <h1>Test</h1>
+                        <h2>Test</h2>
+                        <h3>Test</h3>
+                        <p>Test</p>
+                    </div>
                 </div>
                 <div id="description"></div>
             </div>
@@ -76,11 +82,13 @@
     </div>
     <div id="console"></div>
     <script src="js/core.js"></script>
-    <script src="js/projects-panel.js"></script>
-    <script src="js/contact-panel.js"></script>
-    <script src="js/home-panel.js"></script>
+    <script defer src="js/projects-panel.js"></script>
+    <script defer src="js/contact-panel.js"></script>
+    <script defer src="js/home-panel.js"></script>
+    <script defer src="js/objectives-panel.js"></script>
     <script defer src="js/preloader.js"></script>
     <script defer src="js/background.js"></script>
+    <script defer src="js/windowDisplay.js"></script>
     <script defer type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </body>
 
