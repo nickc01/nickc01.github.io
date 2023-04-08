@@ -805,6 +805,70 @@
                     "link": "https://github.com/nickc01/Europa-2109/releases/latest/download/Europa2109.Windows.Build.zip"
                 }
             ]
+        },
+
+
+        "net-neutralizer": {
+            "name": "Net Neutralizer",
+            "date": "8/18/2019",
+            "description": [
+                "Net Neutralizer is a card game me and a team of other students worked on",
+                "It is a multiplayer turn-based game where your goal is to build up your own computer network, while taking down opponent networks",
+                "When its a player's turn, they can either play a card from their hand, or they can draw a card from the deck",
+                "There are three kinds of cards:</br> - Structure Cards - Can be used to upgrade your own network</br> - Attack Cards - Can be placed on opponent networks to attack them</br> - Defense Cards - Can be placed on your network to defend from attacks",
+                "See video link below for more detailed instructions on how to play"
+            ],
+            "skills": [
+                "Becoming the role as team leader to finish a high quality card game",
+                "Communicating with other team members to help divy out tasks according to each team members' skills",
+                "Using Sprints and Product Backlogs in order for everyone to keep track of what they are working on, and to balance the workload between team members"
+            ],
+            "credits": [
+                {
+                    "name": "Nicholas Cullen",
+                    "label": "Team Lead / Designer"
+                },
+                {
+                    "name": "Kyle Baker",
+                    "label": "Artist"
+                },
+                {
+                    "name": "Cesar Rodriguez",
+                    "label": "Artist"
+                },
+                {
+                    "name": "Brent Begay",
+                    "label": "Designer"
+                },
+                {
+                    "name": "Trent Smith",
+                    "label": "Artist"
+                }
+            ],
+            "tags": [
+                "Game Design",
+                "Group Project",
+                "Card Game"
+            ],
+            "image": "screenshots/net-neutralizer.jpg",
+            "imageAVIF": "screenshots/avif/net-neutralizer.avif",
+            "video": "videos/net-neutralizer.mp4",
+            "color": "#eca400",
+            "textColor": "#dddddd",
+            "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#28200f",
+            "titleColor": "#2e383a",
+            "titleWidth": 135,
+            "links": [
+                {
+                    "name": "Video Demonstration",
+                    "link": "https://www.youtube.com/watch?v=hOCI4HpDlN0"
+                },
+                {
+                    "name": "More Info",
+                    "link": "https://1drv.ms/f/s!Aj62egREH4PT0Fj-1N732CTCdjam?e=udrpQw"
+                }
+            ]
         }
     }
 }

@@ -234,7 +234,13 @@ projectPanel.prepareProject = function(projectName) {
 
         for (var i = 0; i < project.credits.length; i++) {
             var credit = project.credits[i];
-            credits += " - " + credit.name + ": <a href=\"" + credit.link + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + credit.label + "</a></br>";
+            if (credit.link) {
+                credits += " - " + credit.name + ": <a href=\"" + credit.link + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + credit.label + "</a></br>";
+            }
+            else {
+                credits += " - " + credit.name + ": " + credit.label + "</br>";
+            }
+            
         }
 
         rightContent += credits;
