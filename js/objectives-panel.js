@@ -49,6 +49,8 @@ const DEFAULT_TITLE_COLOR = "rgba(46, 56, 58)";
 const DEFAULT_TEXT_COLOR = "#cccccc";
 const DEFAULT_FOREGROUND_COLOR = "rgb(107, 157, 62)";
 const DEFAULT_BACKGROUND_COLOR = "rgba(46, 56, 58, 0.75)";
+const linkRegex = /\!\[([\d\w\s]+?)\]\((.+?)\)/g;
+
 
 //---------------------------------------------------
 //---------------------Functions---------------------
@@ -275,10 +277,15 @@ objectivesPanel.createProjectUI = function(project) {
     var backColor = project.backColor ? project.backColor : "rgb(28, 34, 36)";
     var titleColor = project.titleColor ? project.titleColor : foreColor;
 
+    var info = project.info;
+
+    for (const match of info.matchAll(linkRegex)) {
+        info = info.replace(match[0],"<a style='color:" + project.color + ";' href='" + match[2] + "' target='_blank' rel='noopener noreferrer'>" + match[1] + "</a>");
+    }
     var str = "<div class='double-flexbox'>";
     str += "<div style='background-color:" + backColor + "; color:" + foreColor + ";' class='left-side-content'>";
     str += "<h2><a style='color:" + titleColor + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>" + project.title + "</a></h2>";
-    str += "<p>" + project.info + "</p>"
+    str += "<p>" + info + "</p>"
     str += "</div>";
     //str += "<div class='grow-space'></div>";
     //str += "<img class='right-side-image' src='" + (core.AVIFSupported ? project.avifImage : project.image) +  "' />";

@@ -1191,6 +1191,7 @@ html {
     flex-grow: 1;
     padding-right: 1rem;
     padding-left: 1rem;
+    flex-basis: 30%;
 }
 
 .left-side-content > h2 {
@@ -1393,6 +1394,10 @@ html {
         padding-left: .625rem;
         padding-right: .625rem;
         width: calc(100% - 1.25rem)
+    }
+
+    .left-side-content {
+        flex-basis: initial;
     }
 
     .vertical-contents > #description {
