@@ -869,6 +869,64 @@
                     "link": "https://1drv.ms/f/s!Aj62egREH4PT0Fj-1N732CTCdjam?e=udrpQw"
                 }
             ]
+        },
+
+        "algo-visual": {
+            "name": "AlgoVisual",
+            "date": "4/11/2023",
+            "description": [
+                "AlgoVisual is a C++ program that showcases various data structures and sorting algorithms",
+                "The program implements data structures such as binary search trees, linked lists, and graphs and applies sorting algorithms to them",
+                "It also has performance metrics for quick_sort, insertion_sort, and binary_search_tree and displays each data structure graphically",
+                "The program uses GTest for unit testing each data structure and algorithm",
+                "You can use Arrow keys or WASD to move the camera around, or drag the background using the mouse. The scroll-wheel zooms in and out",
+                "When you are in graph mode, you can also click on any node to move it around"
+            ],
+            "skills": [
+                "Demonstrating knowledge of different data structures and algorithms",
+                "Using performance metrics and Big O notation to figure out the performance of different functions",
+                "Ability to visualize and display data structures graphically",
+                "Familiarity with GTest for unit testing",
+                "Using IMGUI and Raylib for graphically visualizing different data structures and algorithms"
+            ],
+            "credits": [
+                {
+                    "name": "Circle Sprites",
+                    "label": "Kenney.nl",
+                    "link": "https://www.kenney.nl/assets/ui-pack"
+                }
+            ],
+            "tags": [
+                "C++",
+                "Data Structures",
+                "Sorting Algorithms",
+                "User Interface",
+                "Unit Testing"
+            ],
+            "image": "screenshots/algo-visual.png",
+            "imageAVIF": "screenshots/avif/algo-visual.avif",
+            "video": "videos/algo-visual.m4v",
+            "color": "#FFA500",
+            "textColor": "#FFFFFF",
+            "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#FF4500",
+            "titleColor": "#2e383a",
+            "titleWidth": 180,
+            "links": [
+                {
+                    "name": "GitHub Repository",
+                    "link": "https://github.com/nickc01/AlgoVisual"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/AlgoVisual/releases"
+                },
+                {
+                    "name": "Performance Metrics",
+                    "link": "https://nickc01.github.io/AlgoVisual/"
+                }
+            ]
         }
+        
     }
 }

@@ -286,6 +286,7 @@ objectivesPanel.createProjectUI = function(project) {
     str += "<div style='background-color:" + backColor + "; color:" + foreColor + ";' class='left-side-content'>";
     str += "<h2><a style='color:" + titleColor + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>" + project.title + "</a></h2>";
     str += "<p>" + info + "</p>"
+    str += "<p><a style='color:" + project.color + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>More Info</a></p>"
     str += "</div>";
     //str += "<div class='grow-space'></div>";
     //str += "<img class='right-side-image' src='" + (core.AVIFSupported ? project.avifImage : project.image) +  "' />";
