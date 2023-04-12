@@ -118,8 +118,9 @@ const linkRegex = /\!\[([\d\w\s]+?)\]\((.+?)\)/g;
     var rightContent = "<h1>Projects</h1>";
     if (objective.projects)
     {
-        for (const project of objective.projects) {
-            rightContent += objectivesPanel.createProjectUI(project);
+        //for (const project of objective.projects) {
+        for (var i = 0; i < objective.projects.length; i++) {
+            rightContent += objectivesPanel.createProjectUI(objective.projects[i],i);
         }
     }
 
@@ -258,7 +259,7 @@ const linkRegex = /\!\[([\d\w\s]+?)\]\((.+?)\)/g;
     windowDisplay.show();
 }
 
-objectivesPanel.createProjectUI = function(project) {
+objectivesPanel.createProjectUI = function(project, index) {
 
     var image = "url(";
     if (core.AVIFSupported)
@@ -279,14 +280,17 @@ objectivesPanel.createProjectUI = function(project) {
 
     var info = project.info;
 
-    for (const match of info.matchAll(linkRegex)) {
+    var reverseRow = (index % 2 == 1) ? "style='flex-direction: row-reverse;'" : "";
+
+    /*for (const match of info.matchAll(linkRegex)) {
         info = info.replace(match[0],"<a style='color:" + project.color + ";' href='" + match[2] + "' target='_blank' rel='noopener noreferrer'>" + match[1] + "</a>");
-    }
-    var str = "<div class='double-flexbox'>";
+    }*/
+    info = objectivesPanel.replaceMarkdownLinks(info, project.color);
+    var str = "<div " + reverseRow + " class='double-flexbox'>";
     str += "<div style='background-color:" + backColor + "; color:" + foreColor + ";' class='left-side-content'>";
     str += "<h2><a style='color:" + titleColor + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>" + project.title + "</a></h2>";
     str += "<p>" + info + "</p>"
-    str += "<p><a style='color:" + project.color + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>More Info</a></p>"
+    str += "<p style='text-align: right;' ><a style='color:" + project.color + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>More Info</a></p>"
     str += "</div>";
     //str += "<div class='grow-space'></div>";
     //str += "<img class='right-side-image' src='" + (core.AVIFSupported ? project.avifImage : project.image) +  "' />";
@@ -299,6 +303,55 @@ objectivesPanel.createProjectUI = function(project) {
     str += project.info;*/
     return str;
     //("url(" + (core.AVIFSupported ? project.imageAVIF : project.image) + ")");
+}
+
+/**
+ * 
+ * @param {string} str
+ * @param {string} color
+ * @returns {string}
+ */
+objectivesPanel.replaceMarkdownLinks = function(str, color) {
+    var output = '';
+    var nameStart = -1;
+    var nameEnd = -1;
+    var urlStart = -1;
+    var i = 0;
+    while (i < str.length) {
+        const char = str[i];
+        if (char === '[') {
+            nameStart = i + 1;
+            console.log("Found A");
+        } else if (char === ']' && nameStart !== -1) {
+            nameEnd = i;
+            console.log("Found B");
+        } else if (char === '(' && nameEnd !== -1) {
+            if (i > 0 && str[i - 1] == ']') {
+                urlStart = i + 1;
+                console.log("Found C");
+            }
+            else {
+                nameStart = -1;
+                nameEnd = -1;
+                urlStart = -1;
+                console.log("RESET");
+            }
+        } else if (char === ')' && urlStart !== -1) {
+            const name = str.substring(nameStart, nameEnd);
+            const url = str.substring(urlStart, i);
+            output += "<a style='color:" + color + ";' href=" + url + " target='_blank'' rel='noopener noreferrer''>" + name + "</a>";
+            nameStart = -1;
+            nameEnd = -1;
+            urlStart = -1;
+            console.log("FINISHED");
+            console.log("Name = " + name);
+            console.log("URL = " + url);
+        } else if (nameStart === -1) {
+            output += char;
+        }
+        i++;
+    }
+    return output;
 }
 
 /** Closes the project window */

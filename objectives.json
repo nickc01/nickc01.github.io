@@ -9,7 +9,7 @@
                     "color": "#ff4040",
                     "image": "screenshots/uatanks.jpg",
                     "avifImage": "screenshots/avif/uatanks.avif",
-                    "info": "UATanks is a top-down game where you control a tank to defeat all other tanks to win. It was made in the Unity3D engine, and can be built for both ![PC](https://github.com/nickc01/UATanks/releases), ![web](https://nickc01.github.io/Online-Games/UATanks/), and more platforms in the future"
+                    "info": "UATanks is a top-down game where you control a tank to defeat all other tanks to win. It was made in the Unity3D engine, and can be built for both [PC](https://github.com/nickc01/UATanks/releases), [web](https://nickc01.github.io/Online-Games/UATanks/), and more platforms in the future"
                 },
                 {
                     "name": "dungeon-escape",
@@ -17,7 +17,7 @@
                     "color": "#956a82",
                     "image": "screenshots/dungeon-escape.png",
                     "avifImage": "screenshots/avif/dungeon-escape.avif",
-                    "info": "Dungeon Escape is a top-down exploration game where your goal is to find the dungeon's exit without being killed by skeletons. The game was built using C++, with the SFML library being utilized for the graphics and input. The game also utilizes CMake, which allows the game to be built for multiple platforms and operating systems. I was able to get the game built for both ![Windows and Linux](https://github.com/nickc01/Dungeon-Escape/releases)" 
+                    "info": "Dungeon Escape is a top-down exploration game where your goal is to find the dungeon's exit without being killed by skeletons. The game was built using C++, with the SFML library being utilized for the graphics and input. The game also utilizes CMake, which allows the game to be built for multiple platforms and operating systems. I was able to get the game built for both [Windows and Linux](https://github.com/nickc01/Dungeon-Escape/releases)" 
                 },
                 {
                     "name": "badland-battles",
@@ -25,7 +25,7 @@
                     "color": "#ec964f",
                     "image": "screenshots/badland-battles.jpg",
                     "avifImage": "screenshots/avif/badland-battles.avif",
-                    "info": "Badland battles is a top-down shooting game where you play as a soldier in a desert. Your goal is to survive from a wave of enemy solders without getting shot down. This game utilizes advanced Unity3D features such as baked lighting, reflection probes, and inverse kinematics. It also is built for both ![PC](https://github.com/nickc01/Badland-Battles/releases) and ![web](https://nickc01.github.io/Online-Games/Badland%20Battles/)" 
+                    "info": "Badland battles is a top-down shooting game where you play as a soldier in a desert. Your goal is to survive from a wave of enemy solders without getting shot down. This game utilizes advanced Unity3D features such as baked lighting, reflection probes, and inverse kinematics. It also is built for both [PC](https://github.com/nickc01/Badland-Battles/releases) and [web](https://nickc01.github.io/Online-Games/Badland%20Battles/)" 
                 }
             ]
         },

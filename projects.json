@@ -926,7 +926,60 @@
                     "link": "https://nickc01.github.io/AlgoVisual/"
                 }
             ]
+        },
+
+
+
+        "factory-fiasco": {
+            "name": "Factory Fiasco",
+            "date": "2/13/2022",
+            "description": [
+                "Factory Fiasco is a physical puzzle game that I worked on with Don Smith",
+                "It is a multiplayer game where each player tries to place a series of conveyor belts on their map in order to guide their colored boxes to the correct destinations, and in the correct order",
+                "The main challenge with the game was to make sure that each player could affect the other without changing the solution to the puzzle",
+                "We were also tasked with creating high-quality artwork for the project, which was going to be difficult since we aren't very great artists",
+                "Another challenge was that Don Smith lived in Japan, which made communication difficult and only limited our time to talk to limited hours",
+                "Despite these challenges, we were able to complete the game, and complete the artwork to make it look good",
+                "We were able to allow players to affect each other by allowing an opponent to turn over a player's colored box to hide what color it was, forcing the player to remember the color combination",
+                "Don was able to utilize his 3D printer to build 3D artwork for the project"
+            ],
+            "skills": [
+                "Collaborating with a remote team member to deliver a high-quality project",
+                "Developing a multiplayer puzzle game where players can affect each other",
+                "Creating high-quality artwork for the game and instruction manual"
+            ],
+            "credits": [
+                {
+                    "name": "Don Smith",
+                    "label": "Co-creator"
+                }
+            ],
+            "tags": [
+                "Physical Game",
+                "Puzzle Game",
+                "Multiplayer Game"
+            ],
+            "image": "screenshots/factory-fiasco.png",
+            "imageAVIF": "screenshots/avif/factory-fiasco.avif",
+            "video": "videos/factory-fiasco.mp4",
+            "color": "#f0a22e",
+            "textColor": "#ffffff",
+            "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#B8860B",
+            "titleColor": "#2e383a",
+            "titleWidth": 150,
+            "links": [
+                {
+                    "name": "Resources",
+                    "link": "https://1drv.ms/f/s!Aj62egREH4PT0Gly85YepwXERRco?e=O2P9bi"
+                },
+                {
+                    "name": "Instructions Video",
+                    "link": "https://www.youtube.com/watch?v=tAQdsij8OH0"
+                }
+            ]
         }
-        
+
+
     }
 }
