@@ -23,6 +23,9 @@
     --window-foreground-color:rgb(107, 157, 62);
     --window-background-color:rgba(46, 56, 58,0.75);
     --window-background-color-noalpha:rgb(46, 56, 58);
+
+    --window-width: 80%;
+    --window-height: 65%;
 }
 
 @font-face {
@@ -1064,8 +1067,8 @@ html {
 
 #selected-project-contents {
     background-color: var(--window-foreground-color);
-    width: 75%;
-    height: 65%;
+    width: var(--window-width);
+    height: var(--window-height);
     position: relative;
     border-radius: .9375rem;
     overflow: hidden

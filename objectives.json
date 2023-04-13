@@ -9,7 +9,7 @@
                     "color": "#ff4040",
                     "image": "screenshots/uatanks.jpg",
                     "avifImage": "screenshots/avif/uatanks.avif",
-                    "info": "UATanks is a top-down game where you control a tank to defeat all other tanks to win. It was made in the Unity3D engine, and can be built for both [PC](https://github.com/nickc01/UATanks/releases), [web](https://nickc01.github.io/Online-Games/UATanks/), and more platforms in the future"
+                    "info": "UATanks is a 3D game developed using C# and Unity3D game engine. It features local split screen multiplayer gameplay and a minimap display that helps players navigate the game world. One of the exciting features of UATanks is that it has randomly generated maps, which ensures that every gameplay session is unique. Additionally, the game can be played online via web build, making it accessible to a wider audience."
                 },
                 {
                     "name": "dungeon-escape",
@@ -17,7 +17,60 @@
                     "color": "#956a82",
                     "image": "screenshots/dungeon-escape.png",
                     "avifImage": "screenshots/avif/dungeon-escape.avif",
-                    "info": "Dungeon Escape is a top-down exploration game where your goal is to find the dungeon's exit without being killed by skeletons. The game was built using C++, with the SFML library being utilized for the graphics and input. The game also utilizes CMake, which allows the game to be built for multiple platforms and operating systems. I was able to get the game built for both [Windows and Linux](https://github.com/nickc01/Dungeon-Escape/releases)" 
+                    "info": "Dungeon Escape is a C++ game developed using [SFML library](https://www.sfml-dev.org/) and utilizes [CMake](https://cmake.org/) for cross-platform support. The game was designed within a week and uses the [A* algorithm](https://www.redblobgames.com/pathfinding/a-star/introduction.html) to allow all the skeletons in the map to find the player. The game is designed to run on multiple platforms, making it accessible to a wide range of players."
+                },
+                {
+                    "name": "badland-battles",
+                    "title": "Badland Battles",
+                    "color": "#ec964f",
+                    "image": "screenshots/badland-battles.png",
+                    "avifImage": "screenshots/avif/badland-battles.avif",
+                    "info": "Badland Battles is a 3D game developed using C# and Unity3D game engine. In it, you play as a soldier in a 3D desert map who survives against waves of enemy soldiers looking to shoot you down. The game features baked lighting, probes, and inverse kinematics to create a realistic and immersive gaming experience. The game has been built for multiple platforms, including a web build which allows players to easily access the game."
+                },
+                {
+                    "name": "mega-muncher",
+                    "title": "Mega Muncher",
+                    "color": "#777777",
+                    "image": "screenshots/mega-muncher.png",
+                    "avifImage": "screenshots/avif/mega-muncher.avif",
+                    "info": "Mega Muncher is a 2D game developed using C# and Unity3D game engine. The game uses the [Unity Tilemap System](https://docs.unity3d.com/Manual/class-Tilemap.html) to easily create the levels, and players need to navigate through the maze-like environment to complete the game. The game is designed to be played online via web build, making it easily accessible to players worldwide."
+                },
+                {
+                    "name": "hacktrons",
+                    "title": "Hacktrons",
+                    "color": "#3464de",
+                    "image": "screenshots/hacktrons.png",
+                    "avifImage": "screenshots/avif/hacktrons.avif",
+                    "info": "Hacktrons is a 2D game developed using C# and Unity3D game engine. It is a game where you place down several tools in a grid in order to attack and destroy viruses. The game can be played online via web build, making it accessible to a wide audience. One of the key features of the game is that it utilizes the '[Tiled](https://www.mapeditor.org/)' program, which makes it easy to create maps for the game. The game also comes with an interactive tutorial to help new players learn how to play the game."
+                },
+                {
+                    "name": "escape-room-ar",
+                    "title": "Escape Room AR",
+                    "color": "#2a6dbf",
+                    "image": "screenshots/escape-room-ar.jpg",
+                    "avifImage": "screenshots/avif/escape-room-ar.avif",
+                    "info": "Escape Room AR is an augmented reality game developed using C# and Unity3D game engine. The game is designed for IOS and Android platforms and requires players to use their mobile devices to play the game. It is a game where you need to complete a series of puzzles to escape a room, and the puzzles can be viewed by pointing your phone camera over certain objects."
+                },
+                {
+                    "name": "nitro",
+                    "title": "Nitro",
+                    "color": "#7b49aa",
+                    "image": "screenshots/nitro.png",
+                    "avifImage": "screenshots/avif/nitro.avif",
+                    "info": "Nitro is a 3D game developed using C# and Unity3D game engine. It is a library that allows you to create powerups that can be combined together to create new effects. It is packaged with a demo game where you are able to race around in a procedurally generated road, and use the powerups against obstacles and other players. Because it is built using the Unity engine, it can easily be ported over to PC, console and mobile platforms."
+                }
+            ]
+        },
+        {
+            "title": "Objective 2",
+            "projects": [
+                {
+                    "name": "uatanks",
+                    "title": "UATanks",
+                    "color": "#ff4040",
+                    "image": "screenshots/uatanks.jpg",
+                    "avifImage": "screenshots/avif/uatanks.avif",
+                    "info": "UATanks is a 3D game developed using C# and Unity3D game engine. The game utilizes many Unity features such as Audio Mixers for separating audio into different channels, viewports for implementing split-screen multiplayer and minimaps, PlayerPrefs for keeping track of high scores and options, and MaterialPropertyBlocks for easily assigning a different color to each tank.</br>The game features colored AI tanks that use different AI algorithms for moving and attacking. It also has numerious other features, such as multiple background music tracks, sound effects, an options menu for adjusting game settings and audio volume, a countdown before the game starts, a minimap for displaying all tanks in the game, local split-screen multiplayer, a help screen for learning the rules and controls, particle effects for the powerups, and UI elements for displaying the health, score and lives. Finally, when the game ends, the player is greeted with a win or loose screen, which allows them to restart or go back to the main menu. All these features make UATanks an exciting and complete game to play."
                 },
                 {
                     "name": "badland-battles",
@@ -25,24 +78,192 @@
                     "color": "#ec964f",
                     "image": "screenshots/badland-battles.jpg",
                     "avifImage": "screenshots/avif/badland-battles.avif",
-                    "info": "Badland battles is a top-down shooting game where you play as a soldier in a desert. Your goal is to survive from a wave of enemy solders without getting shot down. This game utilizes advanced Unity3D features such as baked lighting, reflection probes, and inverse kinematics. It also is built for both [PC](https://github.com/nickc01/Badland-Battles/releases) and [web](https://nickc01.github.io/Online-Games/Badland%20Battles/)" 
+                    "info": "Badland Battles is a 3D game developed using C# and Unity3D game engine. The game utilizes advanced Unity features such as baked lighting, probes, inverse kinematics, Mechanim animations, spatial audio, and NavMesh for AI navigation. </br>The game features a main menu system, an options menu for changing audio mixer and video settings, background music, sound effects, particles, lighting, and UI elements for displaying health, lives, ammo and gun type. Each of the enemy soldiers in the map also have a health bar that displayed above them so you can tell how much health they have. The enemies have the potential to drop medpacks and ammo crates so you can continue to play the game without running out of ammo."
+                },
+                {
+                    "name": "nitro",
+                    "title": "Nitro",
+                    "color": "#7b49aa",
+                    "image": "screenshots/nitro.png",
+                    "avifImage": "screenshots/avif/nitro.avif",
+                    "info": "Nitro is a 3D game developed using C# and the Unity3D game engine. The game features online multiplayer using the Mirror library and a road generation algorithm for randomly generating maps. The game also includes a main menu system with options for single player, multiplayer, options for adjusting audio, and a help screen for learning controls. There are loading screens that are used to hide jumps between scenes, and to make the loading process feel smoother.</br>During a game, there are sound effects for the cars and powerups, a countdown timer to start the game, and a finish line the players can reach. There is also a hamburger menu at the top-left of the screen, which allows the player to quick to the main menu any time they want. Finally, when a player reaches the finish, there is a scoreboard displaying the winning placement of the player, and an option to go back to the main menu"
+                },
+                {
+                    "name": "hacktrons",
+                    "title": "Hacktrons",
+                    "color": "#3464de",
+                    "image": "screenshots/hacktrons.jpg",
+                    "avifImage": "screenshots/avif/hacktrons.avif",
+                    "info": "Hacktrons is a 2D game developed using C# and the Unity3D game engine. The game features a menu system, sound effects for buttons and players, a level selection menu that unlocks new levels as you progress, and an interactive tutorial that visually shows you how to play the game. It also includes level transitions, and a win and lose screen that brings you back to the main menu."
+                }
+            ]
+
+
+        },
+        {
+            "title": "Objective 3",
+            "projects": [
+                {
+                    "name": "dungeon-escape",
+                    "title": "Dungeon Escape",
+                    "color": "#956a82",
+                    "image": "screenshots/dungeon-escape.png",
+                    "avifImage": "screenshots/avif/dungeon-escape.avif",
+                    "info": "Dungeon Escape is a top-down exploration game where your goal is to find the dungeon's exit without being killed by skeletons. The game was built using C++, with the SFML library being utilized for the graphics and input. The game uses an [A* Pathfinding algorithm](https://github.com/nickc01/Dungeon-Escape/blob/9237ca0e5ef06e94456ad6674103a4e9aefa1da2/src/Enemy.cpp#L64) that uses a [custom \"Node\" struct](https://github.com/nickc01/Dungeon-Escape/blob/9237ca0e5ef06e94456ad6674103a4e9aefa1da2/src/Enemy.cpp#L15) for allowing the skeletons to find the player anywhere in the map. The game also has a [main game loop](https://github.com/nickc01/Dungeon-Escape/blob/9237ca0e5ef06e94456ad6674103a4e9aefa1da2/src/main.cpp#L42) for updating and rendering all the objects in the game. Each object in the game inherits from the [UpdateReciever](https://github.com/nickc01/Dungeon-Escape/blob/master/include/DungeonEscape/UpdateReceiver.h) class and a [Renderable](https://github.com/nickc01/Dungeon-Escape/blob/master/include/DungeonEscape/Renderable.h) class, which are used for objects that require frame-by-frame updates and rendering to the screen respectively.</br>Appropriate data structures have been used for maximum performance, such as using a [linked list](https://github.com/nickc01/Dungeon-Escape/blob/9237ca0e5ef06e94456ad6674103a4e9aefa1da2/src/Enemy.cpp#L97) in the Enemy Pathfinding algorithm for quick insertion at the ends of the list (O(1) time) while also allowing for iterating over the list (O(n) time). These optimizations make the game run as smoothly as possible. The game also has its own [custom room generation algorithm](https://github.com/nickc01/Dungeon-Escape/blob/9237ca0e5ef06e94456ad6674103a4e9aefa1da2/src/WorldMap.cpp#L28), where it needs to be able to place rooms adjacent to one another, and connect them with paths, without causing any overlap."
+                },
+                {
+                    "name": "europa2109",
+                    "title": "Europa 2109",
+                    "color": "#3469ae",
+                    "image": "screenshots/europa2109.png",
+                    "avifImage": "screenshots/avif/europa2109.avif",
+                    "info": "Europa 2109 is a 3D game developed using C# and Unity3D game engine. The game utilizes queues for pooling game objects for extra performance, such as in the [AudioPool](https://github.com/nickc01/Europa-2109/blob/master/Assets/Scripts/AudioPool.cs) class, where a queue is used for quickly pushing and popping game objects to and from the pool in O(1) time. Queues are also used for passing workloads between the worker thread and the main thread to maximize smoothness, such as in the [Map](https://github.com/nickc01/Europa-2109/blob/master/Assets/Scripts/Map.cs) class, where several concurrent queues are used for loading in chunk objects ([chunksWithObjectsToSpawn](https://github.com/nickc01/Europa-2109/blob/388af00dc5d5e89b16597b3c81c5cf76ceaa191a/Assets/Scripts/Map.cs#L132)), despawning objects in chunks ([objectsToDestroy](https://github.com/nickc01/Europa-2109/blob/388af00dc5d5e89b16597b3c81c5cf76ceaa191a/Assets/Scripts/Map.cs#L133)), and doing draw commands in the map ([brushCalls](https://github.com/nickc01/Europa-2109/blob/388af00dc5d5e89b16597b3c81c5cf76ceaa191a/Assets/Scripts/Map.cs#L127)). By utilizing these queues, the game is able to handle large amounts of data and processes quickly, resulting in a smooth gaming experience.</br>[Whenever a chunk in the game has been modified](https://github.com/nickc01/Europa-2109/blob/388af00dc5d5e89b16597b3c81c5cf76ceaa191a/Assets/Scripts/Map.cs#L766), the game uses a [Compute Shader](https://github.com/nickc01/Europa-2109/blob/master/Assets/Scripts/Shaders/MarchingCubes.compute) to generate a new mesh to render the chunk. This compute shader [takes the chunk data](https://github.com/nickc01/Europa-2109/blob/388af00dc5d5e89b16597b3c81c5cf76ceaa191a/Assets/Scripts/Map.cs#L839) and runs it through a [marching cubes algorithm](https://github.com/nickc01/Europa-2109/blob/388af00dc5d5e89b16597b3c81c5cf76ceaa191a/Assets/Scripts/Shaders/MarchingCubes.compute#L36), whichs turns the chunk information into a mesh that can be rendered in-game. By using a compute shader instead of a marching cubes algorithm on the CPU, the game is able to render chunks much faster"
+                },
+                {
+                    "name": "algo-visual",
+                    "title": "AlgoVisual",
+                    "color": "#FFA500",
+                    "image": "screenshots/algo-visual.png",
+                    "avifImage": "screenshots/avif/algo-visual.avif",
+                    "info": "AlgoVisual is a C++ program that demonstrates and implements several important data structures, such as an [AVL binary search tree](https://github.com/nickc01/AlgoVisual/blob/master/StructsAndAlgorithms/include/binary_search_tree.h), [linked list](https://github.com/nickc01/AlgoVisual/blob/master/StructsAndAlgorithms/include/linked_list.h), and [graph](https://github.com/nickc01/AlgoVisual/blob/master/StructsAndAlgorithms/include/graph.h). It also includes [several sorting algorithms](https://github.com/nickc01/AlgoVisual/tree/master/StructsAndAlgorithms/include) applied to those data structures and provides performance metrics for [quick_sort, insertion_sort](https://nickc01.github.io/AlgoVisual/performance/algorithm_analysis), and [binary_search_tree](https://nickc01.github.io/AlgoVisual/performance/binary_search_tree_analysis), showcasing the efficiency and complexity of each algorithm. The program shows each data structure in a graphical way, making it easier for users to understand and visualize how each algorithm works. The program also utilizes a [custom data structure](https://github.com/nickc01/AlgoVisual/blob/master/Visualizer/include/visual_container.h) for visually displaying values within a data structure. GoogleTest is also used for [unit testing each data structure and algorithm](https://github.com/nickc01/AlgoVisual/tree/master/test/src), ensuring that they work as expected. This program is an excellent tool for learning and understanding algorithms and data structures. The program can be built and run on both [Windows and Linux](https://github.com/nickc01/AlgoVisual/releases)."
                 }
             ]
         },
         {
-            "title" : "Objective 2"
+            "title": "Objective 4",
+            "projects": [
+                {
+                    "name": "dungeon-escape",
+                    "title": "Dungeon Escape",
+                    "color": "#956a82",
+                    "image": "screenshots/dungeon-escape.png",
+                    "avifImage": "screenshots/avif/dungeon-escape.avif",
+                    "info": "Dungeon Escape is a top-down game made in C++ where you play as a mage escaping a dungeon filled with skeletons. The game uses an [A* algorithm](https://github.com/nickc01/Dungeon-Escape/blob/9237ca0e5ef06e94456ad6674103a4e9aefa1da2/src/Enemy.cpp#L64) so that each of the many skeletons can find where the player is anywhere in the map.</br>The problem is that because there are so many skeletons, the algorithm causes the game to lag, even with an efficient A* Algorithm.</br>The solution I came up with was to use a separate thread to run the A* algorithm, so that all the skeletons would be able to find the player without lagging the game. I created a [ThreadPool](https://github.com/nickc01/Dungeon-Escape/blob/master/src/ThreadPool.cpp) class, which allows you to run any [function](https://github.com/nickc01/Dungeon-Escape/blob/9237ca0e5ef06e94456ad6674103a4e9aefa1da2/src/ThreadPool.cpp#L35) you want on a separate worker thread. I then made the [algorithm run on this worker thread](https://github.com/nickc01/Dungeon-Escape/blob/9237ca0e5ef06e94456ad6674103a4e9aefa1da2/src/Enemy.cpp#L219) and applied the path to the skeleton when it was finished."
+                },
+                {
+                    "name": "europa2109",
+                    "title": "Europa 2109",
+                    "color": "#3469ae",
+                    "image": "screenshots/europa2109.jpg",
+                    "avifImage": "screenshots/avif/europa2109.avif",
+                    "info": "Europa 2109 is a game where in the future, you control a remote controlled submarine that has been sent to the moon Europa. Your goal is to dig around and find several red crystals to win.</br>The main issue I ran into during development of the game is that when digging out or placing ground would cause the game to slow down considerably. This is because each 30x30x30 chunk in the game is made up of 27,000 points, which is a lot of points that need to be updated when a brush operation is done. So much so that through my own testing, a single thread won’t be able to keep up and run the game at a smooth 60fps.</br>The solution I came up with was to take advantage of all the CPU cores on the computer the game is running on. I did this by making the brush code use a [Parallel.For](https://github.com/nickc01/Europa-2109/blob/388af00dc5d5e89b16597b3c81c5cf76ceaa191a/Assets/Scripts/Map.cs#L973) loop, which runs a loop across all the computer's threads, rather than just one. I also had to make sure that the code inside the loop wouldn’t result in data races or deadlocks (such as using [concurrency compatible types](https://github.com/nickc01/Europa-2109/blob/388af00dc5d5e89b16597b3c81c5cf76ceaa191a/Assets/Scripts/Map.cs#L104) when possible), but in the end, the brush code now runs so much faster."
+                },
+                {
+                    "name": "escape-room-ar",
+                    "title": "Escape Room AR",
+                    "color": "#2a6dbf",
+                    "image": "screenshots/escape-room-ar.png",
+                    "avifImage": "screenshots/avif/escape-room-ar.avif",
+                    "info": "Escape Room AR is a multiplayer Augmented Reality game where you are placed in a room with interactable objects, and your goal is to solve puzzles in order to escape the room. As a game programmer on the project, I developed a puzzle where you [rearrange several mirrors to guide a laser to its goal](videos/reflection-puzzle.mp4). One of the major issues I encountered was that when the puzzle was used with an AR target, the laser would constantly jitter around, occasionally preventing the laser from hitting its goal correctly. The main issue was that I needed the puzzle to stay still in order for the physics to be consistent, but I also needed to puzzle to move around in order for it to line up with the AR Image Target</br>The solution I came up with was to have the object be stationary when not rendered, but have the object move according to the image target when it is rendering. This is accomplished by moving the object to line up with the image target in the [OnPreRender()](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnPreRender.html) function and move the object back to it's stationary position in the [OnPostRender()](https://docs.unity3d.com/ScriptReference/MonoBehaviour.OnPostRender.html) function. That way, the object will be in a fixed position when calculating physics, while also appearing in front of the AR Image Target when rendering."
+                },
+                {
+                    "name": "uatanks",
+                    "title": "UATanks",
+                    "color": "#ff4040",
+                    "image": "screenshots/uatanks.jpg",
+                    "avifImage": "screenshots/avif/uatanks.avif",
+                    "info": "UATanks is a top-down multiplayer game where players control tanks, collect power-ups, and shoot down other tanks without losing all of their lives. One of the problems I encountered during development was the need for different colored tanks. Initially, creating a new color for a tank would require creating a new material, which would become tedious as new tanks were added to the game.</br>I was able to solve this issue by using [MaterialPropertyBlocks](https://docs.unity3d.com/ScriptReference/MaterialPropertyBlock.html), a Unity feature that allowed me to change shader properties on a per-object basis, rather than on a per-material basis. By using a [MaterialPropertyBlock on a tank's renderer](https://github.com/nickc01/UATanks/blob/88b46e2569067c039a47b48eb04a1b4de5709a3c/Assets/Scripts/Tanks/Components/TankColorer.cs#L25), I was able to change the tank's color without having to create a new material. This solution effectively solved the problem and made it much easier to add new tanks to the game without the need for constantly creating new materials."
+                },
+                {
+                    "name": "corrupted-kin",
+                    "title": "Corrupted Kin",
+                    "color": "#e68a24",
+                    "image": "screenshots/corrupted-kin.png",
+                    "avifImage": "screenshots/avif/corrupted-kin.avif",
+                    "info": "Corrupted Kin is a mod developed using C# for the game Hollow Knight. One of the major problems I ran into when developing the mod was that the wave system itself would clip inside of the terrain. This meant that the wave would appear behind many ground objects and obscuring it from view. This was something that I didn't want, so one of the methods I tried to do was to adjust the wave's 'z' position to move the wave closer to the camera. However, because Hollow Knight uses a perspective camera, this would cause a missalignment between where the wave visually was, and where it's 2D collider was, which meant you could get hit by the wave's collider even if it doesn't look like you are near the wave.</br>The solution I came up with was to modify the wave's shader so that it [no longer did any Z-Testing](https://github.com/nickc01/Corrupted-Kin/blob/master/Assets/MOD%20FILES/Shaders/Wave%20Shader.shader#L14). This means that the wave would ALWAYS appear in front of all objects, regardless of how far away it is from the camera. This allowed me to have the wave on the same Z-Axis as the player, while still allowing the wave to appear in front of all the ground objects."
+                }
+            ]
         },
         {
-            "title" : "Objective 3"
+            "title": "Objective 5",
+            "projects": [
+                {
+                    "name": "corrupted-kin",
+                    "title": "Corrupted Kin",
+                    "color": "#e68a24",
+                    "image": "screenshots/corrupted-kin.png",
+                    "avifImage": "screenshots/avif/corrupted-kin.avif",
+                    "info": "Corrupted Kin is a mod developed using C# for the game Hollow Knight. The mod features a [custom-made 2D wave system](https://github.com/nickc01/Corrupted-Kin/blob/master/Assets/MOD%20FILES/Scripts/Wave%20System/WaveSystem.cs) that is used to create large waves that damage the player. This is achieved through a combination of [mesh vertex and index manipulation](https://github.com/nickc01/Corrupted-Kin/blob/31607fa8fae91b35e23c63394987d13808e4dbdf/Assets/MOD%20FILES/Scripts/Wave%20System/WaveSystem.cs#L569), [custom shaders](https://github.com/nickc01/Corrupted-Kin/blob/master/Assets/MOD%20FILES/Shaders/Wave%20Shader.shader), and [sine/cosine waves](https://github.com/nickc01/Corrupted-Kin/blob/31607fa8fae91b35e23c63394987d13808e4dbdf/Assets/MOD%20FILES/Scripts/Wave%20System/Wave%20Types/AmbientWave.cs#L68)."
+                },
+                {
+                    "name": "dungeon-escape",
+                    "title": "Dungeon Escape",
+                    "color": "#956a82",
+                    "image": "screenshots/dungeon-escape.png",
+                    "avifImage": "screenshots/avif/dungeon-escape.avif",
+                    "info": "Dungeon Escape is a top-down game developed using C++ and [SFML](https://www.sfml-dev.org/). In this game, the player is trapped in a dungeon full of skeletons and needs to find the door to escape. The game features [A* pathfinding algorithm](https://github.com/nickc01/Dungeon-Escape/blob/9237ca0e5ef06e94456ad6674103a4e9aefa1da2/src/Enemy.cpp#L64) that is used to allow the skeletons to find the player anywhere in the dungeon. The game also takes advantage of [multithreading](https://github.com/nickc01/Dungeon-Escape/blob/master/src/ThreadPool.cpp), which is primarily used to offload the pathfinding algorithm to a separate thread to prevent the game from slowing down when trying to find the path for many skeletons. The game also uses a [CMakeLists.txt file](https://github.com/nickc01/Dungeon-Escape/blob/master/CMakeLists.txt), which can be used with CMake for building the game for multiple different platforms and IDEs, making it easily accessible to a wide range of players."
+                },
+                {
+                    "name": "europa2109",
+                    "title": "Europa 2109",
+                    "color": "#3469ae",
+                    "image": "screenshots/europa2109.png",
+                    "avifImage": "screenshots/avif/europa2109.avif",
+                    "info": "Europa 2109 is a game developed using C# and Unity3D game engine. In this game, the player is a sub exploring a large underground cave system in search of crystals. The game takes advantage of multithreading to parallelize [digging and placing down terrain](https://github.com/nickc01/Europa-2109/blob/388af00dc5d5e89b16597b3c81c5cf76ceaa191a/Assets/Scripts/Map.cs#L973), which allows the player to dig up the terrain without it slowing down their PC."
+                },
+                {
+                    "name": "portfolio",
+                    "title": "Portfolio Site",
+                    "color": "#8a58b8",
+                    "image": "screenshots/portfolio.png",
+                    "avifImage": "screenshots/avif/portfolio.avif",
+                    "info": "My portfolio Site is a custom-built website developed using Javascript for displaying my projects and work. The site uses a [custom-built panel system](https://github.com/nickc01/nickc01.github.io/blob/5743eb01aac117801e766290c5ef08185cb4d3c5/js/core.js#L139) for switching between different screens seamlessly, which enhances the user experience. The entire site was made using HTML, Javascript, and CSS and does not make use of framework libraries like React or Angular. The site also uses a [webgl canvas](https://github.com/nickc01/nickc01.github.io/blob/5743eb01aac117801e766290c5ef08185cb4d3c5/js/background.js#L204) for rendering a [perlin noise shader](https://github.com/nickc01/nickc01.github.io/tree/master/js/shaders) for the background of the site."
+                },
+                {
+                    "name": "badland-battles",
+                    "title": "Badland Battles",
+                    "color": "#ec964f",
+                    "image": "screenshots/badland-battles.jpg",
+                    "avifImage": "screenshots/avif/badland-battles.avif",
+                    "info": "Badland Battles is a game developed using C# and Unity3D game engine. In this game, the player is a soldier in a desert map and needs to survive a wave of enemy soldiers that can shoot them down. The game uses advanced features of the Unity engine, such as lighting probes, reflection probes, particle effects, mechanim model animations, inverse kinematic for placing a gun in the soldier’s hands, and baked lighting."
+                },
+                {
+                    "name": "escape-room-ar",
+                    "title": "Escape Room AR",
+                    "color": "#2a6dbf",
+                    "image": "screenshots/escape-room-ar.jpg",
+                    "avifImage": "screenshots/avif/escape-room-ar.avif",
+                    "info": "Escape Room AR is a mobile game developed using C# and Unity3D game engine, made for both Android and IOS. In this game, the player needs to escape an escape room by solving augmented reality puzzles. The game uses [Vuforia](https://developer.vuforia.com/) for creating AR puzzles, [Playfab](https://playfab.com/) for authentication and player profiles, [Photon](https://www.photonengine.com/) for online multiplayer, and [Google AdMob](https://admob.google.com/home/) for mobile advertisements."
+                },
+                {
+                    "name": "algo-visual",
+                    "title": "AlgoVisual",
+                    "color": "#FFA500",
+                    "image": "screenshots/algo-visual.png",
+                    "avifImage": "screenshots/avif/algo-visual.avif",
+                    "info": "AlgoVisual is a project developed using C++. It is designed to visually represent how linked lists, binary search trees, and graphs work, as well as apply sorting algorithms to them. The project uses [Raylib](https://www.raylib.com/) for visually displaying the data structures, [IMGUI](https://github.com/ocornut/imgui) for displaying an interface for interacting with the program, and [GoogleTest](https://github.com/google/googletest) for testing each of the data structures and algorithms to ensure they work and continue to work even when changes are applied to them."
+                }
+            ]
         },
         {
-            "title" : "Objective 4"
-        },
-        {
-            "title" : "Objective 5"
-        },
-        {
-            "title" : "Objective 6"
+            "title": "Objective 6",
+            "projects": [
+                {
+                    "name": "escape-room-ar",
+                    "title": "Escape Room AR",
+                    "color": "#2a6dbf",
+                    "image": "screenshots/escape-room-ar.png",
+                    "avifImage": "screenshots/avif/escape-room-ar.avif",
+                    "info": "Escape Room AR is an exciting project that I worked on as a game programmer during my time in Game Production Studio, under the team “Team NT Studios”. One of my main tasks on the project was to create a [laser reflection puzzle](videos/reflection-puzzle.mp4) where players needed to rotate mirrors to guide a laser. Additionally, I also worked on several other important features such as user profiles, account authentication, adding a notification system, integrating advertisements using Google AdMob, and fixing various bugs.</br>The project was built for mobile devices and utilized AR technology. I collaborated with other team members extensively to ensure the project's features were completed within three months for a greenlight event. We would do the majority of our communication through a Discord server. Everytime we were to start on some work, we would submit a 'Signing in' message to a dedicated work channel, were we discussed what we did yesterday and what we were doing today. During our work, would use a program called TopTracker, which would keep track of how long we were working, and take photos to show as proof. When we were done for the day, we would submit a 'Signing Out' message to the discord server, and also use the info from TopTracker to update our Trello Tasks.</br>The lead programmer (Alec Carter) would always check over my work to make sure it was done correctly, and I would make adjustments whenever necessary. We would also do standups every week, and we would update the product backlog every month so everyone would have something to do. Overall, it was a fun experience working on the project, as it involved many tools and technologies that I wasn't familiar with at the time"
+                },
+                {
+                    "name": "net-neutralizer",
+                    "title": "Net Neutralizer",
+                    "color": "#eca400",
+                    "image": "screenshots/net-neutralizer.png",
+                    "avifImage": "screenshots/avif/net-neutralizer.avif",
+                    "info": "Net Neutralizer was a project that I worked on as the team lead. As part of the project, I was responsible for keeping track of product backlogs using Excel sheets and ensuring that weekly sprints were held to discuss progress, issues, and next steps. Communication was key in ensuring that our team of designers and artists worked together effectively, which is why we created our own dedicated Discord Server where we can discuss and hash out the details of the project. We would post sprint standups once every week, which was used to discuss any blockers or problems we may be experiencing along the way</br>My primary tasks included overseeing the artists working on the card and manual art, while also helping the designers work on game design and writing up the manual. I also play tested the game extensively with my family to ensure it was well balanced and polished. The end result was a highly polished card game that the team of designers and artists produced with my leadership and design work."
+                },
+                {
+                    "name": "factory-fiasco",
+                    "title": "Factory Fiasco",
+                    "color": "#f0a22e",
+                    "image": "screenshots/factory-fiasco.png",
+                    "avifImage": "screenshots/avif/factory-fiasco.avif",
+                    "info": "Factory Fiasco was a physical game project that I worked on with Don Smith. Our main objective for this project was to create a multiplayer puzzle game where players could affect each other, but without altering the solution to the puzzle.</br>Coming up with an idea that fit those requirements was one of the biggest challenges we faced over the course of the class. Additionally, we needed to create high-quality artwork for the game, which was something that we did not have experience with. And finally, a third challenge was the time difference, as Don Smith lived in Japan, and communication via Discord was limited to night-time. Despite these challenges, we managed to overcome them and produce a multiplayer puzzle game with high-quality assets and challenging gameplay.</br>The game we worked on is a conveyor belt game, where you have to place down conveyor belts down on a map to guide colored boxes to their correct destinations. The each player is able to hide one of their opponent's boxes, so their opponent has to remember what color their box was."
+                }
+
+            ]
         }
     ]
 }

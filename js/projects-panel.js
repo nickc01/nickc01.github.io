@@ -103,39 +103,6 @@ projectPanel.openProject = function(projectName) {
     //Notify that the colors have changed
     projectPanel.triggerColorChangeEvent();
 
-    //Disable scrolling in the main document so the user can scroll within the project window
-    //document.documentElement.style.overflowY = "hidden";
-
-    //var project = projectPanel.projects[projectName];
-
-
-    //document.documentElement.style.setProperty('--main-top-color', project.color);
-    //document.documentElement.style.setProperty('--main-bottom-color', project.backgroundColor);
-
-    //console.log("Bottom Color = " + project.backgroundColor);
-
-    //var bottomColor = core.cssToColor(project.backgroundColor);
-    //var topColor = core.cssToColor(project.color);
-
-    //document.documentElement.style.setProperty('--window-foreground-color', project.color);
-    //document.documentElement.style.setProperty('--window-background-color', project.backgroundColor);
-    //document.documentElement.style.setProperty('--window-background-color-noalpha', "rgb(" + bottomColor[0] + ", " + bottomColor[1] + ", " + bottomColor[2] + ")");
-    //document.documentElement.style.setProperty('--window-foreground-color', "rgb(" + topColor[0] + ", " + topColor[1] + ", " + topColor[2] + ")");
-
-    //var selectedProjectArea = document.getElementById("selected-project-area")
-
-    //Fade in the project window
-    //selectedProjectArea.classList.remove("fade-out-proj-window");
-    //selectedProjectArea.classList.add("fade-in-proj-window");
-
-    //Load the project video
-    /*var videoAreaElement = document.getElementById("video-area");
-    var vs = videoAreaElement.getElementsByTagName("video");
-    if (vs.length > 0) {
-        var videoElement = vs[0];
-        videoElement.load();
-    }*/
-
     windowDisplay.show();
 }
 
@@ -158,54 +125,24 @@ projectPanel.prepareProject = function(projectName) {
         projectPanel.preparedProject = projectName;
     }
 
-    //var root = document.documentElement;
-
     var project = projectPanel.projects[projectName];
 
-    /*var closeButton = document.getElementById("close-button-svg");
-
-    for (var i = 0; i < closeButton.childElementCount; i++) {
-        var child = closeButton.children[i];
-        child.setAttribute("width", 3.5 * core.fontSize);
-        child.setAttribute("height", 0.5 * core.fontSize);
-    }*/
-
     //Update the project window title
-    //var projectTitle = document.getElementById("selected-project-title");
-    //projectTitle.textContent = project.name;
     windowDisplay.setWindowTitle(project.name,project.titleWidth);
 
-    //Update the title dimensions
-    /*if (project.titleWidth != undefined) {
-        projectTitle.parentElement.setAttribute("viewBox", "0 " + (-(core.fontSize - 16)) + " " + (project.titleWidth * core.fontSize / 16) + " " + (25 * core.fontSize / 16));
-    }*/
-
     //Set the title color
-    /*if (project.titleColor != undefined) {
-        root.style.setProperty('--title-text-color', project.titleColor);
-    } else {
-        root.style.setProperty('--title-text-color', project.textColor);
-    }*/
     windowDisplay.setTitleColor(project.titleColor ? project.titleColor : project.textColor);
 
     //Update the background image and text color
-    //root.style.setProperty('--project-background-image', "url(" + (core.AVIFSupported ? project.imageAVIF : project.image) + ")");
-    //root.style.setProperty('--project-text-color', project.textColor);
     windowDisplay.setBackgroundImage("url(" + (core.AVIFSupported ? project.imageAVIF : project.image) + ")");
     windowDisplay.setTextColor(project.textColor);
 
-    //var bottomColor = core.cssToColor(project.backgroundColor);
-    //var topColor = core.cssToColor(project.color);
-
     //Update the top and bottom colors
-    //root.style.setProperty('--main-bottom-color-solid', "rgb(" + bottomColor[0] + ", " + bottomColor[1] + ", " + bottomColor[2] + ")");
-    //root.style.setProperty('--main-top-color-solid', "rgb(" + topColor[0] + ", " + topColor[1] + ", " + topColor[2] + ")");
     windowDisplay.setForegroundColor(project.color);
     windowDisplay.setBackgroundColor(project.backgroundColor);
 
     windowDisplay.setVertical(false);
 
-    //var descriptionElement = document.getElementById("description");
     var date = "<h3>" + project.date + "</h3>";
 
     var rightContent = "";
@@ -249,38 +186,11 @@ projectPanel.prepareProject = function(projectName) {
     //Setup the project button links
     rightContent += projectPanel.GenerateLinksElement(project.links);
 
+    windowDisplay.resetWindowWidth();
+    windowDisplay.resetWindowHeight();
     windowDisplay.setRightContent(rightContent);
     windowDisplay.clearLeftContent();
-
-    //Setup the main video area
-    /*var videoAreaElement = document.getElementById("video-area");
-    var vs = videoAreaElement.getElementsByTagName("video");
-    if (vs.length > 0) {
-        var videoElement = vs[0];
-        var sources = videoAreaElement.getElementsByTagName("source");
-        var sourceElement = null;
-        if (sources.length == 0) {
-            sourceElement = document.createElement('source');
-            videoElement.appendChild(sourceElement);
-        } else {
-            sourceElement = sources[0];
-        }
-        sourceElement.setAttribute('src', project.video);
-    }*/
     windowDisplay.setVideo(project.video);
-
-    //Add project tags
-    /*var tagsElement = document.getElementById("selected-project-tags");
-    if (project.tags != undefined) {
-        var tags = "";
-        for (var i = 0; i < project.tags.length; i++) {
-            tags += "<h1>" + project.tags[i] + "</h1>";
-        }
-
-        tagsElement.innerHTML = tags;
-    } else {
-        tagsElement.innerHTML = "";
-    }*/
     windowDisplay.clearTags();
     windowDisplay.addTags(project.tags);
 }
@@ -303,35 +213,20 @@ projectPanel.GenerateLinksElement = function(links) {
     return outerHTML;
 }
 
-/** Closes the project window */
-projectPanel.closeProject = function() {
+/** Called when the project window closes */
+projectPanel.onCloseProject = function() {
     if (typeof windowDisplay === 'undefined' || core.selectedPanel == null || core.selectedPanel.name != "projects" || !projectPanel.projectOpen) {
         return;
     }
     projectPanel.projectOpen = false;
     projectPanel.openedProject = null;
 
-    //Allow scrolling again in the main document
-    //document.documentElement.style.overflowY = "auto";
-
     projectPanel.triggerColorChangeEvent();
-
-    //Fade the project window out
-    /*var selectedProjectArea = document.getElementById("selected-project-area")
-    selectedProjectArea.classList.remove("fade-in-proj-window");
-    selectedProjectArea.classList.add("fade-out-proj-window");*/
 
 }
 
-/** This closes the project window upon hover (ONLY ON MOBILE DEVICES) */
-/*projectPanel.closeButtonHover = function() {
-    if (window.innerWidth < (59.375 * core.fontSize) && core.usingTouchDevice()) {
-        projectPanel.closeProject();
-    }
-}*/
-
 projectPanel.onWindowClose = function() {
-    projectPanel.closeProject();
+    projectPanel.onCloseProject();
     projectPanel.projectOpen = false;
     projectPanel.openedProject = null;
 }
@@ -381,7 +276,7 @@ projectPanel.clearColors = function() {
 core.addToEvent(core.events.onPanelLeaveEvent, panel => {
     //If the projects panel is unloading, then close the project window if it's displayed
     if (panel.name == "projects") {
-        projectPanel.closeProject();
+        projectPanel.onWindowClose();
         projectPanel.clearColors();
     }
 })

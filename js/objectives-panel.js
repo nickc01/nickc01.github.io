@@ -14,15 +14,6 @@ objectivesPanel.ObjectiveState = {
     Loaded: 2
 }
 
-/** The different states used for interpolating colors */
-/*objectivesPanel.ColorInterpolationState = {
-    Idle: 0,
-    Interpolating: 1,
-    Full: 2,
-    Reverting: 3
-}*/
-
-
 
 
 //---------------------------------------------------
@@ -49,7 +40,6 @@ const DEFAULT_TITLE_COLOR = "rgba(46, 56, 58)";
 const DEFAULT_TEXT_COLOR = "#cccccc";
 const DEFAULT_FOREGROUND_COLOR = "rgb(107, 157, 62)";
 const DEFAULT_BACKGROUND_COLOR = "rgba(46, 56, 58, 0.75)";
-const linkRegex = /\!\[([\d\w\s]+?)\]\((.+?)\)/g;
 
 
 //---------------------------------------------------
@@ -59,7 +49,7 @@ const linkRegex = /\!\[([\d\w\s]+?)\]\((.+?)\)/g;
  * Opens an objective and display's it in a window
  * @param {number} objectiveIndex The index of the objective to open
  */
- objectivesPanel.openObjective = function(objectiveIndex) {
+objectivesPanel.openObjective = function (objectiveIndex) {
     //Return if the projects panel isn't open
     if (objectivesPanel.objectiveOpen) {
         return;
@@ -71,19 +61,16 @@ const linkRegex = /\!\[([\d\w\s]+?)\]\((.+?)\)/g;
     }
 
     //Return if there is no panel loaded or if we aren't on the projects panel or the panel isn't loaded yet
-    if (typeof windowDisplay === 'undefined' || 
-        core.selectedPanel == null || 
-        core.selectedPanel.name != "objectives" || 
-        core.currentPanelState != core.PanelState.Idle) 
-    {
+    if (typeof windowDisplay === 'undefined' ||
+        core.selectedPanel == null ||
+        core.selectedPanel.name != "objectives" ||
+        core.currentPanelState != core.PanelState.Idle) {
         return;
     }
 
     if (objectiveIndex == null) {
         return;
     }
-
-    //var root = document.documentElement;
 
     var objectiveElement = document.getElementById("objectives-content").getElementsByTagName("p")[objectiveIndex];
 
@@ -94,47 +81,28 @@ const linkRegex = /\!\[([\d\w\s]+?)\]\((.+?)\)/g;
 
     var objective = objectivesPanel.objectives[objectiveIndex];
 
-    //var closeButton = document.getElementById("close-button-svg");
-
-    /*for (var i = 0; i < closeButton.childElementCount; i++) {
-        var child = closeButton.children[i];
-        child.setAttribute("width", 3.5 * core.fontSize);
-        child.setAttribute("height", 0.5 * core.fontSize);
-    }*/
-
     windowDisplay.clearTags();
     windowDisplay.setVideo(null);
     windowDisplay.setWindowTitle(objective.title);
     windowDisplay.setVertical(true);
 
-    var objectiveText = objectiveElement.outerHTML;//.replace("<p","<h2");
+    var objectiveText = objectiveElement.outerHTML;
 
-    if (objectiveText.substring(4,6) == ". ") {
-        objectiveText = objectiveText.substring(0,3) + objectiveText.substring(6);
+    if (objectiveText.substring(4, 6) == ". ") {
+        objectiveText = objectiveText.substring(0, 3) + objectiveText.substring(6);
     }
 
-    windowDisplay.setLeftContent(objectiveText.replace("<p","<h2"));
+    windowDisplay.setLeftContent(objectiveText.replace("<p", "<h2"));
 
     var rightContent = "<h1>Projects</h1>";
-    if (objective.projects)
-    {
-        //for (const project of objective.projects) {
+    if (objective.projects) {
         for (var i = 0; i < objective.projects.length; i++) {
-            rightContent += objectivesPanel.createProjectUI(objective.projects[i],i);
+            rightContent += objectivesPanel.createProjectUI(objective.projects[i], i);
         }
     }
 
     windowDisplay.setRightContent(rightContent);
 
-
-    //Update the project window title
-    /*var projectTitle = document.getElementById("selected-project-title");
-    projectTitle.textContent = objective.name;
-
-    //Update the title dimensions
-    if (objective.titleWidth != undefined) {
-        projectTitle.parentElement.setAttribute("viewBox", "0 " + (-(core.fontSize - 16)) + " " + (objective.titleWidth * core.fontSize / 16) + " " + (25 * core.fontSize / 16));
-    }*/
 
     var textColor = objective.textColor != undefined ? objective.textColor : DEFAULT_TEXT_COLOR;
     var titleColor = objective.titleColor != undefined ? objective.titleColor : DEFAULT_TITLE_COLOR;
@@ -146,119 +114,18 @@ const linkRegex = /\!\[([\d\w\s]+?)\]\((.+?)\)/g;
     windowDisplay.setTextColor(textColor);
     windowDisplay.setForegroundColor(foreColor);
     windowDisplay.setBackgroundColor(backColor);
-    
-    //Set the title color
-    //root.style.setProperty('--title-text-color', titleColor);
+    windowDisplay.setWindowWidth(85);
+    windowDisplay.setWindowHeight(75);
 
-    /*if (objective.titleColor != undefined) {
-        root.style.setProperty('--title-text-color', objective.titleColor);
-    } else {
-        root.style.setProperty('--title-text-color', objective.textColor);
-    }*/
-
-    //Update the background image and text color
-    /*root.style.setProperty('--project-background-image', "none");
-    root.style.setProperty('--project-text-color', textColor);
-
-    var bottomColor = core.cssToColor(backColor);
-    var topColor = core.cssToColor(foreColor);
-
-    //Update the top and bottom colors
-    root.style.setProperty('--main-bottom-color-solid', "rgb(" + bottomColor[0] + ", " + bottomColor[1] + ", " + bottomColor[2] + ")");
-    root.style.setProperty('--main-top-color-solid', "rgb(" + topColor[0] + ", " + topColor[1] + ", " + topColor[2] + ")");
-
-    root.style.setProperty('--main-bottom-color', "rgb(" + bottomColor[0] + ", " + bottomColor[1] + ", " + bottomColor[2] + ")");
-    root.style.setProperty('--main-top-color', "rgb(" + topColor[0] + ", " + topColor[1] + ", " + topColor[2] + ")");*/
-
-    /*var descriptionElement = document.getElementById("description");
-    var date = "<h3>" + objective.date + "</h3>";
-
-    var description = "";
-
-    for (var i = 0; i < objective.description.length; i++) {
-        description += "</br>" + objective.description[i] + ".</br>";
-    }
-
-    //Set the date and description
-    descriptionElement.innerHTML = date + description;
-
-    //Setup the skills section
-    if (objective.skills != undefined) {
-        var skills = "</br><h3>Skills:</h3>";
-
-        for (var i = 0; i < objective.skills.length; i++) {
-            skills += " - " + objective.skills[i] + "</br>";
-        }
-
-        descriptionElement.innerHTML += skills;
-    }
-
-    //Setup the credits section
-    if (objective.credits != undefined) {
-        var credits = "</br><h3>Credits:</h3>";
-
-        for (var i = 0; i < objective.credits.length; i++) {
-            var credit = objective.credits[i];
-            credits += " - " + credit.name + ": <a href=\"" + credit.link + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + credit.label + "</a></br>";
-        }
-
-        descriptionElement.innerHTML += credits;
-    }
-
-    //Setup the project button links
-    descriptionElement.innerHTML += objectivesPanel.GenerateLinksElement(objective.links);
-
-    //Setup the main video area
-    var videoAreaElement = document.getElementById("video-area");
-    var vs = videoAreaElement.getElementsByTagName("video");
-    if (vs.length > 0) {
-        var videoElement = vs[0];
-        var sources = videoAreaElement.getElementsByTagName("source");
-        var sourceElement = null;
-        if (sources.length == 0) {
-            sourceElement = document.createElement('source');
-            videoElement.appendChild(sourceElement);
-        } else {
-            sourceElement = sources[0];
-        }
-        sourceElement.setAttribute('src', objective.video);
-    }
-
-    //Add project tags
-    var tagsElement = document.getElementById("selected-project-tags");
-    if (objective.tags != undefined) {
-        var tags = "";
-        for (var i = 0; i < objective.tags.length; i++) {
-            tags += "<h1>" + objective.tags[i] + "</h1>";
-        }
-
-        tagsElement.innerHTML = tags;
-    } else {
-        tagsElement.innerHTML = "";
-    }*/
-    ////
-
-    //Disable scrolling in the main document so the user can scroll within the project window
-    //root.style.overflowY = "hidden";
-
-    //var project = objectivesPanel.objectives[objectiveIndex];
-
-    //var selectedProjectArea = document.getElementById("selected-project-area")
-
-    //Fade in the project window
-    /*selectedProjectArea.classList.remove("fade-out-proj-window");
-    selectedProjectArea.classList.add("fade-in-proj-window");*/
-
-    //Load the project video
-    /*var videoAreaElement = document.getElementById("video-area");
-    var vs = videoAreaElement.getElementsByTagName("video");
-    if (vs.length > 0) {
-        var videoElement = vs[0];
-        videoElement.load();
-    }*/
     windowDisplay.show();
 }
 
+/**
+ * Creates a project entry
+ * @param {any} project
+ * @param {number} index
+ * @returns
+ */
 objectivesPanel.createProjectUI = function(project, index) {
 
     var image = "url(";
@@ -282,31 +149,21 @@ objectivesPanel.createProjectUI = function(project, index) {
 
     var reverseRow = (index % 2 == 1) ? "style='flex-direction: row-reverse;'" : "";
 
-    /*for (const match of info.matchAll(linkRegex)) {
-        info = info.replace(match[0],"<a style='color:" + project.color + ";' href='" + match[2] + "' target='_blank' rel='noopener noreferrer'>" + match[1] + "</a>");
-    }*/
     info = objectivesPanel.replaceMarkdownLinks(info, project.color);
-    var str = "<div " + reverseRow + " class='double-flexbox'>";
-    str += "<div style='background-color:" + backColor + "; color:" + foreColor + ";' class='left-side-content'>";
-    str += "<h2><a style='color:" + titleColor + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>" + project.title + "</a></h2>";
-    str += "<p>" + info + "</p>"
-    str += "<p style='text-align: right;' ><a style='color:" + project.color + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>More Info</a></p>"
-    str += "</div>";
-    //str += "<div class='grow-space'></div>";
-    //str += "<img class='right-side-image' src='" + (core.AVIFSupported ? project.avifImage : project.image) +  "' />";
-    str += "<div class='right-side-image' style=" + style + "></div>";
+    var str = "<div " + reverseRow + " class='double-flexbox'>"
+    + "<div style='background-color:" + backColor + "; color:" + foreColor + ";' class='left-side-content'>"
+    + "<h2><a style='color:" + titleColor + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>" + project.title + "</a></h2>"
+    + "<p>" + info + "</p>"
+    + "<p style='text-align: right;' ><a style='color:" + project.color + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>More Info</a></p>"
+    + "</div>"
+    + "<div class='right-side-image' style=" + style + "></div>";
 
     str += "</div>";
-
-    /*var str = "<img class='right-side-image' src='" + (core.AVIFSupported ? project.avifImage : project.image) +  "' />";
-    str += "<h2><a style='color:" + project.color + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>" + project.title + "</a></h2>";
-    str += project.info;*/
     return str;
-    //("url(" + (core.AVIFSupported ? project.imageAVIF : project.image) + ")");
 }
 
 /**
- * 
+ * Replaces any markdown links with html 'a' links
  * @param {string} str
  * @param {string} color
  * @returns {string}
@@ -321,20 +178,16 @@ objectivesPanel.replaceMarkdownLinks = function(str, color) {
         const char = str[i];
         if (char === '[') {
             nameStart = i + 1;
-            console.log("Found A");
         } else if (char === ']' && nameStart !== -1) {
             nameEnd = i;
-            console.log("Found B");
         } else if (char === '(' && nameEnd !== -1) {
             if (i > 0 && str[i - 1] == ']') {
                 urlStart = i + 1;
-                console.log("Found C");
             }
             else {
                 nameStart = -1;
                 nameEnd = -1;
                 urlStart = -1;
-                console.log("RESET");
             }
         } else if (char === ')' && urlStart !== -1) {
             const name = str.substring(nameStart, nameEnd);
@@ -343,9 +196,6 @@ objectivesPanel.replaceMarkdownLinks = function(str, color) {
             nameStart = -1;
             nameEnd = -1;
             urlStart = -1;
-            console.log("FINISHED");
-            console.log("Name = " + name);
-            console.log("URL = " + url);
         } else if (nameStart === -1) {
             output += char;
         }
@@ -362,14 +212,6 @@ objectivesPanel.closeObjective = function() {
 
     objectivesPanel.objectiveOpen = false;
     objectivesPanel.openedObjective = null;
-
-    //Allow scrolling again in the main document
-    /*document.documentElement.style.overflowY = "auto";
-
-    //Fade the project window out
-    var selectedProjectArea = document.getElementById("selected-project-area")
-    selectedProjectArea.classList.remove("fade-in-proj-window");
-    selectedProjectArea.classList.add("fade-out-proj-window");*/
     windowDisplay.close();
 }
 
@@ -392,6 +234,9 @@ objectivesPanel.loadObjectives = function() {
     });
 }
 
+/**
+ * Adds click handlers to the 6 buttons on the main screen
+ */
 objectivesPanel.addClickHandlers = function() {
     var content = document.getElementById("objectives-content");
     var objectivePs = content.getElementsByTagName("p");
@@ -409,11 +254,8 @@ objectivesPanel.addClickHandlers = function() {
     }
 }
 
+//Loads the objectives
 objectivesPanel.loadObjectives();
-
-/*core.waitUntil(() => objectivesPanel.objectivesLoaded, () => {
-    objectivesPanel.addClickHandlers();
-});*/
 
 //Called when the project panel changes colors
 core.addToEvent(core.events.onEnterPanelEvent, panel => {

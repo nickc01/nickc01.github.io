@@ -6,6 +6,14 @@ windowDisplay.visible = false;
 windowDisplay.videoVisible = true;
 windowDisplay.vertical = false;
 
+//The default width and height of the window in percentage
+windowDisplay.defaultWidth = 80;
+windowDisplay.defaultHeight = 65;
+
+//The current width and height of the window in percentage
+windowDisplay.width = 80;
+windowDisplay.height = 65;
+
 windowDisplay.events = {};
 
 /** 
@@ -27,6 +35,10 @@ windowDisplay.show = function() {
 
     //Disable scrolling in the main document so the user can scroll within the project window
     document.documentElement.style.overflowY = "hidden";
+
+    document.getElementById("contents").scrollTo(0, 0);
+    document.getElementById("description").scrollTo(0, 0);
+
 
     //Fade in the project window
     var selectedProjectArea = document.getElementById("selected-project-area")
@@ -68,7 +80,6 @@ windowDisplay.setVertical = function(vertical) {
 }
 
 windowDisplay.close = function() {
-    console.log("CLOSING, VISIBLE = " + windowDisplay.visible);
     if (!windowDisplay.visible) {
         return;
     }
@@ -208,6 +219,36 @@ windowDisplay.setBackgroundColor = function(cssColor) {
     var bottomColor = core.cssToColor(cssColor);
 
     document.documentElement.style.setProperty('--window-background-color-noalpha', "rgb(" + bottomColor[0] + ", " + bottomColor[1] + ", " + bottomColor[2] + ")");
+}
+
+/**
+ * Sets the width percentage of the window 
+ * @param {number} width
+ */
+windowDisplay.setWindowWidth = function (width) {
+    if (windowDisplay.width != width) {
+        windowDisplay.width = width;
+        document.documentElement.style.setProperty('--window-width', width + '%');
+    }
+}
+
+/**
+ * Sets the height percentage of the window 
+ * @param {number} height
+ */
+windowDisplay.setWindowHeight = function(height) {
+    if (windowDisplay.height != height) {
+        windowDisplay.height = height;
+        document.documentElement.style.setProperty('--window-height', height + '%');
+    }
+}
+
+windowDisplay.resetWindowWidth = function () {
+    windowDisplay.setWindowWidth(windowDisplay.defaultWidth);
+}
+
+windowDisplay.resetWindowHeight = function () {
+    windowDisplay.setWindowHeight(windowDisplay.defaultHeight);
 }
 
 windowDisplay.setBackgroundImage = function(imgSource) {
