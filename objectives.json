@@ -239,7 +239,7 @@
                     "color": "#FFA500",
                     "image": "screenshots/algo-visual.png",
                     "avifImage": "screenshots/avif/algo-visual.avif",
-                    "info": "AlgoVisual is a project developed using C++. It is designed to visually represent how linked lists, binary search trees, and graphs work, as well as apply sorting algorithms to them. The project uses [Raylib](https://www.raylib.com/) for visually displaying the data structures, [IMGUI](https://github.com/ocornut/imgui) for displaying an interface for interacting with the program, and [GoogleTest](https://github.com/google/googletest) for testing each of the data structures and algorithms to ensure they work and continue to work even when changes are applied to them."
+                    "info": "AlgoVisual is a project developed using C++. It is designed to visually represent how linked lists, binary search trees, and graphs work, as well as apply sorting algorithms to them. The project uses [Raylib](https://www.raylib.com/) for visually displaying the data structures, [IMGUI](https://github.com/ocornut/imgui) for displaying an interface for interacting with the program, and [GoogleTest](https://github.com/google/googletest) for testing each of the data structures and algorithms to ensure they work and continue to work even when changes are applied to them. This project also utilizes [CMake](https://github.com/nickc01/AlgoVisual/blob/master/CMakeLists.txt) for building the project for multiple different platforms."
                 }
             ]
         },
