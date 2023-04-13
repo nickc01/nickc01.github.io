@@ -58,6 +58,14 @@
                     "image": "screenshots/nitro.png",
                     "avifImage": "screenshots/avif/nitro.avif",
                     "info": "Nitro is a 3D game developed using C# and Unity3D game engine. It is a library that allows you to create powerups that can be combined together to create new effects. It is packaged with a demo game where you are able to race around in a procedurally generated road, and use the powerups against obstacles and other players. Because it is built using the Unity engine, it can easily be ported over to PC, console and mobile platforms."
+                },
+                {
+                    "name": "ultimate-asteroid-tactical-control",
+                    "title": "Ultimate Asteroid Tactical Control (UAT)",
+                    "color": "#7b49aa",
+                    "image": "screenshots/ultimate-asteroid-tactical-control.jpg",
+                    "avifImage": "screenshots/avif/ultimate-asteroid-tactical-control.avif",
+                    "info": "Ultimate Asteroid Tactical Control (UAT) is a simple space game developed using Unity3D game engine. It was one of the first projects created for a game programming class at college and was designed to demonstrate the basics of using Unity. In the game, players pilot a space ship and shoot down asteroids. The game features moving background elements with varying rates for a parallax effect, uses rigidbody components to move objects, instantiates objects at runtime, and displays sprites on objects."
                 }
             ]
         },
