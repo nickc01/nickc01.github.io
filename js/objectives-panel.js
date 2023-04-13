@@ -147,10 +147,10 @@ objectivesPanel.createProjectUI = function(project, index) {
 
     var info = project.info;
 
-    var reverseRow = (index % 2 == 1) ? "style='flex-direction: row-reverse;'" : "";
+    var reverseRow = (index % 2 == 1) ? "double-flexbox-flipped" : "";
 
     info = objectivesPanel.replaceMarkdownLinks(info, project.color);
-    var str = "<div " + reverseRow + " class='double-flexbox'>"
+    var str = "<div class='double-flexbox " + reverseRow + "'>"
     + "<div style='background-color:" + backColor + "; color:" + foreColor + ";' class='left-side-content'>"
     + "<h2><a style='color:" + titleColor + ";' href='?project=" + project.name + "' target='_blank' rel='noopener noreferrer'>" + project.title + "</a></h2>"
     + "<p>" + info + "</p>"
@@ -222,7 +222,6 @@ objectivesPanel.loadObjectives = function() {
     fetch("objectives.json").then(response => {
         return response.json();
     }).then(value => {
-        console.log("LOADED OBJECTIVES = " + value);
         //If successful, then set the projects array to the loaded projects
         objectivesPanel.objectives = value["objectives"];
         objectivesPanel.currentObjectiveState = objectivesPanel.ObjectiveState.Loaded;

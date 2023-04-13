@@ -1187,6 +1187,10 @@ html {
     height: fit-content;
 }
 
+.double-flexbox-flipped {
+    flex-direction: row-reverse;
+}
+
 .left-side-content {
     background-color: rgb(28, 34, 36);
     border-radius: 1rem;
@@ -1397,6 +1401,14 @@ html {
         padding-left: .625rem;
         padding-right: .625rem;
         width: calc(100% - 1.25rem)
+    }
+
+    .double-flexbox {
+        flex-direction: column-reverse;
+    }
+
+    .double-flexbox-flipped {
+        flex-direction: column-reverse;
     }
 
     .left-side-content {
