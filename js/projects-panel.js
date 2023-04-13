@@ -303,13 +303,16 @@ core.addToEvent(core.events.onEnterPanelEvent, panel => {
                 projectPanel.openWhenReady(source.id);
             });
             registerProjectEvent(divs[i], 'mouseover', source => {
-                //Prepare the project for display.
-                projectPanel.prepareProject(source.id);
-                //Add the button to the hovered list to change colors on mouse over
-                projectPanel.addHoveredButton(source.id);
-                //If we are on mobile, then open the project up
-                if (core.usingTouchDevice() && window.innerWidth < (59.375 * core.fontSize)) {
-                    projectPanel.openWhenReady(source.id);
+
+                if (projectPanel.projects !== null) {
+                    //Prepare the project for display.
+                    projectPanel.prepareProject(source.id);
+                    //Add the button to the hovered list to change colors on mouse over
+                    projectPanel.addHoveredButton(source.id);
+                    //If we are on mobile, then open the project up
+                    if (core.usingTouchDevice() && window.innerWidth < (59.375 * core.fontSize)) {
+                        projectPanel.openWhenReady(source.id);
+                    }
                 }
             });
             registerProjectEvent(divs[i], 'mouseout', source => {
