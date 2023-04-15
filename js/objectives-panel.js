@@ -92,7 +92,7 @@ objectivesPanel.openObjective = function (objectiveIndex) {
         objectiveText = objectiveText.substring(0, 3) + objectiveText.substring(6);
     }
 
-    windowDisplay.setLeftContent(objectiveText.replace("<p", "<h2"));
+    windowDisplay.setLeftContent(objectiveText.replace("<p", "<h2 style='text-decoration: underline;' "));
 
     var rightContent = "<h1>Projects</h1>";
     if (objective.projects) {
