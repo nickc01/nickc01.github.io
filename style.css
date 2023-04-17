@@ -900,7 +900,20 @@ html {
     margin-bottom: 1rem;
     margin-bottom: 1rem;
     background-color: rgba(0, 0, 0, .35);
-    border-radius: .9375rem
+    border-radius: .9375rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#objectives-container > h1 {
+    margin: 1rem;
+}
+
+
+
+#objectives-video-frame {
+    max-width: 100%;
+    align-self: center;
 }
 
 #objectives-content {
