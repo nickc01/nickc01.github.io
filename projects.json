@@ -978,6 +978,57 @@
                     "link": "https://www.youtube.com/watch?v=tAQdsij8OH0"
                 }
             ]
+        },
+
+
+        "scratch-dl": {
+            "name": "ScratchDL",
+            "date": "4/19/2023",
+            "description": [
+                "ScratchDL is a C# program that allows you to download various types of data from Scratch.mit.edu",
+                "You can use it to download projects, studios, comments, followers, following users, and more from the website",
+                "The project uses Avalonia for creating a GUI that works on multiple platforms, and uses MVVM to seperate the Scratch API logic (Model) from the GUI logic (View), with a ViewModel class connecting the two together",
+                "The project also takes advantage of DocFX, which is used for generating documentation sites from C# xml comments. The documentation site can be viewed <a href='https://nickc01.github.io/ScratchDL/' target='_blank' rel='noopener noreferrer'>here</a>",
+                "Github actions are used on the Github repository for both <a target='_blank' rel='noopener noreferrer' href='https://github.com/nickc01/ScratchDL/actions/workflows/main.yml'>testing the code upon pushing to the repo (CI)</a> and <a target='_blank' rel='noopener noreferrer' href='https://github.com/nickc01/ScratchDL/actions/workflows/deploy-pages.yml'>building and deploying the DocFX site anytime a push to master occurs (CD)</a>"
+            ],
+            "skills": [
+                "Using Avalonia for building GUI applications in a cross-platform manner",
+                "Using the MVVM pattern to seperate the business logic from the GUI logic",
+                "Using DocFX to create a documentation webpage for easily accessing API docs",
+                "Using Github Actions for automatically testing the code upon pushing (Continous Integration)",
+                "Using Github Actions for building and deploying the DocFX website anytime code is pushed to master (Continous Deployment)"
+            ],
+            "tags": [
+                "Avalonia",
+                "MVVM",
+                "Scratch",
+                "DocFX",
+                "Github Actions",
+                "CI/CD"
+            ],
+            "image": "screenshots/scratch-dl.png",
+            "imageAVIF": "screenshots/avif/scratch-dl.avif",
+            "video": "videos/scratch-dl.m4v",
+            "color": "#f0a22e",
+            "textColor": "#ffffff",
+            "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#B8860B",
+            "titleColor": "#2e383a",
+            "titleWidth": 150,
+            "links": [
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/ScratchDL"
+                },
+                {
+                    "name": "Download",
+                    "link": "https://github.com/nickc01/ScratchDL/releases/latest/download/ScratchDL.Release.zip"
+                },
+                {
+                    "name": "Docs",
+                    "link": "https://nickc01.github.io/ScratchDL/"
+                }
+            ]
         }
 
 
