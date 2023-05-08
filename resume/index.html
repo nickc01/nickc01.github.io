@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<style>
+<html><head>
+    <style>
 
         :root {
-            --header-height: 8rem;
+            --header-height: 7.25rem;
             --logo-background: #2e373a;
             --side-color: #242829;
             --main-color: #ffffff;
@@ -12,40 +10,41 @@
             --white-color: #a2adb0;
             --dark-color: #2e373a;
             --p1-color: #e68a24;
-            --p2-color: #e3426a;
+            --p2-color: #FFA500;
             --p3-color: #cfc6b8;
             --inner-font-padding-x: 0.5rem;
             --inner-font-padding-y: 0.2rem;
+            --shadow-size: 0.05rem;
         }
 
         @font-face {
             font-family: spaceGrotesk;
-            src: url(../fonts/spacegrotesk-regular.woff2) format('woff2'), url(../fonts/spacegrotesk-regular.woff) format('woff'), url(../fonts/spacegrotesk-regular.ttf) format('truetype');
+            src: url(https://nickc01.github.io/fonts/spacegrotesk-regular.woff2) format('woff2'), url(https://nickc01.github.io/fonts/spacegrotesk-regular.woff) format('woff'), url(https://nickc01.github.io/fonts/spacegrotesk-regular.ttf) format('truetype');
         }
 
         @font-face {
             font-family: spaceGrotesk-Bold;
-            src: url(../fonts/spacegrotesk-bold.woff2) format('woff2'), url(../fonts/spacegrotesk-bold.woff) format('woff'), url(../fonts/spacegrotesk-bold.ttf) format('truetype');
+            src: url(https://nickc01.github.io/fonts/spacegrotesk-bold.woff2) format('woff2'), url(https://nickc01.github.io/fonts/spacegrotesk-bold.woff) format('woff'), url(https://nickc01.github.io/fonts/spacegrotesk-bold.ttf) format('truetype');
         }
 
         @font-face {
             font-family: spaceGrotesk-SemiBold;
-            src: url(../fonts/spacegrotesk-semibold.woff2) format('woff2'), url(../fonts/spacegrotesk-semibold.woff) format('woff'), url(../fonts/spacegrotesk-semibold.ttf) format('truetype');
+            src: url(https://nickc01.github.io/fonts/spacegrotesk-semibold.woff2) format('woff2'), url(https://nickc01.gihub.io/fonts/spacegrotesk-semibold.woff) format('woff'), url(https://nickc01.github.io/fonts/spacegrotesk-semibold.ttf) format('truetype');
         }
 
         @font-face {
             font-family: RobotoCondensed-Bold;
-            src: url(../fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf);
+            src: url(https://nickc01.github.io/fonts/Roboto_Condensed/RobotoCondensed-Bold.ttf);
         }
 
         @font-face {
             font-family: RobotoCondensed-Light;
-            src: url(../fonts/Roboto_Condensed/RobotoCondensed-Light.ttf);
+            src: url(https://nickc01.github.io/fonts/Roboto_Condensed/RobotoCondensed-Light.ttf);
         }
 
         @font-face {
             font-family: RobotoCondensed-Regular;
-            src: url(../fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf);
+            src: url(https://nickc01.github.io/fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf);
         }
 
         body {
@@ -90,10 +89,12 @@
 
         #top-text > h1 {
             font-size: 1.7rem;
+            text-shadow: 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color);
         }
 
         #top-text > h2 {
             font-size: 1.4rem;
+            text-shadow: 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color);
         }
 
         #bottom-text {
@@ -158,6 +159,7 @@
         #bottom-text > h3 {
             padding-right: 0.2rem;
             padding-left: 0.2rem;
+            text-shadow: 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color);
         }
         h3 > img {
             width: 1.75rem;
@@ -219,7 +221,11 @@
         }
 
         .section-title.secondary {
-            font-size: 1rem;
+            font-size: 0.75rem;
+            margin-top: 0.75rem;
+            margin-bottom: -0.75rem;
+            margin-right: 0.5rem;
+            margin-left: 0.5rem;
         }
 
         /*table, tr, td {
@@ -281,7 +287,7 @@
 
         .picture-area {
             width: 100%;
-            height: 7rem;
+            height: 5rem;
             position: relative;
         }
 
@@ -448,7 +454,15 @@
         }
 
         .experience-description > li {
-            /*flex-basis: calc(50% - 1rem);*/
+            flex-basis: calc(50% - 1rem);
+        }
+
+        .dark-section .experience-description > li {
+            color: var(--white-color);
+        }
+
+        .white-section .experience-description > li {
+            color: var(--dark-color);
         }
 
 
@@ -457,9 +471,16 @@
         }
 
         .education-padding {
-            background-color: var(--white-color);
             width: 100%;
             height: 0.15rem;
+        }
+
+        .dark-section .education-padding {
+            background-color: var(--white-color);
+        }
+
+        .white-section .education-padding {
+            background-color: var(--dark-color);
         }
 
         #left-side > h2 {
@@ -467,7 +488,8 @@
             padding: 0rem 0.5rem 0rem 0.5rem;
             margin-top: 0.0755rem;
             margin-bottom: 0.0755rem;
-            font-size: 1rem;
+            font-size: 0.9rem;
+            text-shadow: 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color);
         }
 
         .skills-section {
@@ -491,29 +513,30 @@
             padding-top: 0.25rem;
             padding-bottom: 0.25rem;
             color: var(--green-color);
+            text-shadow: 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color), 0 0 var(--shadow-size) var(--side-color);
         }
 
-	</style>
+    </style>
 </head>
 
 <body>
     <div id="top-header">
-        <img id="main-logo" src="https://nickc01.github.io/images/home-logo.svg" />
+        <img id="main-logo" src="https://nickc01.github.io/images/home-logo.svg">
         <div id="top-header-content">
             <div id="top-text">
                 <h1>Nicholas Cullen</h1>
-                <h2>Software Developer</h2>
+                <h2>Game & Software Dev</h2>
             </div>
             <div id="bottom-text">
-                <h3><img src="../images/icons/phone.png" /> <a href="tel:708-577-8589" target="_blank" rel="noopener noreferrer">708-577-8589</a></h3>
-                <h3><img src="../images/icons/github.png" /> <a href="https://www.github.com/nickc01" target="_blank" rel="noopener noreferrer">www.github.com/nickc01</a></h3>
-                <h3><img src="../images/icons/portfolio.png" /> <a href="https://nickc01.github.io" target="_blank" rel="noopener noreferrer">nickc01.github.io</a></h3>
-                <h3><img src="../images/icons/linkedin-circle.png" /> <a href="https://www.linkedin.com/in/nickc01" target="_blank" rel="noopener noreferrer">www.linkedin.com/in/nickc01</a></h3>
-                <h3><img src="../images/icons/mail.png" /> <a href="mailto:nickc01business@outlook.com" target="_blank" rel="noopener noreferrer">nickc01business@outlook.com</a></h3>
+                <h3><img src="https://nickc01.github.io/images/icons/phone.png"> <a href="tel:708-577-8589" target="_blank" rel="noopener noreferrer">708-577-8589</a></h3>
+                <h3><img src="https://nickc01.github.io/images/icons/github.png"> <a href="https://www.github.com/nickc01" target="_blank" rel="noopener noreferrer">www.github.com/nickc01</a></h3>
+                <h3><img src="https://nickc01.github.io/images/icons/portfolio.png"> <a href="https://nickc01.github.io" target="_blank" rel="noopener noreferrer">nickc01.github.io</a></h3>
+                <h3><img src="https://nickc01.github.io/images/icons/linkedin-circle.png"> <a href="https://www.linkedin.com/in/nickc01" target="_blank" rel="noopener noreferrer">www.linkedin.com/in/nickc01</a></h3>
+                <h3><img src="https://nickc01.github.io/images/icons/mail.png"> <a href="mailto:nickc01business@outlook.com" target="_blank" rel="noopener noreferrer">nickc01business@outlook.com</a></h3>
             </div>
         </div>
     </div>
-	<div id="middle-section">
+    <div id="middle-section">
         <div id="left-side">
             <h2>Skills</h2>
             <div class="skills-section">
@@ -529,7 +552,7 @@
                     </ul>
                 </div>
             </div>
-            <h2>Tools & Frameworks</h2>
+            <h2>Tools &amp; Frameworks</h2>
             <div class="skills-section">
                 <div class="skills-contents">
                     <ul>
@@ -551,15 +574,14 @@
             <div id="summary-section" class="white-section section">
                 <h1 class="section-title">Summary</h1>
                 <div id="summary-contents">
-                    <h2>I'm a software and game developer with a primary focus on C#, C++ and Javascript. Video games were my passion since a very young age, and were what inspired me to start my programming journey.</h2>
-                    <h2>After many projects were made, I then shifted my gears to web and application development by creating Windows Apps and my portfolio page. I am always eager to learn something new and expand my skillset.</h2>
+                    <h2>Recent Game Programming graduate with a focus in C#, C++, Javascript, Lua, and a variety of other tools and libraries. Many game related projects have been developed over the course of 5+ years, demonstrating my love for the gaming industry. I have honed my skills in web, application and software development, creating innovative Windows GUI applications and a stunning portfolio page using HTML, CSS, and Javascript. My eagerness to learn new technologies would be valuable asset to any team or project in need of a skilled and passionate developer.</h2>
                 </div>
                 
             </div>
             <div id="projects-section" class="dark-section section">
                 <div id="projects-section-label">
                     <h1 class="section-title">Projects</h1>
-                    <!--<h1 class="section-title secondary">See more projects here: <a href="https://nickc01.github.io" target="_blank" rel="noopener noreferrer">nickc01.github.io</a></h1>-->
+                    <h1 class="section-title secondary">More projects at: <a href="https://nickc01.github.io/?projects" target="_blank" rel="noopener noreferrer">nickc01.github.io/?projects</a></h1>
                 </div>
                 <!--<h1 class="secondary-title">See more at <a href="https://nickc01.github.io/?projects">nickc01.github.io/?projects</a></h1>-->
                 <div id="project-contents">
@@ -567,7 +589,7 @@
                         <div class="picture-area">
                             <div class="project-title inline-project-text">Corrupted Kin</div>
                             <div class="project-date inline-project-text">5/7/2021</div>
-                            <img src="../screenshots/corrupted-kin.jpg" />
+                            <img src="https://nickc01.github.io/screenshots/corrupted-kin.jpg">
                         </div>
                         <h2>
                             Corrupted Kin is a Hollow Knight mod built in C# that adds a revamped bossfight. It uses a 2D Wave System created using HLSL shaders and a dynamically updating mesh.
@@ -582,18 +604,18 @@
 
                     <div id="benefits-calculator" class="project">
                         <div class="picture-area">
-                            <div class="project-title inline-project-text">Benefits Calculator</div>
-                            <div class="project-date inline-project-text">4/25/2020</div>
-                            <img src="../screenshots/benefits-calculator-resume.png" />
+                            <div class="project-title inline-project-text">Algo-Visual</div>
+                            <div class="project-date inline-project-text">4/11/2023</div>
+                            <img src="https://nickc01.github.io/screenshots/algo-visual.png">
                         </div>
                         <h2>
-                            Benefits Calculator allows you to input employee info, calculate their benefits, and save everything to a file. It uses WinForms and <a target="_blank" rel="noopener noreferrer" href="http://thielj.github.io/MetroFramework/">Metro Framework</a> in C# for the GUI.
+                            AlgoVisual is a C++ program showcasing various data structures and sorting algorithms. It uses GTest for unit testing and IMGUI and Raylib for graphical visualization.
                         </h2>
                         <h3>
-                            <a target="_blank" rel="noopener noreferrer" href="https://nickc01.github.io?ceo-project">nickc01.github.io?ceo-project</a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://nickc01.github.io?algo-visual">nickc01.github.io?algo-visual</a>
                         </h3>
                         <h3>
-                            <a target="_blank" rel="noopener noreferrer" href="https://github.com/nickc01/Startup-CEO-Project">github.com/nickc01/Startup-CEO-Project</a>
+                            <a target="_blank" rel="noopener noreferrer" href="https://github.com/nickc01/AlgoVisual">github.com/nickc01/AlgoVisual</a>
                         </h3>
                     </div>
 
@@ -601,7 +623,7 @@
                         <div class="picture-area">
                             <div class="project-title inline-project-text">Dungeon Escape</div>
                             <div class="project-date inline-project-text">3/22/2020</div>
-                            <img src="../screenshots/dungeon-escape.png" />
+                            <img src="https://nickc01.github.io/screenshots/dungeon-escape.png">
                         </div>
                         <h2>
                             Dungeon Escape is a top-down exploration game I developed in C++. It uses SFML for the graphics and input and CMake for building the game for multiple platforms.
@@ -615,12 +637,22 @@
                     </div>
                 </div>
             </div>
-            <div id="work-experience-section" class="white-section section">
+            <div id="education-section" class="white-section section">
+                <h1 class="section-title">Education</h1>
+                <div id="education-contents" class="experience-item">
+                    <h1 class="experience-title">Bachelors in Game Programming</br>GPA 3.94 / Deans List</h1>
+                    <h1 class="experience-date">University of Advancing Technology<br>Tempe, AZ</h1>
+                    <div class="education-padding"></div>
+                    <h1 class="experience-title">CompTIA A+ Certification<br/></h1>
+                    <h1 class="experience-date">March 2023</h1>
+                </div>
+            </div>
+            <div id="work-experience-section" class="dark-section section">
                 <h1 class="section-title">Work Experience</h1>
                 <div id="work-experience-contents">
                     <div class="experience-item" id="stracks">
-                        <h1 class="experience-title">Utility Clerk / Bagger<br />Strack & Van Til Grocery Store</h1>
-                        <h1 class="experience-date">Jan 2018 - Present<br />Munster, IN</h1>
+                        <h1 class="experience-title">Utility Clerk / Bagger<br>Strack &amp; Van Til Grocery Store</h1>
+                        <h1 class="experience-date">Jan 2018 - Present<br>Munster, IN</h1>
                         <ul class="experience-description">
                             <li>Bag and carry people's groceries</li>
                             <li>Replace trash cans around the store</li>
@@ -630,28 +662,23 @@
                     </div>
                     <div class="experience-padding"></div>
                     <div class="experience-item" id="flossmore">
-                        <h1 class="experience-title">Summer Assistant<br />Homewood-Flossmoor High School</h1>
-                        <h1 class="experience-date">June 2017 - August 2017<br />Homewood, IL</h1>
+                        <h1 class="experience-title">Summer Assistant<br>Homewood-Flossmoor High School</h1>
+                        <h1 class="experience-date">June 2017 - August 2017<br>Homewood, IL</h1>
                         <ul class="experience-description">
-                            <li>Installed custom network cables</li>
-                            <li>Configured and setup chromebooks & printers</li>
-                            <li>Disassembled and reassembled computers</li>
-                            <li>Transported equipment between buildings</li>
+                            <!--<li>Created and installed custom network cables in drop ceilings around the school.</li>
+                            <li>Configured and set up Chromebooks for classrooms, transported and set up large charging stations, installed printers, and ensured projectors were operational.</li>
+                            <li>Built new PCs for teacher desks, replaced computers in the computer lab, and used Clonezilla to ensure consistency in operating systems and programs.</li>
+                            <li>Garnered skills in networking, device setup and maintenance, problem-solving, and implementing technological solutions to improve a company's workflow and productivity.</li>-->
+                            <li>Built and replaced teacher and computer lab PCs, ensured consistent software setup with Clonezilla</li>
+                            <li>Learned skills in networking, device maintenance, problem-solving, and implementing tech solutions to improve productivity</li>
+                            <li>Installed network cables in school drop ceilings and maintained projectors</li>
+                            <li>Configured Chromebooks, set up charging stations and installed printers</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div id="education-section" class="dark-section section">
-                <h1 class="section-title">Education</h1>
-                <div id="education-contents" class="experience-item">
-                    <h1 class="experience-title">Bachelor's in Game Programming</h1>
-                    <h1 class="experience-date">University of Advancing Technology<br />Tempe, AZ</h1>
-                    <div class="education-padding"></div>
-                    <h1 class="experience-title">High School Diploma</h1>
-                    <h1 class="experience-date">Homeschool<br />Chicago, IL</h1>
-                </div>
-            </div>
         </div>
-	</div>
-</body>
-</html>
+    </div>
+
+
+</body></html>
