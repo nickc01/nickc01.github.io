@@ -63,7 +63,7 @@ objectivesPanel.openObjective = function (objectiveIndex) {
     //Return if there is no panel loaded or if we aren't on the projects panel or the panel isn't loaded yet
     if (typeof windowDisplay === 'undefined' ||
         core.selectedPanel == null ||
-        core.selectedPanel.name != "objectives" ||
+        core.selectedPanel.name != "experience" ||
         core.currentPanelState != core.PanelState.Idle) {
         return;
     }
@@ -73,8 +73,6 @@ objectivesPanel.openObjective = function (objectiveIndex) {
     }
 
     var objectiveElement = document.getElementById("objectives-content").getElementsByTagName("p")[objectiveIndex];
-
-    console.log("ELEMENT = " + objectiveElement);
 
     objectivesPanel.openedObjective = objectiveIndex;
     objectivesPanel.objectiveOpen = true;
@@ -258,7 +256,7 @@ objectivesPanel.loadObjectives();
 
 //Called when the project panel changes colors
 core.addToEvent(core.events.onEnterPanelEvent, panel => {
-    if (panel.name == "objectives")
+    if (panel.name == "experience")
     {
         objectivesPanel.addClickHandlers();
     }
@@ -266,9 +264,9 @@ core.addToEvent(core.events.onEnterPanelEvent, panel => {
 
 //Called when a panel is unloading
 core.addToEvent(core.events.onPanelLeaveEvent, panel => {
-    if (panel.name == "objectives") {
+    if (panel.name == "experience") {
         objectivesPanel.closeObjective();
     }
 })
 
-console.log("Objectives Panel Loaded");
+console.log("Experience Panel Loaded");
