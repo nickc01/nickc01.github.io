@@ -1,7 +1,7 @@
 {
     "objectives": [
         {
-            "title" : "Objective 1",
+            "title" : "Section 1",
             "projects": [
                 {
                     "name": "uatanks",
@@ -70,7 +70,7 @@
             ]
         },
         {
-            "title": "Objective 2",
+            "title": "Section 2",
             "projects": [
                 {
                     "name": "uatanks",
@@ -109,7 +109,7 @@
 
         },
         {
-            "title": "Objective 3",
+            "title": "Section 3",
             "projects": [
                 {
                     "name": "dungeon-escape",
@@ -138,7 +138,7 @@
             ]
         },
         {
-            "title": "Objective 4",
+            "title": "Section 4",
             "projects": [
                 {
                     "name": "dungeon-escape",
@@ -183,7 +183,7 @@
             ]
         },
         {
-            "title": "Objective 5",
+            "title": "Section 5",
             "projects": [
                 {
                     "name": "corrupted-kin",
@@ -244,7 +244,7 @@
             ]
         },
         {
-            "title": "Objective 6",
+            "title": "Section 6",
             "projects": [
                 {
                     "name": "escape-room-ar",
