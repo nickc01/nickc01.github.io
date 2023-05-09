@@ -967,6 +967,15 @@ html {
     font-size: min(5vw, 4.375rem)
 }
 
+#projects-header {
+    font-size: min(4vw, 1.25rem) !important;
+    max-width: min(60%, 40rem);
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: -2rem !important;
+    padding: revert;
+}
+
 .doFadeOut {
     animation: var(--fade-speed) fadeOut;
     animation-fill-mode: forwards
