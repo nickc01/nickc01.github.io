@@ -1045,7 +1045,8 @@
                 "Using NextJS and React to create a single page application",
                 "Using firebase as a backend database for storing user info and project info",
                 "Using Vercel for hosting the frontend",
-                "Demonstrating the ability to create, read, update, and delete information from a database"
+                "Demonstrating the ability to create, read, update, and delete information from a database",
+                "Using Typescript to add typesafety to Javascript and check for errors at compile time"
             ],
             "tags": [
                 "Task Tracking App",
@@ -1053,7 +1054,8 @@
                 "React",
                 "Firebase",
                 "Vercel",
-                "C.R.U.D"
+                "C.R.U.D",
+                "Typescript"
             ],
             "image": "screenshots/bismuth.png",
             "imageAVIF": "/screenshots/avif/bismuth.avif",
