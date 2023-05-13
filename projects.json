@@ -1029,6 +1029,51 @@
                     "link": "https://nickc01.github.io/ScratchDL/"
                 }
             ]
+        },
+
+        "bismuth": {
+            "name": "Bismuth",
+            "date": "5/13/2023",
+            "description": [
+                "Bismuth is a simple task tracking app where you can keep track of many different tasks that are associated with a project",
+                "The app allows you to create tasks, give each of them individual goals you can check off, and assign dependencies to other tasks so you can only complete them in a certain order",
+                "It also uses a windowing system where you can resize and rearrange the tasks in whichever order you want.",
+                "This project uses firebase as a backend for storing user profile information, project information, and for storing assets used for profile pictures and guides",
+                "This project demonstrates how to use C.R.U.D for Creating, Reading, Updating, and Deleting information to the firebase firestore, whlie also utilizing Security Rules to prevent malicious actors from doing more to the database than they should"
+            ],
+            "skills": [
+                "Using NextJS and React to create a single page application",
+                "Using firebase as a backend database for storing user info and project info",
+                "Using Vercel for hosting the frontend",
+                "Demonstrating the ability to create, read, update, and delete information from a database"
+            ],
+            "tags": [
+                "Task Tracking App",
+                "NextJS",
+                "React",
+                "Firebase",
+                "Vercel",
+                "C.R.U.D"
+            ],
+            "image": "screenshots/bismuth.png",
+            "imageAVIF": "/screenshots/avif/bismuth.avif",
+            "video": "/videos/bismuth.mp4",
+            "color": "#3464de",
+            "textColor": "#99b6ff",
+            "backgroundColor": "#2e383aBB",
+            "perlinBackgroundColor": "#0b0e0e",
+            "titleColor": "#ffffff",
+            "titleWidth": 85,
+            "links": [
+                {
+                    "name": "View Website",
+                    "link": "https://bismuth-nickc01.vercel.app"
+                },
+                {
+                    "name": "Github",
+                    "link": "https://github.com/nickc01/Bismuth"
+                }
+            ]
         }
 
 
